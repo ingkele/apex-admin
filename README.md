@@ -131,10 +131,20 @@ src/
 
 | 模式 | 行为 |
 | --- | --- |
-| `mock`（默认） | 走 `mocks/transport.ts` 内存路由，零后端依赖 |
-| `live` | 走 `fetchTransport`，自动带 Bearer token |
+| `mock`（默认） | 走 `mocks/transport.ts` 内存路由，零后端依赖（上传/流式有模拟通道） |
+| `live` | 走 axios 实例：自动带 Bearer token、15s 超时、错误归一化为 `ApiError` |
 
-切换只需 `.env` 设 `VITE_DATA_MODE=live` 与 `VITE_API_BASE`。
+切换只需 `.env` 设 `VITE_DATA_MODE=live` 与 `VITE_API_BASE_URL`（可选 `VITE_API_TIMEOUT` 调超时，毫秒）。
+
+请求能力清单（`lib/http.ts` 单点收敛）：
+
+| API | 用途 |
+| --- | --- |
+| `http.get/post/put/del` | 常规 CRUD（TanStack Query hooks 内部调用） |
+| `http.upload(path, formData, onProgress)` | 文件上传，带进度回调 |
+| `http.download(path, filename)` | 文件下载，Blob 触发浏览器落盘 |
+| `http.stream(path, { onChunk, onDone, signal })` | SSE / 流式响应（AI 对话逐字输出、日志推流） |
+| `http.raw` | axios 原始实例，自定义 config 场景（拦截器仍生效） |
 
 ## 对接后端
 
