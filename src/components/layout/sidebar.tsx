@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   Blocks, BookMarked, Brain, ChartNoAxesCombined, ChevronDown, CircleAlert, CircleDashed,
   ClipboardCheck, Component, Footprints, Info, KeyRound, Layers, LayoutDashboard, ListChecks,
-  LogOut, Menu, MenuSquare, MessageSquareDot, Network, PanelLeftClose, PanelLeftOpen,
+  LogOut, Menu, MenuSquare, MessageSquareDot, Network, PanelLeftClose,
   ScrollText, Server, Settings, ShieldCheck, Table2, TextCursorInput, Users,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
@@ -267,22 +267,29 @@ export function Sidebar() {
         collapsed ? 'w-[64px]' : 'w-[248px]',
       )}
     >
-      {/* logo */}
-      <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-sidebar-line px-4">
+      {/* logo —— 折叠态只有 64px，容纳不下 logo + 开关，此时开关交给顶栏 */}
+      <div
+        className={cn(
+          'flex h-16 shrink-0 items-center gap-2.5 border-b border-sidebar-line px-4',
+          collapsed && 'justify-center',
+        )}
+      >
         <img src="/logo.svg" alt={appConfig.name} className="h-8 w-8 shrink-0" />
         {!collapsed ? (
-          <div className="min-w-0 flex-1 truncate text-[14px] font-semibold text-sidebar-ink">
-            {appConfig.name}
-          </div>
+          <>
+            <div className="min-w-0 flex-1 truncate text-[14px] font-semibold text-sidebar-ink">
+              {appConfig.name}
+            </div>
+            <button
+              type="button"
+              onClick={toggle}
+              title="折叠侧边栏"
+              className="rounded-md p-3.5 text-sidebar-muted transition hover:bg-sidebar-hover hover:text-sidebar-ink"
+            >
+              <PanelLeftClose className="h-4 w-4" />
+            </button>
+          </>
         ) : null}
-        <button
-          type="button"
-          onClick={toggle}
-          title={collapsed ? '展开侧边栏' : '折叠侧边栏'}
-          className="rounded-md p-1.5 text-sidebar-muted transition hover:bg-sidebar-hover hover:text-sidebar-ink"
-        >
-          {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
-        </button>
       </div>
 
       {/* 导航 */}

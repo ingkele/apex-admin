@@ -32,3 +32,6 @@ pnpm-debug.log*
 data/*.sqlite
 data/*.db
 data/*.sqlite-journal
+
+# Playwright CLI 调试产物
+.playwright-cli/
