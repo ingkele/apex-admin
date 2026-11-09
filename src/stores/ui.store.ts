@@ -6,6 +6,11 @@ interface UiState {
   openThemeDrawer: () => void
   closeThemeDrawer: () => void
   setThemeDrawerOpen: (open: boolean) => void
+  /** 全局命令面板（⌘K） */
+  commandOpen: boolean
+  openCommand: () => void
+  closeCommand: () => void
+  setCommandOpen: (open: boolean) => void
 }
 
 export const useUiStore = create<UiState>()((set) => ({
@@ -13,4 +18,9 @@ export const useUiStore = create<UiState>()((set) => ({
   openThemeDrawer: () => set({ themeDrawerOpen: true }),
   closeThemeDrawer: () => set({ themeDrawerOpen: false }),
   setThemeDrawerOpen: (themeDrawerOpen) => set({ themeDrawerOpen }),
+
+  commandOpen: false,
+  openCommand: () => set({ commandOpen: true }),
+  closeCommand: () => set({ commandOpen: false }),
+  setCommandOpen: (commandOpen) => set({ commandOpen }),
 }))

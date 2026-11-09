@@ -2,8 +2,8 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { http, type PageQuery, type PageResult } from '@/lib/http'
 import type {
   AnalyticsKpi, AnalyticsPoint,
-  ApiKeyItem, AuditItem, DeptNode, DictType, HealthTone, LogLine, MenuNode, ModelItem, RoleItem,
-  ServiceHealth, ServiceItem, Settings, Task, UserItem,
+  ApiKeyItem, AuditItem, DeptNode, DictType, HealthTone, LogLine, MenuNode, ModelItem,
+  NotificationItem, RoleItem, ServiceHealth, ServiceItem, Settings, Task, UserItem,
 } from '@/mocks/db'
 /**
  * 数据请求层 —— TanStack Query hooks + queryKeys。
@@ -30,6 +30,7 @@ export const qk = {
   depts: ['system', 'depts'] as const,
   dicts: ['system', 'dicts'] as const,
   analytics: (range: string) => ['analytics', range] as const,
+  notifications: ['notifications'] as const,
 }
 
 // —— 工作台 ——
@@ -322,3 +323,23 @@ export const useAnalytics = (range: '7d' | '30d') =>
     queryKey: qk.analytics(range),
     queryFn: () => http.get<AnalyticsData>('/analytics', { range }),
   })
+
+// —— 通知 ——
+export const useNotifications = () =>
+  useQuery({ queryKey: qk.notifications, queryFn: () => http.get<NotificationItem[]>('/notifications') })
+
+export const useMarkAllNotificationsRead = () => {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: () => http.post<{ ok: boolean }>('/notifications/read-all'),
+    onSuccess: () => qc.invalidateQueries({ queryKey: qk.notifications }),
+  })
+}
+
+export const useMarkNotificationRead = () => {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (id: string) => http.post<NotificationItem>(`/notifications/${id}/read`),
+    onSuccess: () => qc.invalidateQueries({ queryKey: qk.notifications }),
+  })
+}

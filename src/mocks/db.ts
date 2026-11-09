@@ -685,3 +685,55 @@ export const analyticsInsights = [
   { title: '最慢链路', value: 'inference-core · P95 842ms', note: '图片类任务平均耗时是文本的 4.6 倍', tone: 'amber' as const },
   { title: '错误集中', value: '上游超时 41%', note: '集中在 14:00-15:00，与批处理任务重叠', tone: 'rose' as const },
 ]
+
+export interface NotificationItem {
+  id: string
+  type: 'task' | 'system' | 'security' | 'billing'
+  title: string
+  desc: string
+  at: string
+  read: boolean
+}
+
+export const notifications: NotificationItem[] = [
+  {
+    id: 'ntf_1',
+    type: 'task',
+    title: '任务失败：合同要素抽取（11 月批次）',
+    desc: '第 4 批次解析超时，已自动重试 2 次，建议检查上游渠道',
+    at: '10 分钟前',
+    read: false,
+  },
+  {
+    id: 'ntf_2',
+    type: 'security',
+    title: '检测到异常登录',
+    desc: '账号 lixia@apex.ai 在新设备（Windows · Chrome）登录，IP 归属上海',
+    at: '32 分钟前',
+    read: false,
+  },
+  {
+    id: 'ntf_3',
+    type: 'system',
+    title: '调度服务今晚 02:00 滚动重启',
+    desc: '重启期间新任务进入队列，已运行任务不受影响',
+    at: '2 小时前',
+    read: true,
+  },
+  {
+    id: 'ntf_4',
+    type: 'billing',
+    title: '本月调用额度已使用 82%',
+    desc: '按当前速率预计 11 天后耗尽，可提前申请提升配额',
+    at: '5 小时前',
+    read: true,
+  },
+  {
+    id: 'ntf_5',
+    type: 'task',
+    title: '知识库增量重嵌入已完成',
+    desc: '新增文档 128 篇，嵌入 4.2 万 tokens，用时 6 分钟',
+    at: '昨天 19:22',
+    read: true,
+  },
+]

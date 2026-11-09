@@ -1,19 +1,22 @@
 import * as React from 'react'
 import { useLocation, useNavigate } from '@tanstack/react-router'
-import { Bell, ChevronRight, Info, LogOut, PanelLeft, Palette, Search, UserRound } from 'lucide-react'
+import { ChevronRight, Info, LogOut, PanelLeft, Palette, Search, UserRound } from 'lucide-react'
 import { AppMenu } from '@/components/ui/menu'
+import { NotificationBell } from '@/components/shared/notification-bell'
 import { useAuthStore } from '@/stores/auth.store'
 import { useSidebarStore } from '@/stores/sidebar.store'
 import { useTabsStore } from '@/stores/tabs.store'
+import { useUiStore } from '@/stores/ui.store'
 import { appConfig } from '@/app.config'
 import { resolveBreadcrumb } from '@/lib/route-meta'
 import { cn } from '@/lib/utils'
 
-/** 顶栏 —— 折叠开关 / 面包屑 / 全局搜索 / 通知 / 主题设置 / 用户菜单 */
+/** 顶栏 —— 折叠开关 / 面包屑 / 全局搜索（⌘K）/ 通知 / 主题设置 / 用户菜单 */
 export function Topbar({ onOpenTheme }: { onOpenTheme: () => void }) {
   const user = useAuthStore((s) => s.user)
   const logout = useAuthStore((s) => s.logout)
   const toggleSidebar = useSidebarStore((s) => s.toggle)
+  const openCommand = useUiStore((s) => s.openCommand)
   const pathname = useLocation({ select: (l) => l.pathname })
   const navigate = useNavigate()
   const crumb = resolveBreadcrumb(pathname)
@@ -49,28 +52,23 @@ export function Topbar({ onOpenTheme }: { onOpenTheme: () => void }) {
       </div>
 
       <div className="flex min-w-0 items-center gap-4">
-        {/* 全局搜索 */}
-        <div className="relative hidden w-[250px] xl:block 2xl:w-[310px]">
+        {/* 全局搜索（⌘K 命令面板入口） */}
+        <button
+          type="button"
+          onClick={openCommand}
+          title="全局搜索（⌘K）"
+          className="relative hidden h-9 w-[250px] cursor-pointer rounded-lg border border-line bg-canvas/60 pr-10 pl-8 text-left text-[12.5px] text-soft transition-colors hover:border-brand-500/60 hover:bg-canvas xl:block 2xl:w-[310px]"
+        >
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-soft" />
-          <input
-            placeholder="搜索任务、服务、模型…"
-            className="h-9 w-full rounded-lg border border-line bg-canvas/60 pr-10 pl-8 text-[12.5px] text-ink outline-none transition-colors placeholder:text-soft focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15"
-          />
+          <span className="absolute left-8 top-1/2 -translate-y-1/2">搜索任务、服务、模型…</span>
           <kbd className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded border border-line bg-surface px-1.5 py-0.5 text-[10px] text-soft">
             ⌘K
           </kbd>
-        </div>
+        </button>
 
         <div className="flex items-center gap-1.5">
           {/* 通知 */}
-          <button
-            type="button"
-            title="通知"
-            className="relative rounded-lg p-2 text-muted transition hover:bg-hover hover:text-ink"
-          >
-            <Bell className="h-[17px] w-[17px]" />
-            <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-rose-500" />
-          </button>
+          <NotificationBell />
 
           {/* 主题设置 */}
           <button

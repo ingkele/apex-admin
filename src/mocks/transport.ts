@@ -4,9 +4,9 @@ import {
   analyticsErrors, analyticsHeat, analyticsInsights, analyticsKpis, analyticsLatency,
   analyticsModels, analyticsSources, analyticsTrend,
   apiKeys, auditLogs, auditStats, dashboardHealth, dashboardStats, depts, deptStats, dictTypes,
-  logLines, logStats, menuStats, models, roles, services, serviceStats, settings, systemMenus,
-  taskSummary, tasks, taskTrend, userStats, users,
-  type AuditItem, type Task,
+  logLines, logStats, menuStats, models, notifications, roles, services, serviceStats, settings,
+  systemMenus, taskSummary, tasks, taskTrend, userStats, users,
+  type AuditItem, type NotificationItem, type Task,
 } from './db'
 
 /** Mock 传输层：按 path 分发到内存数据，模拟延迟与分页。 */
@@ -141,6 +141,19 @@ const routes: Route[] = [
   }),
 
   // —— 服务 ——
+  route('GET', '/notifications', () => notifications),
+
+  route('POST', '/notifications/read-all', () => {
+    notifications.forEach((n) => (n.read = true))
+    return { ok: true }
+  }),
+
+  route('POST', '/notifications/:id/read', (params) => {
+    const item = notifications.find((n) => n.id === params.id)
+    if (item) item.read = true
+    return item satisfies NotificationItem | undefined
+  }),
+
   route('GET', '/services', () => services),
   route('GET', '/services/stats', () => serviceStats),
   route('GET', '/logs', (_p, query) => {

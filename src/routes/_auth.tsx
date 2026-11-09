@@ -1,11 +1,13 @@
 import * as React from 'react'
-import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
+import { createFileRoute, Outlet, redirect, useLocation } from '@tanstack/react-router'
 import { Sidebar } from '@/components/layout/sidebar'
 import { TabBar } from '@/components/layout/tab-bar'
 import { Topbar } from '@/components/layout/topbar'
+import { CommandPalette } from '@/components/shared/command-palette'
 import { ThemeDrawer } from '@/components/shared/theme-drawer'
 import { useAuthStore } from '@/stores/auth.store'
 import { useUiStore } from '@/stores/ui.store'
+import { useDocumentTitle } from '@/lib/use-document-title'
 
 export const Route = createFileRoute('/_auth')({
   beforeLoad: () => {
@@ -21,6 +23,8 @@ function AuthLayout() {
   const themeDrawerOpen = useUiStore((s) => s.themeDrawerOpen)
   const openThemeDrawer = useUiStore((s) => s.openThemeDrawer)
   const setThemeDrawerOpen = useUiStore((s) => s.setThemeDrawerOpen)
+  const pathname = useLocation({ select: (l) => l.pathname })
+  useDocumentTitle(pathname)
 
   return (
     <div className="flex h-screen overflow-hidden bg-canvas">
@@ -35,6 +39,7 @@ function AuthLayout() {
         </main>
       </div>
       <ThemeDrawer open={themeDrawerOpen} onClose={() => setThemeDrawerOpen(false)} />
+      <CommandPalette />
     </div>
   )
 }
