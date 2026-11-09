@@ -57,6 +57,7 @@ DTO ↔ Zod ↔ 表单字段三处必须逐字段核对，**字段名大小写�
 
 ## 已知约定
 
+- **代码风格**：单引号、语句末尾不加分号、import 多项时紧凑排列（参考现有文件）。仓库未配 Prettier，编辑器若默认「双引号 + 分号」请在保存时关闭自动格式化，避免整文件重排污染 diff。
 - 界面文案全部中文；错误提示统一 sonner toast，位置固定底部居中（避免遮挡页头按钮）。
 - Base UI 的组合用 `render` 属性（如 `AlertDialog.Close render={<Button/>}`），**不使用** Radix 的 `asChild` / `data-[state]`，两者禁止混用。
 - Base UI 的 `Menu.Trigger` 要求渲染成原生 `<button>`，否则会出现 button 嵌套 hydration 报错。
