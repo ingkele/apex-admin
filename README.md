@@ -157,6 +157,18 @@ src/
 
 字段命名大小写敏感，改任一接口须三处同步核对，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
+### 跨域策略
+
+`BASE_URL` 默认 `/api` 相对路径，约定是**让跨域问题不出现**：
+
+| 阶段 | 方案 | 是否跨域 |
+| --- | --- | --- |
+| 开发期 | `vite.config.ts` 的 `server.proxy` 脚手架（已留注释，取消注释改地址即可） | 否 |
+| 生产 | Nginx / K8s Ingress 把 `/api` 反代到后端，与前端同域 | 否 |
+| 前后端分域 | `VITE_API_BASE_URL=https://api.example.com` 直连 | 是，需后端配 CORS（上传与 SSE 流式各带一次预检 OPTIONS，注意放行） |
+
+环境变量说明见 `.env.example`（复制为 `.env.local` 使用）。
+
 ## 贡献
 
 见 [CONTRIBUTING.md](CONTRIBUTING.md)：目录硬边界、新模块接入五步、提交规范、改造清单。
