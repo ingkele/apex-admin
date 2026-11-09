@@ -27,6 +27,21 @@ Mock 账号（任意邮箱 + ≥4 位密码即可登录）：
 | `ops@` 开头 | operator |
 | 其他 | viewer（只读） |
 
+## 仓库定位与前后端关系
+
+**本仓只装前端。** 这是一个可 fork 的后台模板（Starter），不承载任何后端代码。
+
+| 仓库 | 职责 | 技术栈 |
+| --- | --- | --- |
+| `apex-admin`（本仓） | 后台管理前端模板，可被产品直接 fork | Vite + React + TanStack + Base UI |
+| `apex-ai-studio-api`（独立仓） | 业务后端，按域拆微服务 | .NET（Gateway / Identity / ModelRegistry / Tasks / …） |
+
+约束：
+
+- 后端**不进本仓**。将来做完整产品时，从本模板 fork 出新仓（例如 `apps/admin-web/`），**不要搬运本仓的 git 历史**——模板历史对产品仓没有价值。
+- 前后端唯一耦合点是 **HTTP DTO**。契约由后端 OpenAPI 提供，前端用 `openapi-typescript` 生成类型，落到 `api/index.ts`。
+- 接口变更顺序固定：后端改 OpenAPI → 前端重新生成类型 → 同步 `mocks/db.ts` 与 `mocks/transport.ts` → 改页面。**mocks 必须与真实响应体同构**，否则切 live 时集中爆雷。
+
 ## 目录约定
 
 ```
@@ -44,7 +59,7 @@ src/
 └── routes/                # TanStack Router 文件路由（routeTree.gen.ts 自动生成，勿手改）
     ├── login.tsx
     ├── _auth.tsx          # 布局壳 + beforeLoad 鉴权守卫
-    └── _auth/**           # 12 个业务页面
+    └── _auth/**           # 业务页面：工作台 / 分析 / 任务 / 服务 / 模型 / 系统 / 演示 / 示例 / 异常
 ```
 
 硬边界：
