@@ -27,13 +27,13 @@ export type NavIcon =
 
 export const appConfig = {
   /** 应用标识 */
-  name: 'Apex AI Studio',
+  name: 'Apex Admin',
   shortName: 'Apex',
-  fullName: 'Apex AI Studio 管理端',
+  fullName: 'Apex Admin',
   logoText: 'A',
 
   /** 版权/登录页脚注 */
-  copyright: '© 2026 Apex AI Studio · 基于标准后台管理模板构建',
+  copyright: '© 2026 Apex Admin · 基于标准后台管理模板构建',
 
   /** 默认主题（= 原型 DEFAULT_THEME） */
   defaultTheme: {

@@ -58,9 +58,7 @@ export function Sidebar() {
     >
       {/* logo */}
       <div className="flex h-16 shrink-0 items-center gap-2.5 border-b border-sidebar-line px-4">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-[13px] font-semibold text-white shadow-sm">
-          {appConfig.logoText}
-        </div>
+        <img src="/logo.svg" alt={appConfig.name} className="h-8 w-8 shrink-0" />
         {!collapsed ? (
           <div className="min-w-0 flex-1 truncate text-[14px] font-semibold text-sidebar-ink">
             {appConfig.name}
