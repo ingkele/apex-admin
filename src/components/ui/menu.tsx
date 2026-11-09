@@ -7,6 +7,7 @@ export function AppMenu({
   trigger,
   items,
   align = 'end',
+  side = 'bottom',
 }: {
   /** 触发器：用 render 合并到该元素上，避免 Trigger 默认 <button> 再包一层按钮 */
   trigger: React.ReactElement
@@ -20,12 +21,14 @@ export function AppMenu({
     onSelect: () => void
   }[]
   align?: 'start' | 'end'
+  /** 弹出方向（折叠侧边栏的侧弹菜单用 right） */
+  side?: 'bottom' | 'right' | 'left' | 'top'
 }) {
   return (
     <Menu.Root>
       <Menu.Trigger render={trigger} />
       <Menu.Portal>
-        <Menu.Positioner sideOffset={6} align={align} className="z-50">
+        <Menu.Positioner sideOffset={6} align={align} side={side} className="z-50">
           <Menu.Popup className="min-w-[160px] rounded-xl border border-line bg-elevated p-1 shadow-pop">
             {items.map((item, i) => (
               <React.Fragment key={i}>

@@ -6,10 +6,13 @@
 
 export interface NavChild {
   label: string
-  to: string
+  /** 叶子路由；父级节点（有 children）可不填，点击只负责展开/收起 */
+  to?: string
   /** 子项独立图标（不填则沿用分组图标） */
   icon?: NavIcon
   permission?: PermissionCode
+  /** 子菜单（递归嵌套，支持任意层级） */
+  children?: NavChild[]
 }
 
 export interface NavGroup {
@@ -196,34 +199,58 @@ export const NAV_GROUPS: NavGroup[] = [
     label: '系统管理',
     icon: 'settings',
     children: [
-      { label: '用户管理', to: '/system/users', permission: 'user:manage' },
-      { label: '角色权限', to: '/system/roles', permission: 'role:manage' },
-      { label: '菜单管理', to: '/system/menus', permission: 'menu:view' },
-      { label: '部门管理', to: '/system/depts', permission: 'dept:view' },
-      { label: '字典管理', to: '/system/dicts', permission: 'dict:view' },
-      { label: '审计日志', to: '/system/audit', permission: 'audit:view' },
-      { label: '系统参数', to: '/system/settings', permission: 'setting:manage' },
+      {
+        label: '成员与权限',
+        icon: 'users',
+        children: [
+          { label: '用户管理', to: '/system/users', permission: 'user:manage' },
+          { label: '角色权限', to: '/system/roles', permission: 'role:manage' },
+        ],
+      },
+      {
+        label: '组织与字典',
+        icon: 'dept',
+        children: [
+          { label: '菜单管理', to: '/system/menus', permission: 'menu:view' },
+          { label: '部门管理', to: '/system/depts', permission: 'dept:view' },
+          { label: '字典管理', to: '/system/dicts', permission: 'dict:view' },
+        ],
+      },
+      {
+        label: '审计与参数',
+        icon: 'audit',
+        children: [
+          { label: '审计日志', to: '/system/audit', permission: 'audit:view' },
+          { label: '系统参数', to: '/system/settings', permission: 'setting:manage' },
+        ],
+      },
     ],
   },
   {
-    label: '演示',
+    label: '组件与示例',
     icon: 'components',
     children: [
-      { label: '基础组件', to: '/demo/base', icon: 'component' },
-      { label: '表单控件', to: '/demo/form', icon: 'input' },
-      { label: '反馈组件', to: '/demo/feedback', icon: 'feedback' },
-      { label: '导航组件', to: '/demo/nav', icon: 'navigation' },
-      { label: '数据展示', to: '/demo/data', icon: 'table' },
-    ],
-  },
-  {
-    label: '示例',
-    icon: 'examples',
-    children: [
-      { label: '列表 CRUD', to: '/examples/list', icon: 'list' },
-      { label: '表单校验', to: '/examples/form', icon: 'form' },
-      { label: '分步流程', to: '/examples/steps', icon: 'flow' },
-      { label: '状态占位', to: '/examples/states', icon: 'state' },
+      {
+        label: '组件演示',
+        icon: 'components',
+        children: [
+          { label: '基础组件', to: '/demo/base', icon: 'component' },
+          { label: '表单控件', to: '/demo/form', icon: 'input' },
+          { label: '反馈组件', to: '/demo/feedback', icon: 'feedback' },
+          { label: '导航组件', to: '/demo/nav', icon: 'navigation' },
+          { label: '数据展示', to: '/demo/data', icon: 'table' },
+        ],
+      },
+      {
+        label: '业务示例',
+        icon: 'examples',
+        children: [
+          { label: '列表 CRUD', to: '/examples/list', icon: 'list' },
+          { label: '表单校验', to: '/examples/form', icon: 'form' },
+          { label: '分步流程', to: '/examples/steps', icon: 'flow' },
+          { label: '状态占位', to: '/examples/states', icon: 'state' },
+        ],
+      },
     ],
   },
   {

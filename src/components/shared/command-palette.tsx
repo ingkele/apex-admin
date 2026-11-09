@@ -4,7 +4,7 @@ import { Dialog } from '@base-ui/react/dialog'
 import { Command } from 'cmdk'
 import { useQueryClient } from '@tanstack/react-query'
 import { LogOut, MoonStar, Palette, Plus, Search } from 'lucide-react'
-import { NAV_GROUPS } from '@/app.config'
+import { NAV_GROUPS, type NavChild } from '@/app.config'
 import { useTasks } from '@/api'
 import { useAuthStore } from '@/stores/auth.store'
 import { useThemeStore } from '@/stores/theme.store'
@@ -38,16 +38,22 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', down)
   }, [setCommandOpen])
 
-  // 页面清单（与侧边栏同口径：按权限过滤）
-  const pages = React.useMemo(
-    () =>
-      NAV_GROUPS.flatMap((g) =>
-        g.children
-          .filter((c) => !c.permission || hasPermission(c.permission))
-          .map((c) => ({ group: g.label, label: c.label, to: c.to })),
-      ),
-    [hasPermission],
-  )
+  // 页面清单（与侧边栏同口径：递归展开叶子 + 按权限过滤）
+  const pages = React.useMemo(() => {
+    const out: { trail: string; label: string; to: string }[] = []
+    const walk = (children: NavChild[], trail: string[]) => {
+      for (const c of children) {
+        if (c.permission && !hasPermission(c.permission)) continue
+        if (c.children?.length) {
+          walk(c.children, [...trail, c.label])
+          continue
+        }
+        if (c.to) out.push({ trail: trail.join(' › '), label: c.label, to: c.to })
+      }
+    }
+    for (const g of NAV_GROUPS) walk(g.children, [g.label])
+    return out
+  }, [hasPermission])
 
   // 任务直达（前 50 条，够用了）
   const { data: tasks } = useTasks({ page: 1, pageSize: 50 })
@@ -118,7 +124,7 @@ export function CommandPalette() {
               {/* 页面跳转 */}
               <Command.Group heading="页面" className="text-ink">
                 {pages.map((p) => (
-                  <Item key={p.to} label={p.label} hint={p.group} onSelect={() => go(p.to)} />
+                  <Item key={p.to} label={p.label} hint={p.trail} onSelect={() => go(p.to)} />
                 ))}
               </Command.Group>
 
