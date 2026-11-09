@@ -27,3 +27,8 @@ Thumbs.db
 *.log
 npm-debug.log*
 pnpm-debug.log*
+
+# 运行时本地数据（工具生成，勿提交）
+data/*.sqlite
+data/*.db
+data/*.sqlite-journal

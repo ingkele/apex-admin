@@ -3,7 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Apex AI Studio 管理端 / 标准后台管理模板（Starter）——墨刀原型设计标准的生产级实现",
+  "description": "开箱即用的后台管理前端模板：React 19 + TanStack Router + Base UI + Tailwind v4，内置权限、主题、多页签与 mock/live 双模数据层",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingkele/apex-admin.git"
+  },
+  "homepage": "https://github.com/ingkele/apex-admin#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

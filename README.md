@@ -1,132 +1,150 @@
-# Apex Admin — 后台管理标准模板（Starter）
+# Apex Admin
 
-以墨刀原型（apex-admin-总览/演示-主题统一.html）为**设计标准**开发的生产级后台管理模板。
-Apex-AI-Studio 后续直接 fork 本模板定制，不做二次翻译。
+开箱即用的后台管理前端模板：**React 19 + TanStack Router + Base UI + Tailwind v4**。
+内置权限、主题、多页签、可拖拽工作台与 mock/live 双模数据层，clone 下来直接写业务，不用再搭一遍架子。
 
-技术栈：Vite + React 19 + TypeScript 5.x + TanStack Router / Query / Table + shadcn/ui（**Base UI** 底层）+ Tailwind v4 + Zustand + react-grid-layout + Recharts + sonner / cmdk / Lucide。
+![工作台（浅色）](docs/screenshots/dashboard-light.png)
+
+## 特性
+
+- **32 条路由开箱可用**：工作台、分析页、任务、服务、模型、系统管理（用户 / 角色 / 菜单 / 部门 / 字典 / 审计 / 参数）、个人中心、异常页（403 / 404 / 500 / 离线）。
+- **权限到按钮级**：26 个权限码、3 个角色，路由守卫 + 菜单过滤 + `<Can>` 组件三层拦截，一条权限码同时驱动菜单显隐和按钮禁用。
+- **主题系统**：5 套主题色 × 明暗模式 × 紧凑密度 × 三档圆角 × 侧边栏深色，全部走 CSS 变量，切换即时生效并持久化。
+- **可拖拽工作台**：卡片自由换位、拖角缩放、一键自动排序（消除空洞的重排算法），布局存服务端偏好。
+- **多页签导航**：右键菜单支持刷新 / 关闭左右 / 关闭其他 / 关闭全部 / 复制路径，固定页签不可关闭，会话级持久化。
+- **组件演示 + 业务示例**：5 个组件演示页（基础 / 表单 / 反馈 / 导航 / 数据展示）＋ 4 个可改造示例（列表 CRUD、表单校验、分步流程、状态占位）。
+- **数据层双模**：开发期走内存 mock，零后端依赖；上线切 `live` 走真实 API，**页面与 hooks 零改动**。
+- **类型严格**：TS strict + 零 `any`，`pnpm typecheck` 全绿。
+
+## 截图
+
+| 深色工作台 | 分析页 |
+| --- | --- |
+| ![深色工作台](docs/screenshots/dashboard-dark.png) | ![分析页](docs/screenshots/analytics.png) |
+
+| 深色分析页 | 组件演示 |
+| --- | --- |
+| ![深色分析页](docs/screenshots/analytics-dark.png) | ![组件演示](docs/screenshots/demo-components.png) |
+
+## 技术栈
+
+| 层 | 选型 |
+| --- | --- |
+| 构建 | Vite 7 + TypeScript 5（strict） |
+| 框架 | React 19 |
+| 路由 | TanStack Router（文件路由，类型安全） |
+| 数据 | TanStack Query + TanStack Table |
+| 组件 | Base UI（无样式原语）+ Tailwind CSS v4 + CVA |
+| 状态 | Zustand（含 persist） |
+| 图表 | Recharts |
+| 布局 | react-grid-layout |
+| 反馈 | sonner / cmdk / Lucide |
 
 ## 快速开始
+
+### 从模板创建新项目
+
+```bash
+# GitHub 模板仓（需对模板仓有读权限）
+gh repo create my-admin --template ingkele/apex-admin --private --clone
+```
+
+也可以在仓库页面点「Use this template」。仓库转为公开后，还可以：
+
+```bash
+npx degit ingkele/apex-admin my-admin
+```
+
+创建后按 [CONTRIBUTING.md](CONTRIBUTING.md) 的「改造清单」过一遍品牌名、权限码与 `.env`。
+
+### 本地开发
 
 ```bash
 pnpm install
 pnpm dev        # http://127.0.0.1:5180
-pnpm build      # 产物构建
+pnpm build      # 生产构建
 pnpm typecheck  # tsc --noEmit
 pnpm routes     # 打印路由树
 ```
 
-> **端口约定（重要）**：`vite.config.ts` 已固定 `host: '127.0.0.1'` + `port: 5180` + `strictPort: true`。
-> - 必须用 `127.0.0.1` 而**不是** `localhost`：部分环境下 `localhost` 解析到 IPv6 的 `::1`，而浏览器扩展 / 部分工具走 IPv4，会连不上。
-> - 端口被占时 Vite **直接报错**而不会自动漂移到 5181/5182 —— 遇到这种情况先查占用：`netstat -ano | findstr :5180`，再按 PID `taskkill /PID <pid> /F` 清掉旧实例，别让多个 dev server 叠着跑。
+> **端口约定**：`vite.config.ts` 固定 `host: 127.0.0.1` + `port: 5180` + `strictPort: true`。
+> 用 `127.0.0.1` 而不是 `localhost`（部分环境把 `localhost` 解析到 `::1`，工具走 IPv4 会连不上）。
+> 端口被占时 Vite 直接报错而非漂移，用 `netstat -ano | findstr :5180` 查占用后清掉旧实例。
 
-Mock 账号（任意邮箱 + ≥4 位密码即可登录）：
+mock 模式下任意邮箱 + 至少 4 位密码即可登录，角色由邮箱前缀决定：
 
-| 邮箱 | 角色 |
-| --- | --- |
-| `admin@` 开头 | admin（全部权限） |
-| `ops@` 开头 | operator |
-| 其他 | viewer（只读） |
-
-## 仓库定位与前后端关系
-
-**本仓只装前端。** 这是一个可 fork 的后台模板（Starter），不承载任何后端代码。
-
-| 仓库 | 职责 | 技术栈 |
+| 邮箱前缀 | 角色 | 能力 |
 | --- | --- | --- |
-| `apex-admin`（本仓） | 后台管理前端模板，可被产品直接 fork | Vite + React + TanStack + Base UI |
-| `apex-ai-studio-api`（独立仓） | 业务后端，按域拆微服务 | .NET（Gateway / Identity / ModelRegistry / Tasks / …） |
+| `admin@` | admin | 全部权限 |
+| `ops@` | operator | 业务读写，无系统管理 |
+| 其他 | viewer | 只读 |
 
-约束：
-
-- 后端**不进本仓**。将来做完整产品时，从本模板 fork 出新仓（例如 `apps/admin-web/`），**不要搬运本仓的 git 历史**——模板历史对产品仓没有价值。
-- 前后端唯一耦合点是 **HTTP DTO**。契约由后端 OpenAPI 提供，前端用 `openapi-typescript` 生成类型，落到 `api/index.ts`。
-- 接口变更顺序固定：后端改 OpenAPI → 前端重新生成类型 → 同步 `mocks/db.ts` 与 `mocks/transport.ts` → 改页面。**mocks 必须与真实响应体同构**，否则切 live 时集中爆雷。
-
-## 目录约定
+## 项目结构
 
 ```
 src/
-├── app.config.ts          # 全局配置唯一真源：权限码、导航分组、角色权限表
-├── styles/index.css       # 主题 token 唯一真源（CSS 变量 + @theme inline 映射）
-├── stores/                # Zustand（theme / auth / sidebar），persist 到 localStorage
-├── lib/                   # http.ts（Transport 抽象）/ format.ts / utils.ts
-├── api/index.ts           # Query hooks + queryKeys 全集（页面不直连 transport）
+├── app.config.ts          # 全局配置唯一真源：权限码、导航分组、角色表
+├── styles/index.css       # 主题 token 唯一真源（CSS 变量 + @theme 映射）
+├── stores/                # Zustand：theme / auth / sidebar / tabs / ui
+├── lib/                   # http.ts（Transport 抽象）/ route-meta / format / utils
+├── api/index.ts           # Query hooks + queryKeys（页面不直连 transport）
 ├── mocks/                 # db.ts（内存数据）+ transport.ts（正则路由表）
 ├── components/
-│   ├── ui/                # 原子组件（Base UI 底层），只放与业务无关的控件
-│   ├── shared/            # 跨页面业务组件（DataTable / FilterBar / PageHeader / StatCard / Can / ThemeDrawer）
-│   └── layout/            # Sidebar / Topbar
-└── routes/                # TanStack Router 文件路由（routeTree.gen.ts 自动生成，勿手改）
-    ├── login.tsx
-    ├── _auth.tsx          # 布局壳 + beforeLoad 鉴权守卫
-    └── _auth/**           # 业务页面：工作台 / 分析 / 任务 / 服务 / 模型 / 系统 / 演示 / 示例 / 异常
+│   ├── ui/                # 原子控件（Base UI 底层）
+│   ├── shared/            # 业务组件（DataTable / FilterBar / PageHeader / Can / ThemeDrawer）
+│   └── layout/            # Sidebar / Topbar / TabBar
+└── routes/                # 文件路由（routeTree.gen.ts 自动生成，勿手改）
 ```
 
-硬边界：
+## 核心设计
 
-- **页面（routes）→ api hooks → transport → mocks/live**，不允许跨层直连。
-- `components/ui` 不 import 任何 `features`/`api` 代码；`shared` 可以。
-- 新增 CSS 变量只能进 `styles/index.css`，禁止在组件里散落颜色字面量。
+### 数据流只有一条链路
 
-## 字段核对规则（强制）
+```
+页面（routes） → api hooks → transport → mocks | live
+```
 
-DTO ↔ Zod ↔ 表单字段三处必须逐字段核对，**字段名大小写敏感**（历史事故：`relation_detail` 大小写不一致导致序列化丢字段）。
+不允许跨层直连。切换后端只替换 transport 实现，页面无需改动。
 
-改任一接口字段时：
+### 权限模型
 
-1. 先改 `mocks/db.ts` 的数据结构与 `mocks/transport.ts` 的响应体；
-2. 再改 `api/index.ts` 的类型与 Query key；
-3. 最后改页面表单/表格列，并跑 `pnpm typecheck` 确认零报错后才算完成。
+角色 → 权限码 → UI/路由，映射表在 `app.config.ts`：
 
-## 主题扩展
+- 路由级：`_auth.tsx` 的 `beforeLoad` 校验登录态
+- 菜单级：`sidebar.tsx` 按权限码过滤 `NAV_GROUPS`
+- 组件级：`<Can code="task:create">` 包裹按钮或区块
 
-主题系统三件套：`styles/index.css`（token 定义）→ `stores/theme.store.ts`（ACCENTS 色阶 + applyTheme）→ `components/shared/theme-drawer.tsx`（UI 入口）。
+### 主题系统
 
-- **新增主题色**：在 `theme.store.ts` 的 `ACCENTS` 中加一组 10 档 hex（50~900），即自动出现在抽屉色板。
-- **新增定制维度**：扩展 `ThemeState` + `DEFAULT_THEME`，在 `applyTheme` 中落一个 CSS 变量或 `data-*` 属性，抽屉加一行 `OptionRow`。
-- **明暗模式**：`html.dark` class 切换；深色覆盖写在 `index.css` 的 `.dark` 段。
-- **侧边栏**：`--sidebar-bg/ink/muted/line/hover/active-*` 默认跟随明暗模式（= 原型侧边栏用 `bg-surface` 的机制），切深色外观时菜单背景自动变深；抽屉「侧边栏风格 → 深色」通过 `[data-sidebar='dark']` **强制**深色（浅色模式也能有深色菜单）。侧边栏内所有边框/悬停必须用 `sidebar-*` 变量，不要用全局 `--line/--hover`。
-- **登录页**：独立一套 `.login-scope` 作用域内的 `--slate-rgb-* / --white-rgb / --login-panel` 三元组，深色时整页翻转（`html.dark .login-scope` 段，逐值与原型 login.html 同源）。这套翻转**只作用于登录页**，避免影响日志终端等固定深色区域。
-- **密度**走 `[data-density='compact']` + `td-py` utility；**圆角**走 `--app-radius-lg/xl` 三档（4/8/12px）。
+`styles/index.css`（token）→ `stores/theme.store.ts`（色阶 + applyTheme）→ `theme-drawer.tsx`（入口）。
+新增主题色只需在 `ACCENTS` 加一组 10 档色阶，抽屉色板自动出现。
 
-所有 token 与墨刀原型逐值同源，改默认值时需同步原型设计标准文档（设计方案 §4.4）。
+### Mock → Live
 
-## 新模块接入指南
+`lib/http.ts` 的 `Transport` 抽象由 `VITE_DATA_MODE` 控制：
 
-以新增「告警中心」为例：
+| 模式 | 行为 |
+| --- | --- |
+| `mock`（默认） | 走 `mocks/transport.ts` 内存路由，零后端依赖 |
+| `live` | 走 `fetchTransport`，自动带 Bearer token |
 
-1. **配置**：`app.config.ts` 加权限码（如 `alert:read` / `alert:manage`）进 `PermissionCode` 与 `PERMISSIONS` 中文标签，`NAV_GROUPS` 加导航项。
-2. **Mock**：`mocks/db.ts` 加数据集；`mocks/transport.ts` 用 `route('GET', '/alerts', ...)` 注册路由。
-3. **API**：`api/index.ts` 加 `qk.alerts.*` queryKeys 与 `useAlerts` / `useAlertActions` hooks。
-4. **页面**：`src/routes/_auth/alerts/index.tsx`，复用 `PageHeader` + `FilterBar` + `DataTable` + `ConfirmDialog` 套件。
-5. **验证**：`pnpm typecheck` + 浏览器过一遍列表/筛选/增删改/空态/权限（viewer 角色）。
+切换只需 `.env` 设 `VITE_DATA_MODE=live` 与 `VITE_API_BASE`。
 
-## Mock → Live 切换
+## 对接后端
 
-`lib/http.ts` 定义了 `Transport` 抽象，`VITE_DATA_MODE` 环境变量控制：
+前后端唯一耦合点是 **HTTP DTO**，契约由后端 OpenAPI 提供：
 
-- `mock`（默认）：走 `mocks/transport.ts` 内存路由，零后端依赖。
-- `live`：走 `fetchTransport`，自动带 Bearer token，请求真实 API。
+1. 后端更新 OpenAPI
+2. 前端 `openapi-typescript` 生成类型，落到 `api/index.ts`
+3. 同步 `mocks/db.ts` 与 `mocks/transport.ts`（**必须与真实响应体同构**）
+4. 改页面
 
-切换到真实后端时**页面与 api hooks 零改动**，只需：
+字段命名大小写敏感，改任一接口须三处同步核对，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-1. `.env` 设 `VITE_DATA_MODE=live` 与 `VITE_API_BASE`；
-2. 后端 DTO 与 mock 响应体字段核对（见「字段核对规则」）；
-3. 把 `auth.store.ts` 的 mock login 换成真实登录端点，JWT 从响应中取。
+## 贡献
 
-布局持久化（工作台卡片拖拽）走 `/user/preferences/dashboard-layout`，已带白名单校验（≤30 项、id 限 `^[\w-]{1,32}$`、坐标 0~100 整数），live 模式直接对齐后端同名端点即可。
+见 [CONTRIBUTING.md](CONTRIBUTING.md)：目录硬边界、新模块接入五步、提交规范、改造清单。
 
-## 权限模型
+## 许可证
 
-三层：**角色 → 权限码 → UI/路由**。`app.config.ts` 的 `roles` 表定义角色到权限码的映射（支持 `task:*` 通配）。
-
-- 路由级：`_auth.tsx` 的 `beforeLoad` 校验登录态；页面内用 `<Can code="...">` 包按钮/区块。
-- 菜单级：`sidebar.tsx` 按权限码过滤 `NAV_GROUPS`。
-- 演示用 mock 鉴权（localStorage persist），live 模式换成真实 JWT 解析即可。
-
-## 已知约定
-
-- 界面文案全部中文；错误提示用 sonner toast。
-- Base UI 的组合用 `render` 属性（如 `AlertDialog.Close render={<Button/>}`），**不使用** Radix 的 `asChild` / `data-[state]` API，禁止混用。
-- `react-grid-layout` 的 `Layout` 是 `readonly LayoutItem[]`（本身即数组类型），持久化转换处用 `as unknown as` 收口。
-- TanStack Router 文件路由生成 `routeTree.gen.ts`，提交代码时保留生成文件。
+[MIT](LICENSE)
