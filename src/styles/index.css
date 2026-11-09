@@ -1,0 +1,280 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Apex AI Studio 管理端 —— 设计 token（与墨刀原型逐值同源）
+   真源：outputs/apex-admin-pages/*.html 的 --canvas 系变量
+   + 8 套 ACCENTS 色阶 + 主题抽屉 5 项定制
+   ============================================================ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* 灰阶（浅色基准） */
+  --canvas: #f7f8fa;
+  --surface: #ffffff;
+  --elevated: #ffffff;
+  --ink: #0f172a;
+  --muted: #667085;
+  --soft: #98a2b3;
+  --line: #e5e9f0;
+  --hover: #f4f6f9;
+
+  /* brand 色阶（默认蓝 = 原型 ACCENTS.blue，主题引擎运行时整组替换） */
+  --brand-50: #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #93c5fd;
+  --brand-400: #60a5fa;
+  --brand-500: #3b82f6;
+  --brand-600: #2563eb;
+  --brand-700: #1d4ed8;
+  --brand-800: #1e40af;
+  --brand-900: #1e3a8a;
+
+  /* 圆角（默认「中」= 原型 radius medium：lg 8px / xl 12px） */
+  --app-radius-lg: 8px;
+  --app-radius-xl: 12px;
+
+  /* 密度（默认「舒适」= 原型 py-3.5） */
+  --td-py: 14px;
+
+  /* 侧边栏（默认跟随明暗模式 = 原型 bg-surface 机制；data-sidebar='dark' 为强制深色） */
+  --sidebar-bg: var(--surface);
+  --sidebar-ink: var(--ink);
+  --sidebar-muted: var(--muted);
+  --sidebar-line: var(--line);
+  --sidebar-hover: var(--hover);
+  --sidebar-active-bg: var(--brand-50);
+  --sidebar-active-ink: var(--brand-700);
+
+  /* 登录页 slate/white 三元组（与原型 login.html 同源；仅 .login-scope 内随明暗翻转） */
+  --slate-rgb-50: 248 250 252;
+  --slate-rgb-100: 241 245 249;
+  --slate-rgb-200: 226 232 240;
+  --slate-rgb-300: 203 213 225;
+  --slate-rgb-400: 148 163 184;
+  --slate-rgb-500: 100 116 139;
+  --slate-rgb-600: 71 85 105;
+  --slate-rgb-700: 51 65 85;
+  --slate-rgb-800: 30 41 59;
+  --slate-rgb-900: 15 23 42;
+  --white-rgb: 255 255 255;
+  --login-panel: #f1f5fb;
+}
+
+/* 明暗模式（html.dark，与墨刀机制一致） */
+.dark {
+  --canvas: #0b1120;
+  --surface: #111827;
+  --elevated: #0f172a;
+  --ink: #e5e7eb;
+  --muted: #9aa8bd;
+  --soft: #64748b;
+  --line: #1f2937;
+  --hover: #1a2434;
+
+  /* 侧边栏激活态随明暗翻转（原型 dark:bg-brand-500/10 dark:text-brand-300） */
+  --sidebar-active-bg: rgba(59, 130, 246, 0.1);
+  --sidebar-active-ink: var(--brand-300);
+}
+
+/* 登录页深色翻转（原型 login.html 的 html.dark 段逐值同源，仅作用于 .login-scope） */
+html.dark .login-scope {
+  --slate-rgb-50: 11 17 32;
+  --slate-rgb-100: 31 41 55;
+  --slate-rgb-200: 51 65 85;
+  --slate-rgb-300: 71 85 105;
+  --slate-rgb-400: 100 116 139;
+  --slate-rgb-500: 148 163 184;
+  --slate-rgb-600: 154 168 189;
+  --slate-rgb-700: 203 213 225;
+  --slate-rgb-800: 226 232 240;
+  --slate-rgb-900: 229 231 235;
+  --white-rgb: 17 24 39;
+  --login-panel: #0b1120;
+}
+
+/* 强制深色侧边栏（data-sidebar 属性由主题引擎设置；覆盖优先于 .dark） */
+[data-sidebar='dark'] {
+  --sidebar-bg: #111827;
+  --sidebar-ink: #e5e7eb;
+  --sidebar-muted: #9aa8bd;
+  --sidebar-line: #1e293b;
+  --sidebar-hover: #1e293b;
+}
+
+/* 紧凑密度 */
+[data-density='compact'] {
+  --td-py: 8px;
+}
+
+/* Tailwind v4 主题映射（inline = 工具类直接引用 var，运行时可切） */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-hover: var(--hover);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-ink: var(--sidebar-ink);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-line: var(--sidebar-line);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active-bg);
+  --color-sidebar-active-ink: var(--sidebar-active-ink);
+
+  /* 登录页 slate/white 三元组（外部恒为 Tailwind 默认浅色值，登录页内随明暗翻转） */
+  --color-slate-50: rgb(var(--slate-rgb-50));
+  --color-slate-100: rgb(var(--slate-rgb-100));
+  --color-slate-200: rgb(var(--slate-rgb-200));
+  --color-slate-300: rgb(var(--slate-rgb-300));
+  --color-slate-400: rgb(var(--slate-rgb-400));
+  --color-slate-500: rgb(var(--slate-rgb-500));
+  --color-slate-600: rgb(var(--slate-rgb-600));
+  --color-slate-700: rgb(var(--slate-rgb-700));
+  --color-slate-800: rgb(var(--slate-rgb-800));
+  --color-slate-900: rgb(var(--slate-rgb-900));
+  --color-white: rgb(var(--white-rgb));
+
+  --radius-lg: var(--app-radius-lg);
+  --radius-xl: var(--app-radius-xl);
+
+  --font-sans: -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--brand-100);
+    color: var(--brand-700);
+  }
+}
+
+/* 弹层阴影（原型 shadow-pop 同款观感） */
+@utility shadow-pop {
+  box-shadow:
+    0 12px 32px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.dark .shadow-pop {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 表格单元格密度（--td-py 由密度设置驱动） */
+@utility td-py {
+  padding-top: var(--td-py);
+  padding-bottom: var(--td-py);
+}
+
+/* 玻璃卡片浮层阴影（原型 shadow-float 同款：0 24px 70px rgba(37,99,235,.14)） */
+@utility shadow-float {
+  box-shadow: 0 24px 70px rgba(37, 99, 235, 0.14);
+}
+
+/* ============================================================
+   登录页装饰（原型 login.html 同源，仅用于 .login-scope 内）
+   ============================================================ */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+html.dark .login-scope .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+}
+
+.noise-orb {
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(96, 165, 250, 0.5),
+    rgba(37, 99, 235, 0.05) 58%,
+    transparent 70%
+  );
+  filter: blur(2px);
+}
+
+/* 登录输入框聚焦环（原型 .login-input:focus-within） */
+.login-input {
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.login-input:focus-within {
+  border-color: var(--brand-300);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-500) 12%, transparent);
+}
+
+/* ===== 工作台布局编辑态 ===== */
+/* 卡片虚线高亮，示意可拖拽 / 可缩放 */
+.rgl-editing .react-grid-item {
+  border-radius: 14px;
+  outline: 1.5px dashed color-mix(in srgb, var(--brand-500) 55%, transparent);
+  outline-offset: 3px;
+  transition: outline-color 0.15s ease;
+}
+
+.rgl-editing .react-grid-item:hover {
+  outline-color: var(--brand-500);
+}
+
+/* 右下角缩放手柄：品牌色 + 常显 */
+.rgl-editing .react-grid-item > .react-resizable-handle {
+  opacity: 1;
+}
+
+.rgl-editing .react-grid-item > .react-resizable-handle::after {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--brand-500);
+  border-bottom: 2px solid var(--brand-500);
+}
+
+html.dark .rgl-editing .react-grid-item > .react-resizable-handle::after {
+  border-right-color: var(--brand-400);
+  border-bottom-color: var(--brand-400);
+}
+
+/* 多页签栏：隐藏横向滚动条（保留滚动能力） */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

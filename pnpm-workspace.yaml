@@ -1,0 +1,7 @@
+minimumReleaseAgeExclude:
+  - '@tanstack/react-router-devtools@1.167.3'
+  - '@tanstack/router-devtools-core@1.168.3'
+  - '@tanstack/router-devtools@1.167.3'
+  - '@tanstack/router-generator@1.168.0'
+  - '@tanstack/router-plugin@1.169.0'
+  - '@tanstack/router-utils@1.163.0'
