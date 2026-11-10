@@ -55,6 +55,7 @@ export type NavIcon =
   | 'access' | 'breadcrumb' | 'guarded' | 'bigint'
   | 'modal' | 'drawer' | 'ellipsis' | 'resize' | 'colPage' | 'tippy' | 'json'
   | 'motion' | 'countTo' | 'loading' | 'buttons'
+  | 'tableOps' | 'contextMenu' | 'imageCrop' | 'richText'
 
 export const appConfig = {
   /** 应用标识 */
@@ -412,6 +413,10 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: 'CountTo', to: '/examples/count-to', icon: 'countTo' },
       { label: 'Loading', to: '/examples/loading', icon: 'loading' },
       { label: '按钮组', to: '/examples/button-group', icon: 'buttons' },
+      { label: '表格操作', to: '/examples/table-ops', icon: 'tableOps' },
+      { label: '上下文菜单', to: '/examples/context-menu', icon: 'contextMenu' },
+      { label: '图片裁剪', to: '/examples/image-crop', icon: 'imageCrop' },
+      { label: '富文本编辑器', to: '/examples/rich-text', icon: 'richText' },
     ],
   },
   {

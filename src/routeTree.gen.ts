@@ -42,18 +42,22 @@ import { Route as AuthErrorOfflineRouteImport } from './routes/_auth/error/offli
 import { Route as AuthExamplesIndexRouteImport } from './routes/_auth/examples/index'
 import { Route as AuthExamplesButtonGroupRouteImport } from './routes/_auth/examples/button-group'
 import { Route as AuthExamplesColPageRouteImport } from './routes/_auth/examples/col-page'
+import { Route as AuthExamplesContextMenuRouteImport } from './routes/_auth/examples/context-menu'
 import { Route as AuthExamplesCountToRouteImport } from './routes/_auth/examples/count-to'
 import { Route as AuthExamplesDrawerRouteImport } from './routes/_auth/examples/drawer'
 import { Route as AuthExamplesEllipsisRouteImport } from './routes/_auth/examples/ellipsis'
 import { Route as AuthExamplesFormRouteImport } from './routes/_auth/examples/form'
+import { Route as AuthExamplesImageCropRouteImport } from './routes/_auth/examples/image-crop'
 import { Route as AuthExamplesJsonViewerRouteImport } from './routes/_auth/examples/json-viewer'
 import { Route as AuthExamplesListRouteImport } from './routes/_auth/examples/list'
 import { Route as AuthExamplesLoadingRouteImport } from './routes/_auth/examples/loading'
 import { Route as AuthExamplesModalRouteImport } from './routes/_auth/examples/modal'
 import { Route as AuthExamplesMotionRouteImport } from './routes/_auth/examples/motion'
 import { Route as AuthExamplesResizeRouteImport } from './routes/_auth/examples/resize'
+import { Route as AuthExamplesRichTextRouteImport } from './routes/_auth/examples/rich-text'
 import { Route as AuthExamplesStatesRouteImport } from './routes/_auth/examples/states'
 import { Route as AuthExamplesStepsRouteImport } from './routes/_auth/examples/steps'
+import { Route as AuthExamplesTableOpsRouteImport } from './routes/_auth/examples/table-ops'
 import { Route as AuthExamplesTippyRouteImport } from './routes/_auth/examples/tippy'
 import { Route as AuthModelsIndexRouteImport } from './routes/_auth/models/index'
 import { Route as AuthModelsKeysRouteImport } from './routes/_auth/models/keys'
@@ -253,6 +257,11 @@ const AuthExamplesColPageRoute = AuthExamplesColPageRouteImport.update({
   path: '/examples/col-page',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthExamplesContextMenuRoute = AuthExamplesContextMenuRouteImport.update({
+  id: '/examples/context-menu',
+  path: '/examples/context-menu',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthExamplesCountToRoute = AuthExamplesCountToRouteImport.update({
   id: '/examples/count-to',
   path: '/examples/count-to',
@@ -271,6 +280,11 @@ const AuthExamplesEllipsisRoute = AuthExamplesEllipsisRouteImport.update({
 const AuthExamplesFormRoute = AuthExamplesFormRouteImport.update({
   id: '/examples/form',
   path: '/examples/form',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesImageCropRoute = AuthExamplesImageCropRouteImport.update({
+  id: '/examples/image-crop',
+  path: '/examples/image-crop',
   getParentRoute: () => AuthRoute,
 } as any)
 const AuthExamplesJsonViewerRoute = AuthExamplesJsonViewerRouteImport.update({
@@ -303,6 +317,11 @@ const AuthExamplesResizeRoute = AuthExamplesResizeRouteImport.update({
   path: '/examples/resize',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthExamplesRichTextRoute = AuthExamplesRichTextRouteImport.update({
+  id: '/examples/rich-text',
+  path: '/examples/rich-text',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthExamplesStatesRoute = AuthExamplesStatesRouteImport.update({
   id: '/examples/states',
   path: '/examples/states',
@@ -311,6 +330,11 @@ const AuthExamplesStatesRoute = AuthExamplesStatesRouteImport.update({
 const AuthExamplesStepsRoute = AuthExamplesStepsRouteImport.update({
   id: '/examples/steps',
   path: '/examples/steps',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesTableOpsRoute = AuthExamplesTableOpsRouteImport.update({
+  id: '/examples/table-ops',
+  path: '/examples/table-ops',
   getParentRoute: () => AuthRoute,
 } as any)
 const AuthExamplesTippyRoute = AuthExamplesTippyRouteImport.update({
@@ -519,18 +543,22 @@ export interface FileRoutesByFullPath {
   '/error/offline': typeof AuthErrorOfflineRoute
   '/examples/button-group': typeof AuthExamplesButtonGroupRoute
   '/examples/col-page': typeof AuthExamplesColPageRoute
+  '/examples/context-menu': typeof AuthExamplesContextMenuRoute
   '/examples/count-to': typeof AuthExamplesCountToRoute
   '/examples/drawer': typeof AuthExamplesDrawerRoute
   '/examples/ellipsis': typeof AuthExamplesEllipsisRoute
   '/examples/form': typeof AuthExamplesFormRoute
+  '/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/examples/list': typeof AuthExamplesListRoute
   '/examples/loading': typeof AuthExamplesLoadingRoute
   '/examples/modal': typeof AuthExamplesModalRoute
   '/examples/motion': typeof AuthExamplesMotionRoute
   '/examples/resize': typeof AuthExamplesResizeRoute
+  '/examples/rich-text': typeof AuthExamplesRichTextRoute
   '/examples/states': typeof AuthExamplesStatesRoute
   '/examples/steps': typeof AuthExamplesStepsRoute
+  '/examples/table-ops': typeof AuthExamplesTableOpsRoute
   '/examples/tippy': typeof AuthExamplesTippyRoute
   '/models/keys': typeof AuthModelsKeysRoute
   '/services/logs': typeof AuthServicesLogsRoute
@@ -599,18 +627,22 @@ export interface FileRoutesByTo {
   '/error/offline': typeof AuthErrorOfflineRoute
   '/examples/button-group': typeof AuthExamplesButtonGroupRoute
   '/examples/col-page': typeof AuthExamplesColPageRoute
+  '/examples/context-menu': typeof AuthExamplesContextMenuRoute
   '/examples/count-to': typeof AuthExamplesCountToRoute
   '/examples/drawer': typeof AuthExamplesDrawerRoute
   '/examples/ellipsis': typeof AuthExamplesEllipsisRoute
   '/examples/form': typeof AuthExamplesFormRoute
+  '/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/examples/list': typeof AuthExamplesListRoute
   '/examples/loading': typeof AuthExamplesLoadingRoute
   '/examples/modal': typeof AuthExamplesModalRoute
   '/examples/motion': typeof AuthExamplesMotionRoute
   '/examples/resize': typeof AuthExamplesResizeRoute
+  '/examples/rich-text': typeof AuthExamplesRichTextRoute
   '/examples/states': typeof AuthExamplesStatesRoute
   '/examples/steps': typeof AuthExamplesStepsRoute
+  '/examples/table-ops': typeof AuthExamplesTableOpsRoute
   '/examples/tippy': typeof AuthExamplesTippyRoute
   '/models/keys': typeof AuthModelsKeysRoute
   '/services/logs': typeof AuthServicesLogsRoute
@@ -681,18 +713,22 @@ export interface FileRoutesById {
   '/_auth/error/offline': typeof AuthErrorOfflineRoute
   '/_auth/examples/button-group': typeof AuthExamplesButtonGroupRoute
   '/_auth/examples/col-page': typeof AuthExamplesColPageRoute
+  '/_auth/examples/context-menu': typeof AuthExamplesContextMenuRoute
   '/_auth/examples/count-to': typeof AuthExamplesCountToRoute
   '/_auth/examples/drawer': typeof AuthExamplesDrawerRoute
   '/_auth/examples/ellipsis': typeof AuthExamplesEllipsisRoute
   '/_auth/examples/form': typeof AuthExamplesFormRoute
+  '/_auth/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/_auth/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/_auth/examples/list': typeof AuthExamplesListRoute
   '/_auth/examples/loading': typeof AuthExamplesLoadingRoute
   '/_auth/examples/modal': typeof AuthExamplesModalRoute
   '/_auth/examples/motion': typeof AuthExamplesMotionRoute
   '/_auth/examples/resize': typeof AuthExamplesResizeRoute
+  '/_auth/examples/rich-text': typeof AuthExamplesRichTextRoute
   '/_auth/examples/states': typeof AuthExamplesStatesRoute
   '/_auth/examples/steps': typeof AuthExamplesStepsRoute
+  '/_auth/examples/table-ops': typeof AuthExamplesTableOpsRoute
   '/_auth/examples/tippy': typeof AuthExamplesTippyRoute
   '/_auth/models/keys': typeof AuthModelsKeysRoute
   '/_auth/services/logs': typeof AuthServicesLogsRoute
@@ -763,18 +799,22 @@ export interface FileRouteTypes {
     | '/error/offline'
     | '/examples/button-group'
     | '/examples/col-page'
+    | '/examples/context-menu'
     | '/examples/count-to'
     | '/examples/drawer'
     | '/examples/ellipsis'
     | '/examples/form'
+    | '/examples/image-crop'
     | '/examples/json-viewer'
     | '/examples/list'
     | '/examples/loading'
     | '/examples/modal'
     | '/examples/motion'
     | '/examples/resize'
+    | '/examples/rich-text'
     | '/examples/states'
     | '/examples/steps'
+    | '/examples/table-ops'
     | '/examples/tippy'
     | '/models/keys'
     | '/services/logs'
@@ -843,18 +883,22 @@ export interface FileRouteTypes {
     | '/error/offline'
     | '/examples/button-group'
     | '/examples/col-page'
+    | '/examples/context-menu'
     | '/examples/count-to'
     | '/examples/drawer'
     | '/examples/ellipsis'
     | '/examples/form'
+    | '/examples/image-crop'
     | '/examples/json-viewer'
     | '/examples/list'
     | '/examples/loading'
     | '/examples/modal'
     | '/examples/motion'
     | '/examples/resize'
+    | '/examples/rich-text'
     | '/examples/states'
     | '/examples/steps'
+    | '/examples/table-ops'
     | '/examples/tippy'
     | '/models/keys'
     | '/services/logs'
@@ -924,18 +968,22 @@ export interface FileRouteTypes {
     | '/_auth/error/offline'
     | '/_auth/examples/button-group'
     | '/_auth/examples/col-page'
+    | '/_auth/examples/context-menu'
     | '/_auth/examples/count-to'
     | '/_auth/examples/drawer'
     | '/_auth/examples/ellipsis'
     | '/_auth/examples/form'
+    | '/_auth/examples/image-crop'
     | '/_auth/examples/json-viewer'
     | '/_auth/examples/list'
     | '/_auth/examples/loading'
     | '/_auth/examples/modal'
     | '/_auth/examples/motion'
     | '/_auth/examples/resize'
+    | '/_auth/examples/rich-text'
     | '/_auth/examples/states'
     | '/_auth/examples/steps'
+    | '/_auth/examples/table-ops'
     | '/_auth/examples/tippy'
     | '/_auth/models/keys'
     | '/_auth/services/logs'
@@ -1213,6 +1261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthExamplesColPageRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/examples/context-menu': {
+      id: '/_auth/examples/context-menu'
+      path: '/examples/context-menu'
+      fullPath: '/examples/context-menu'
+      preLoaderRoute: typeof AuthExamplesContextMenuRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/examples/count-to': {
       id: '/_auth/examples/count-to'
       path: '/examples/count-to'
@@ -1239,6 +1294,13 @@ declare module '@tanstack/react-router' {
       path: '/examples/form'
       fullPath: '/examples/form'
       preLoaderRoute: typeof AuthExamplesFormRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/image-crop': {
+      id: '/_auth/examples/image-crop'
+      path: '/examples/image-crop'
+      fullPath: '/examples/image-crop'
+      preLoaderRoute: typeof AuthExamplesImageCropRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/examples/json-viewer': {
@@ -1283,6 +1345,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthExamplesResizeRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/examples/rich-text': {
+      id: '/_auth/examples/rich-text'
+      path: '/examples/rich-text'
+      fullPath: '/examples/rich-text'
+      preLoaderRoute: typeof AuthExamplesRichTextRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/examples/states': {
       id: '/_auth/examples/states'
       path: '/examples/states'
@@ -1295,6 +1364,13 @@ declare module '@tanstack/react-router' {
       path: '/examples/steps'
       fullPath: '/examples/steps'
       preLoaderRoute: typeof AuthExamplesStepsRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/table-ops': {
+      id: '/_auth/examples/table-ops'
+      path: '/examples/table-ops'
+      fullPath: '/examples/table-ops'
+      preLoaderRoute: typeof AuthExamplesTableOpsRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/examples/tippy': {
@@ -1580,18 +1656,22 @@ interface AuthRouteChildren {
   AuthErrorOfflineRoute: typeof AuthErrorOfflineRoute
   AuthExamplesButtonGroupRoute: typeof AuthExamplesButtonGroupRoute
   AuthExamplesColPageRoute: typeof AuthExamplesColPageRoute
+  AuthExamplesContextMenuRoute: typeof AuthExamplesContextMenuRoute
   AuthExamplesCountToRoute: typeof AuthExamplesCountToRoute
   AuthExamplesDrawerRoute: typeof AuthExamplesDrawerRoute
   AuthExamplesEllipsisRoute: typeof AuthExamplesEllipsisRoute
   AuthExamplesFormRoute: typeof AuthExamplesFormRoute
+  AuthExamplesImageCropRoute: typeof AuthExamplesImageCropRoute
   AuthExamplesJsonViewerRoute: typeof AuthExamplesJsonViewerRoute
   AuthExamplesListRoute: typeof AuthExamplesListRoute
   AuthExamplesLoadingRoute: typeof AuthExamplesLoadingRoute
   AuthExamplesModalRoute: typeof AuthExamplesModalRoute
   AuthExamplesMotionRoute: typeof AuthExamplesMotionRoute
   AuthExamplesResizeRoute: typeof AuthExamplesResizeRoute
+  AuthExamplesRichTextRoute: typeof AuthExamplesRichTextRoute
   AuthExamplesStatesRoute: typeof AuthExamplesStatesRoute
   AuthExamplesStepsRoute: typeof AuthExamplesStepsRoute
+  AuthExamplesTableOpsRoute: typeof AuthExamplesTableOpsRoute
   AuthExamplesTippyRoute: typeof AuthExamplesTippyRoute
   AuthModelsKeysRoute: typeof AuthModelsKeysRoute
   AuthServicesLogsRoute: typeof AuthServicesLogsRoute
@@ -1657,18 +1737,22 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthErrorOfflineRoute: AuthErrorOfflineRoute,
   AuthExamplesButtonGroupRoute: AuthExamplesButtonGroupRoute,
   AuthExamplesColPageRoute: AuthExamplesColPageRoute,
+  AuthExamplesContextMenuRoute: AuthExamplesContextMenuRoute,
   AuthExamplesCountToRoute: AuthExamplesCountToRoute,
   AuthExamplesDrawerRoute: AuthExamplesDrawerRoute,
   AuthExamplesEllipsisRoute: AuthExamplesEllipsisRoute,
   AuthExamplesFormRoute: AuthExamplesFormRoute,
+  AuthExamplesImageCropRoute: AuthExamplesImageCropRoute,
   AuthExamplesJsonViewerRoute: AuthExamplesJsonViewerRoute,
   AuthExamplesListRoute: AuthExamplesListRoute,
   AuthExamplesLoadingRoute: AuthExamplesLoadingRoute,
   AuthExamplesModalRoute: AuthExamplesModalRoute,
   AuthExamplesMotionRoute: AuthExamplesMotionRoute,
   AuthExamplesResizeRoute: AuthExamplesResizeRoute,
+  AuthExamplesRichTextRoute: AuthExamplesRichTextRoute,
   AuthExamplesStatesRoute: AuthExamplesStatesRoute,
   AuthExamplesStepsRoute: AuthExamplesStepsRoute,
+  AuthExamplesTableOpsRoute: AuthExamplesTableOpsRoute,
   AuthExamplesTippyRoute: AuthExamplesTippyRoute,
   AuthModelsKeysRoute: AuthModelsKeysRoute,
   AuthServicesLogsRoute: AuthServicesLogsRoute,
