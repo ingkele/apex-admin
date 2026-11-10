@@ -24,11 +24,12 @@ interface FlatEntry {
   title: string
 }
 
-/** 递归展开导航树：只收叶子节点（有 to 的） */
+/** 递归展开导航树：只收叶子节点（有 to 的）；hideChildren 节点自身算叶子，其子级仍登记（供 URL 直达时解析标题/面包屑） */
 function flattenNav(children: NavChild[], group: string, parents: string[]): [string, FlatEntry][] {
   const out: [string, FlatEntry][] = []
   for (const c of children) {
     if (c.children?.length) {
+      if (c.hideChildren && c.to) out.push([c.to, { group, parents, title: c.label }])
       out.push(...flattenNav(c.children, group, [...parents, c.label]))
     } else if (c.to) {
       out.push([c.to, { group, parents, title: c.label }])

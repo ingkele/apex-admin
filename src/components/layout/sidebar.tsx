@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
-  Blocks, BookMarked, Brain, ChartNoAxesCombined, ChevronDown, CircleAlert, CircleDashed,
-  ClipboardCheck, Component, ExternalLink, FlaskConical, Footprints, Frame, Info, KeyRound,
-  Layers, LayoutDashboard, ListChecks, ListTree, LogOut, Menu, MenuSquare, MessageSquareDot,
-  Network, PanelLeftClose, ScrollText, Server, Settings, ShieldCheck, Sparkles, Table2,
-  Tag, TextCursorInput, Users,
+  AppWindow, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown, CircleAlert,
+  CircleDashed, ClipboardCheck, ClipboardCopy, Component, Download, Droplets, ExternalLink,
+  EyeOff, FlaskConical, Footprints, Frame, Info, KeyRound, Layers, LayoutDashboard, Link2,
+  ListChecks, ListTree, LogOut, Maximize, Menu, MenuSquare, MessageSquareDot, Network, Palette,
+  PanelLeftClose, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
+  SquareArrowOutUpRight, Table2, Tag, TextCursorInput, TimerOff, Users, Zap,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
 import { AppMenu } from '@/components/ui/menu'
@@ -47,6 +48,20 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   external: ExternalLink,
   nested: ListTree,
   embed: Frame,
+  feature: Zap,
+  expired: TimerOff,
+  palette: Palette,
+  watermark: Droplets,
+  preference: SlidersHorizontal,
+  tabs: AppWindow,
+  hideMenu: EyeOff,
+  fullscreen: Maximize,
+  download: Download,
+  clipboard: ClipboardCopy,
+  param: Link2,
+  newWindow: SquareArrowOutUpRight,
+  tanstack: Zap,
+  serialize: Braces,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */
@@ -92,9 +107,10 @@ function filterNav(
   })
 }
 
-/** 收集子树全部叶子（折叠态侧弹菜单用，调用前已按权限过滤） */
-function collectLeaves(node: NavChild): { label: string; to: string }[] {
-  if (!node.children?.length) return node.to ? [{ label: node.label, to: node.to }] : []
+/** 收集子树全部叶子（折叠态侧弹菜单用，调用前已按权限过滤）；hideChildren 节点按单链接返回 */
+function collectLeaves(node: NavChild): { label: string; to: string; query?: Record<string, string | number> }[] {
+  if (!node.children?.length || node.hideChildren)
+    return node.to ? [{ label: node.label, to: node.to, query: node.query }] : []
   return node.children.flatMap(collectLeaves)
 }
 
@@ -116,7 +132,8 @@ interface NavNodeProps {
 /** 单个导航节点：叶子 → 链接；父级 → 展开/收起（折叠态侧弹） */
 function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pathname, collapsed }: NavNodeProps) {
   const navigate = useNavigate()
-  const hasKids = !!node.children?.length
+  // hideChildren：有 children 但折叠为单链接，子页面仅 URL 直达
+  const hasKids = !!node.children?.length && !node.hideChildren
   const open = expanded.has(idPath)
   const childActive = hasKids && activeTrail.has(idPath)
   const selfActive = !hasKids && !!node.to && isActive(pathname, node.to)
@@ -130,6 +147,27 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
       ? 'bg-sidebar-active font-medium text-sidebar-active-ink'
       : 'text-sidebar-muted hover:bg-sidebar-hover hover:text-sidebar-ink',
   )
+
+  // —— 站内路由 · 新窗口打开（target: '_blank'）：不参与站内激活态 ——
+  if (node.target === '_blank' && node.to && !hasKids) {
+    return (
+      <a
+        href={node.to}
+        target="_blank"
+        rel="noreferrer noopener"
+        title={node.label}
+        className={cn(rowCls, collapsed && 'justify-center px-0')}
+      >
+        <Icon className="h-[15px] w-[15px] shrink-0" />
+        {!collapsed && (
+          <>
+            <span className="truncate">{node.label}</span>
+            <SquareArrowOutUpRight className="ml-auto h-3 w-3 shrink-0 text-sidebar-muted/60" />
+          </>
+        )}
+      </a>
+    )
+  }
 
   // —— 外链：新窗口打开，不参与站内激活态 ——
   if (node.external && !hasKids) {
@@ -170,14 +208,19 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
           }
           items={collectLeaves(node).map((leaf) => ({
             label: leaf.label,
-            onSelect: () => void navigate({ to: leaf.to }),
+            onSelect: () => void navigate({ to: leaf.to, search: leaf.query }),
           }))}
         />
       )
     }
     if (!node.to) return null
     return (
-      <Link to={node.to} title={node.label} className={cn(rowCls, 'justify-center px-0')}>
+      <Link
+        to={node.to}
+        search={node.query}
+        title={node.label}
+        className={cn(rowCls, 'justify-center px-0')}
+      >
         <Icon className="h-[15px] w-[15px] shrink-0" />
       </Link>
     )
@@ -238,7 +281,13 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
   // —— 展开态：叶子 ——
   if (!node.to) return null
   return (
-    <Link to={node.to} title={node.label} data-nav-active={selfActive ? 'true' : undefined} className={rowCls}>
+    <Link
+      to={node.to}
+      search={node.query}
+      title={node.label}
+      data-nav-active={selfActive ? 'true' : undefined}
+      className={rowCls}
+    >
       <Icon className="h-[15px] w-[15px] shrink-0" />
       <span className="min-w-0 flex-1 truncate">{node.label}</span>
       {node.badge ? <NavBadge badge={node.badge} /> : null}
@@ -283,7 +332,8 @@ export function Sidebar() {
       let hit = false
       for (const c of children) {
         const id = [...idPath, c.label].join('/')
-        if (c.children?.length) {
+        // hideChildren 节点按叶子对待（点击即跳转，不展开）
+        if (c.children?.length && !c.hideChildren) {
           if (walk(c.children, [...idPath, c.label])) {
             trail.add(id)
             hit = true

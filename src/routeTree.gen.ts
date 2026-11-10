@@ -18,10 +18,23 @@ import { Route as AuthDashboardRouteImport } from './routes/_auth/dashboard'
 import { Route as AuthProfileRouteImport } from './routes/_auth/profile'
 import { Route as AuthDemoIndexRouteImport } from './routes/_auth/demo/index'
 import { Route as AuthDemoBaseRouteImport } from './routes/_auth/demo/base'
+import { Route as AuthDemoClipboardRouteImport } from './routes/_auth/demo/clipboard'
 import { Route as AuthDemoDataRouteImport } from './routes/_auth/demo/data'
+import { Route as AuthDemoDownloadRouteImport } from './routes/_auth/demo/download'
+import { Route as AuthDemoExpiredRouteImport } from './routes/_auth/demo/expired'
 import { Route as AuthDemoFeedbackRouteImport } from './routes/_auth/demo/feedback'
 import { Route as AuthDemoFormRouteImport } from './routes/_auth/demo/form'
+import { Route as AuthDemoFullscreenRouteImport } from './routes/_auth/demo/fullscreen'
+import { Route as AuthDemoHideChildrenRouteImport } from './routes/_auth/demo/hide-children'
+import { Route as AuthDemoIconsRouteImport } from './routes/_auth/demo/icons'
 import { Route as AuthDemoNavRouteImport } from './routes/_auth/demo/nav'
+import { Route as AuthDemoNewWindowRouteImport } from './routes/_auth/demo/new-window'
+import { Route as AuthDemoPreferenceRouteImport } from './routes/_auth/demo/preference'
+import { Route as AuthDemoQueryParamRouteImport } from './routes/_auth/demo/query-param'
+import { Route as AuthDemoSerializeRouteImport } from './routes/_auth/demo/serialize'
+import { Route as AuthDemoTabsRouteImport } from './routes/_auth/demo/tabs'
+import { Route as AuthDemoTanstackQueryRouteImport } from './routes/_auth/demo/tanstack-query'
+import { Route as AuthDemoWatermarkRouteImport } from './routes/_auth/demo/watermark'
 import { Route as AuthError403RouteImport } from './routes/_auth/error/403'
 import { Route as AuthError404RouteImport } from './routes/_auth/error/404'
 import { Route as AuthError500RouteImport } from './routes/_auth/error/500'
@@ -46,6 +59,8 @@ import { Route as AuthTasksIndexRouteImport } from './routes/_auth/tasks/index'
 import { Route as AuthTasksIdRouteImport } from './routes/_auth/tasks/$id'
 import { Route as AuthDemoActiveIconVariantRouteImport } from './routes/_auth/demo/active-icon.$variant'
 import { Route as AuthDemoBadgeVariantRouteImport } from './routes/_auth/demo/badge.$variant'
+import { Route as AuthDemoHideChildrenARouteImport } from './routes/_auth/demo/hide-children/a'
+import { Route as AuthDemoHideChildrenBRouteImport } from './routes/_auth/demo/hide-children/b'
 import { Route as AuthDemoIframeLocalRouteImport } from './routes/_auth/demo/iframe.local'
 import { Route as AuthDemoIframeTailwindRouteImport } from './routes/_auth/demo/iframe.tailwind'
 import { Route as AuthDemoNestedSplatRouteImport } from './routes/_auth/demo/nested.$'
@@ -94,9 +109,24 @@ const AuthDemoBaseRoute = AuthDemoBaseRouteImport.update({
   path: '/demo/base',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoClipboardRoute = AuthDemoClipboardRouteImport.update({
+  id: '/demo/clipboard',
+  path: '/demo/clipboard',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthDemoDataRoute = AuthDemoDataRouteImport.update({
   id: '/demo/data',
   path: '/demo/data',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoDownloadRoute = AuthDemoDownloadRouteImport.update({
+  id: '/demo/download',
+  path: '/demo/download',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoExpiredRoute = AuthDemoExpiredRouteImport.update({
+  id: '/demo/expired',
+  path: '/demo/expired',
   getParentRoute: () => AuthRoute,
 } as any)
 const AuthDemoFeedbackRoute = AuthDemoFeedbackRouteImport.update({
@@ -109,9 +139,59 @@ const AuthDemoFormRoute = AuthDemoFormRouteImport.update({
   path: '/demo/form',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoFullscreenRoute = AuthDemoFullscreenRouteImport.update({
+  id: '/demo/fullscreen',
+  path: '/demo/fullscreen',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoHideChildrenRoute = AuthDemoHideChildrenRouteImport.update({
+  id: '/demo/hide-children',
+  path: '/demo/hide-children',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoIconsRoute = AuthDemoIconsRouteImport.update({
+  id: '/demo/icons',
+  path: '/demo/icons',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthDemoNavRoute = AuthDemoNavRouteImport.update({
   id: '/demo/nav',
   path: '/demo/nav',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoNewWindowRoute = AuthDemoNewWindowRouteImport.update({
+  id: '/demo/new-window',
+  path: '/demo/new-window',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoPreferenceRoute = AuthDemoPreferenceRouteImport.update({
+  id: '/demo/preference',
+  path: '/demo/preference',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoQueryParamRoute = AuthDemoQueryParamRouteImport.update({
+  id: '/demo/query-param',
+  path: '/demo/query-param',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoSerializeRoute = AuthDemoSerializeRouteImport.update({
+  id: '/demo/serialize',
+  path: '/demo/serialize',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoTabsRoute = AuthDemoTabsRouteImport.update({
+  id: '/demo/tabs',
+  path: '/demo/tabs',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoTanstackQueryRoute = AuthDemoTanstackQueryRouteImport.update({
+  id: '/demo/tanstack-query',
+  path: '/demo/tanstack-query',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoWatermarkRoute = AuthDemoWatermarkRouteImport.update({
+  id: '/demo/watermark',
+  path: '/demo/watermark',
   getParentRoute: () => AuthRoute,
 } as any)
 const AuthError403Route = AuthError403RouteImport.update({
@@ -235,6 +315,16 @@ const AuthDemoBadgeVariantRoute = AuthDemoBadgeVariantRouteImport.update({
   path: '/demo/badge/$variant',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoHideChildrenARoute = AuthDemoHideChildrenARouteImport.update({
+  id: '/a',
+  path: '/a',
+  getParentRoute: () => AuthDemoHideChildrenRoute,
+} as any)
+const AuthDemoHideChildrenBRoute = AuthDemoHideChildrenBRouteImport.update({
+  id: '/b',
+  path: '/b',
+  getParentRoute: () => AuthDemoHideChildrenRoute,
+} as any)
 const AuthDemoIframeLocalRoute = AuthDemoIframeLocalRouteImport.update({
   id: '/demo/iframe/local',
   path: '/demo/iframe/local',
@@ -259,10 +349,23 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthDashboardRoute
   '/profile': typeof AuthProfileRoute
   '/demo/base': typeof AuthDemoBaseRoute
+  '/demo/clipboard': typeof AuthDemoClipboardRoute
   '/demo/data': typeof AuthDemoDataRoute
+  '/demo/download': typeof AuthDemoDownloadRoute
+  '/demo/expired': typeof AuthDemoExpiredRoute
   '/demo/feedback': typeof AuthDemoFeedbackRoute
   '/demo/form': typeof AuthDemoFormRoute
+  '/demo/fullscreen': typeof AuthDemoFullscreenRoute
+  '/demo/hide-children': typeof AuthDemoHideChildrenRouteWithChildren
+  '/demo/icons': typeof AuthDemoIconsRoute
   '/demo/nav': typeof AuthDemoNavRoute
+  '/demo/new-window': typeof AuthDemoNewWindowRoute
+  '/demo/preference': typeof AuthDemoPreferenceRoute
+  '/demo/query-param': typeof AuthDemoQueryParamRoute
+  '/demo/serialize': typeof AuthDemoSerializeRoute
+  '/demo/tabs': typeof AuthDemoTabsRoute
+  '/demo/tanstack-query': typeof AuthDemoTanstackQueryRoute
+  '/demo/watermark': typeof AuthDemoWatermarkRoute
   '/error/403': typeof AuthError403Route
   '/error/404': typeof AuthError404Route
   '/error/500': typeof AuthError500Route
@@ -288,6 +391,8 @@ export interface FileRoutesByFullPath {
   '/tasks/': typeof AuthTasksIndexRoute
   '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
+  '/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
@@ -300,10 +405,23 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthDashboardRoute
   '/profile': typeof AuthProfileRoute
   '/demo/base': typeof AuthDemoBaseRoute
+  '/demo/clipboard': typeof AuthDemoClipboardRoute
   '/demo/data': typeof AuthDemoDataRoute
+  '/demo/download': typeof AuthDemoDownloadRoute
+  '/demo/expired': typeof AuthDemoExpiredRoute
   '/demo/feedback': typeof AuthDemoFeedbackRoute
   '/demo/form': typeof AuthDemoFormRoute
+  '/demo/fullscreen': typeof AuthDemoFullscreenRoute
+  '/demo/hide-children': typeof AuthDemoHideChildrenRouteWithChildren
+  '/demo/icons': typeof AuthDemoIconsRoute
   '/demo/nav': typeof AuthDemoNavRoute
+  '/demo/new-window': typeof AuthDemoNewWindowRoute
+  '/demo/preference': typeof AuthDemoPreferenceRoute
+  '/demo/query-param': typeof AuthDemoQueryParamRoute
+  '/demo/serialize': typeof AuthDemoSerializeRoute
+  '/demo/tabs': typeof AuthDemoTabsRoute
+  '/demo/tanstack-query': typeof AuthDemoTanstackQueryRoute
+  '/demo/watermark': typeof AuthDemoWatermarkRoute
   '/error/403': typeof AuthError403Route
   '/error/404': typeof AuthError404Route
   '/error/500': typeof AuthError500Route
@@ -329,6 +447,8 @@ export interface FileRoutesByTo {
   '/tasks': typeof AuthTasksIndexRoute
   '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
+  '/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
@@ -343,10 +463,23 @@ export interface FileRoutesById {
   '/_auth/dashboard': typeof AuthDashboardRoute
   '/_auth/profile': typeof AuthProfileRoute
   '/_auth/demo/base': typeof AuthDemoBaseRoute
+  '/_auth/demo/clipboard': typeof AuthDemoClipboardRoute
   '/_auth/demo/data': typeof AuthDemoDataRoute
+  '/_auth/demo/download': typeof AuthDemoDownloadRoute
+  '/_auth/demo/expired': typeof AuthDemoExpiredRoute
   '/_auth/demo/feedback': typeof AuthDemoFeedbackRoute
   '/_auth/demo/form': typeof AuthDemoFormRoute
+  '/_auth/demo/fullscreen': typeof AuthDemoFullscreenRoute
+  '/_auth/demo/hide-children': typeof AuthDemoHideChildrenRouteWithChildren
+  '/_auth/demo/icons': typeof AuthDemoIconsRoute
   '/_auth/demo/nav': typeof AuthDemoNavRoute
+  '/_auth/demo/new-window': typeof AuthDemoNewWindowRoute
+  '/_auth/demo/preference': typeof AuthDemoPreferenceRoute
+  '/_auth/demo/query-param': typeof AuthDemoQueryParamRoute
+  '/_auth/demo/serialize': typeof AuthDemoSerializeRoute
+  '/_auth/demo/tabs': typeof AuthDemoTabsRoute
+  '/_auth/demo/tanstack-query': typeof AuthDemoTanstackQueryRoute
+  '/_auth/demo/watermark': typeof AuthDemoWatermarkRoute
   '/_auth/error/403': typeof AuthError403Route
   '/_auth/error/404': typeof AuthError404Route
   '/_auth/error/500': typeof AuthError500Route
@@ -372,6 +505,8 @@ export interface FileRoutesById {
   '/_auth/tasks/': typeof AuthTasksIndexRoute
   '/_auth/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/_auth/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/_auth/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
+  '/_auth/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/_auth/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/_auth/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/_auth/demo/nested/$': typeof AuthDemoNestedSplatRoute
@@ -386,10 +521,23 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/profile'
     | '/demo/base'
+    | '/demo/clipboard'
     | '/demo/data'
+    | '/demo/download'
+    | '/demo/expired'
     | '/demo/feedback'
     | '/demo/form'
+    | '/demo/fullscreen'
+    | '/demo/hide-children'
+    | '/demo/icons'
     | '/demo/nav'
+    | '/demo/new-window'
+    | '/demo/preference'
+    | '/demo/query-param'
+    | '/demo/serialize'
+    | '/demo/tabs'
+    | '/demo/tanstack-query'
+    | '/demo/watermark'
     | '/error/403'
     | '/error/404'
     | '/error/500'
@@ -415,6 +563,8 @@ export interface FileRouteTypes {
     | '/tasks/'
     | '/demo/active-icon/$variant'
     | '/demo/badge/$variant'
+    | '/demo/hide-children/a'
+    | '/demo/hide-children/b'
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
@@ -427,10 +577,23 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/profile'
     | '/demo/base'
+    | '/demo/clipboard'
     | '/demo/data'
+    | '/demo/download'
+    | '/demo/expired'
     | '/demo/feedback'
     | '/demo/form'
+    | '/demo/fullscreen'
+    | '/demo/hide-children'
+    | '/demo/icons'
     | '/demo/nav'
+    | '/demo/new-window'
+    | '/demo/preference'
+    | '/demo/query-param'
+    | '/demo/serialize'
+    | '/demo/tabs'
+    | '/demo/tanstack-query'
+    | '/demo/watermark'
     | '/error/403'
     | '/error/404'
     | '/error/500'
@@ -456,6 +619,8 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/demo/active-icon/$variant'
     | '/demo/badge/$variant'
+    | '/demo/hide-children/a'
+    | '/demo/hide-children/b'
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
@@ -469,10 +634,23 @@ export interface FileRouteTypes {
     | '/_auth/dashboard'
     | '/_auth/profile'
     | '/_auth/demo/base'
+    | '/_auth/demo/clipboard'
     | '/_auth/demo/data'
+    | '/_auth/demo/download'
+    | '/_auth/demo/expired'
     | '/_auth/demo/feedback'
     | '/_auth/demo/form'
+    | '/_auth/demo/fullscreen'
+    | '/_auth/demo/hide-children'
+    | '/_auth/demo/icons'
     | '/_auth/demo/nav'
+    | '/_auth/demo/new-window'
+    | '/_auth/demo/preference'
+    | '/_auth/demo/query-param'
+    | '/_auth/demo/serialize'
+    | '/_auth/demo/tabs'
+    | '/_auth/demo/tanstack-query'
+    | '/_auth/demo/watermark'
     | '/_auth/error/403'
     | '/_auth/error/404'
     | '/_auth/error/500'
@@ -498,6 +676,8 @@ export interface FileRouteTypes {
     | '/_auth/tasks/'
     | '/_auth/demo/active-icon/$variant'
     | '/_auth/demo/badge/$variant'
+    | '/_auth/demo/hide-children/a'
+    | '/_auth/demo/hide-children/b'
     | '/_auth/demo/iframe/local'
     | '/_auth/demo/iframe/tailwind'
     | '/_auth/demo/nested/$'
@@ -574,11 +754,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthDemoBaseRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/demo/clipboard': {
+      id: '/_auth/demo/clipboard'
+      path: '/demo/clipboard'
+      fullPath: '/demo/clipboard'
+      preLoaderRoute: typeof AuthDemoClipboardRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/demo/data': {
       id: '/_auth/demo/data'
       path: '/demo/data'
       fullPath: '/demo/data'
       preLoaderRoute: typeof AuthDemoDataRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/download': {
+      id: '/_auth/demo/download'
+      path: '/demo/download'
+      fullPath: '/demo/download'
+      preLoaderRoute: typeof AuthDemoDownloadRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/expired': {
+      id: '/_auth/demo/expired'
+      path: '/demo/expired'
+      fullPath: '/demo/expired'
+      preLoaderRoute: typeof AuthDemoExpiredRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/demo/feedback': {
@@ -595,11 +796,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthDemoFormRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/demo/fullscreen': {
+      id: '/_auth/demo/fullscreen'
+      path: '/demo/fullscreen'
+      fullPath: '/demo/fullscreen'
+      preLoaderRoute: typeof AuthDemoFullscreenRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/hide-children': {
+      id: '/_auth/demo/hide-children'
+      path: '/demo/hide-children'
+      fullPath: '/demo/hide-children'
+      preLoaderRoute: typeof AuthDemoHideChildrenRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/icons': {
+      id: '/_auth/demo/icons'
+      path: '/demo/icons'
+      fullPath: '/demo/icons'
+      preLoaderRoute: typeof AuthDemoIconsRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/demo/nav': {
       id: '/_auth/demo/nav'
       path: '/demo/nav'
       fullPath: '/demo/nav'
       preLoaderRoute: typeof AuthDemoNavRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/new-window': {
+      id: '/_auth/demo/new-window'
+      path: '/demo/new-window'
+      fullPath: '/demo/new-window'
+      preLoaderRoute: typeof AuthDemoNewWindowRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/preference': {
+      id: '/_auth/demo/preference'
+      path: '/demo/preference'
+      fullPath: '/demo/preference'
+      preLoaderRoute: typeof AuthDemoPreferenceRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/query-param': {
+      id: '/_auth/demo/query-param'
+      path: '/demo/query-param'
+      fullPath: '/demo/query-param'
+      preLoaderRoute: typeof AuthDemoQueryParamRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/serialize': {
+      id: '/_auth/demo/serialize'
+      path: '/demo/serialize'
+      fullPath: '/demo/serialize'
+      preLoaderRoute: typeof AuthDemoSerializeRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/tabs': {
+      id: '/_auth/demo/tabs'
+      path: '/demo/tabs'
+      fullPath: '/demo/tabs'
+      preLoaderRoute: typeof AuthDemoTabsRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/tanstack-query': {
+      id: '/_auth/demo/tanstack-query'
+      path: '/demo/tanstack-query'
+      fullPath: '/demo/tanstack-query'
+      preLoaderRoute: typeof AuthDemoTanstackQueryRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/watermark': {
+      id: '/_auth/demo/watermark'
+      path: '/demo/watermark'
+      fullPath: '/demo/watermark'
+      preLoaderRoute: typeof AuthDemoWatermarkRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/error/403': {
@@ -770,6 +1041,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthDemoBadgeVariantRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/demo/hide-children/a': {
+      id: '/_auth/demo/hide-children/a'
+      path: '/a'
+      fullPath: '/demo/hide-children/a'
+      preLoaderRoute: typeof AuthDemoHideChildrenARouteImport
+      parentRoute: typeof AuthDemoHideChildrenRoute
+    }
+    '/_auth/demo/hide-children/b': {
+      id: '/_auth/demo/hide-children/b'
+      path: '/b'
+      fullPath: '/demo/hide-children/b'
+      preLoaderRoute: typeof AuthDemoHideChildrenBRouteImport
+      parentRoute: typeof AuthDemoHideChildrenRoute
+    }
     '/_auth/demo/iframe/local': {
       id: '/_auth/demo/iframe/local'
       path: '/demo/iframe/local'
@@ -794,16 +1079,42 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthDemoHideChildrenRouteChildren {
+  AuthDemoHideChildrenARoute: typeof AuthDemoHideChildrenARoute
+  AuthDemoHideChildrenBRoute: typeof AuthDemoHideChildrenBRoute
+}
+
+const AuthDemoHideChildrenRouteChildren: AuthDemoHideChildrenRouteChildren = {
+  AuthDemoHideChildrenARoute: AuthDemoHideChildrenARoute,
+  AuthDemoHideChildrenBRoute: AuthDemoHideChildrenBRoute,
+}
+
+const AuthDemoHideChildrenRouteWithChildren =
+  AuthDemoHideChildrenRoute._addFileChildren(AuthDemoHideChildrenRouteChildren)
+
 interface AuthRouteChildren {
   AuthAboutRoute: typeof AuthAboutRoute
   AuthAnalyticsRoute: typeof AuthAnalyticsRoute
   AuthDashboardRoute: typeof AuthDashboardRoute
   AuthProfileRoute: typeof AuthProfileRoute
   AuthDemoBaseRoute: typeof AuthDemoBaseRoute
+  AuthDemoClipboardRoute: typeof AuthDemoClipboardRoute
   AuthDemoDataRoute: typeof AuthDemoDataRoute
+  AuthDemoDownloadRoute: typeof AuthDemoDownloadRoute
+  AuthDemoExpiredRoute: typeof AuthDemoExpiredRoute
   AuthDemoFeedbackRoute: typeof AuthDemoFeedbackRoute
   AuthDemoFormRoute: typeof AuthDemoFormRoute
+  AuthDemoFullscreenRoute: typeof AuthDemoFullscreenRoute
+  AuthDemoHideChildrenRoute: typeof AuthDemoHideChildrenRouteWithChildren
+  AuthDemoIconsRoute: typeof AuthDemoIconsRoute
   AuthDemoNavRoute: typeof AuthDemoNavRoute
+  AuthDemoNewWindowRoute: typeof AuthDemoNewWindowRoute
+  AuthDemoPreferenceRoute: typeof AuthDemoPreferenceRoute
+  AuthDemoQueryParamRoute: typeof AuthDemoQueryParamRoute
+  AuthDemoSerializeRoute: typeof AuthDemoSerializeRoute
+  AuthDemoTabsRoute: typeof AuthDemoTabsRoute
+  AuthDemoTanstackQueryRoute: typeof AuthDemoTanstackQueryRoute
+  AuthDemoWatermarkRoute: typeof AuthDemoWatermarkRoute
   AuthError403Route: typeof AuthError403Route
   AuthError404Route: typeof AuthError404Route
   AuthError500Route: typeof AuthError500Route
@@ -840,10 +1151,23 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthDashboardRoute: AuthDashboardRoute,
   AuthProfileRoute: AuthProfileRoute,
   AuthDemoBaseRoute: AuthDemoBaseRoute,
+  AuthDemoClipboardRoute: AuthDemoClipboardRoute,
   AuthDemoDataRoute: AuthDemoDataRoute,
+  AuthDemoDownloadRoute: AuthDemoDownloadRoute,
+  AuthDemoExpiredRoute: AuthDemoExpiredRoute,
   AuthDemoFeedbackRoute: AuthDemoFeedbackRoute,
   AuthDemoFormRoute: AuthDemoFormRoute,
+  AuthDemoFullscreenRoute: AuthDemoFullscreenRoute,
+  AuthDemoHideChildrenRoute: AuthDemoHideChildrenRouteWithChildren,
+  AuthDemoIconsRoute: AuthDemoIconsRoute,
   AuthDemoNavRoute: AuthDemoNavRoute,
+  AuthDemoNewWindowRoute: AuthDemoNewWindowRoute,
+  AuthDemoPreferenceRoute: AuthDemoPreferenceRoute,
+  AuthDemoQueryParamRoute: AuthDemoQueryParamRoute,
+  AuthDemoSerializeRoute: AuthDemoSerializeRoute,
+  AuthDemoTabsRoute: AuthDemoTabsRoute,
+  AuthDemoTanstackQueryRoute: AuthDemoTanstackQueryRoute,
+  AuthDemoWatermarkRoute: AuthDemoWatermarkRoute,
   AuthError403Route: AuthError403Route,
   AuthError404Route: AuthError404Route,
   AuthError500Route: AuthError500Route,

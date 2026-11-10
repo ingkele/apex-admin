@@ -375,7 +375,10 @@ const routes: Route[] = [
 
   // —— 用户偏好（工作台布局持久化，§6.6）——
   route('GET', '/user/preferences/dashboard-layout', () => mutable.dashboardLayout ?? { version: 1, layouts: null }),
-  route('PUT', '/user/preferences/dashboard-layout', (_p, _q, body) => {
+  // —— 演示：登录过期（模拟 401，message 透传给页面演示拦截器行为） ——
+  route('GET', '/demo/expired', () => {
+    throw new Error('登录已过期（401），请重新登录')
+  }),  route('PUT', '/user/preferences/dashboard-layout', (_p, _q, body) => {
     // 服务端白名单校验：item 数量上限 + 坐标边界 + i 白名单（§6.5）
     const layouts = body.layouts as Record<string, { i: string; x: number; y: number; w: number; h: number }[]> | null
     if (layouts) {

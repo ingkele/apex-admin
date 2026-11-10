@@ -16,6 +16,12 @@ export interface NavChild {
   badge?: { text: string; tone?: NavBadgeTone }
   /** 外链：新窗口打开，不走站内路由 */
   external?: string
+  /** 链接携带的查询参数（带参菜单） */
+  query?: Record<string, string | number>
+  /** 站内路由以新窗口打开（新窗口打开菜单项） */
+  target?: '_blank'
+  /** 隐藏子菜单：有 children 但侧边栏折叠为单链接，子页面仅 URL 直达 */
+  hideChildren?: boolean
   permission?: PermissionCode
   /** 子菜单（递归嵌套，支持任意层级） */
   children?: NavChild[]
@@ -36,6 +42,8 @@ export type NavIcon =
   | 'components' | 'examples' | 'errors' | 'about'
   | 'component' | 'input' | 'feedback' | 'navigation' | 'table' | 'list' | 'form' | 'flow' | 'state'
   | 'demo' | 'badge' | 'sparkles' | 'external' | 'nested' | 'embed'
+  | 'feature' | 'expired' | 'palette' | 'watermark' | 'preference' | 'tabs' | 'hideMenu'
+  | 'fullscreen' | 'download' | 'clipboard' | 'param' | 'newWindow' | 'tanstack' | 'serialize'
 
 export const appConfig = {
   /** 应用标识 */
@@ -266,6 +274,34 @@ export const NAV_GROUPS: NavGroup[] = [
     label: '演示',
     icon: 'demo',
     children: [
+      {
+        label: '功能',
+        icon: 'feature',
+        children: [
+          { label: '登录过期', to: '/demo/expired', icon: 'expired' },
+          { label: '图标', to: '/demo/icons', icon: 'palette' },
+          { label: '水印', to: '/demo/watermark', icon: 'watermark' },
+          { label: '偏好扩展示例', to: '/demo/preference', icon: 'preference' },
+          { label: '标签页', to: '/demo/tabs', icon: 'tabs' },
+          {
+            label: '隐藏子菜单',
+            to: '/demo/hide-children',
+            icon: 'hideMenu',
+            hideChildren: true,
+            children: [
+              { label: '子菜单 A（隐藏）', to: '/demo/hide-children/a' },
+              { label: '子菜单 B（隐藏）', to: '/demo/hide-children/b' },
+            ],
+          },
+          { label: '全屏', to: '/demo/fullscreen', icon: 'fullscreen' },
+          { label: '文件下载', to: '/demo/download', icon: 'download' },
+          { label: '剪贴板', to: '/demo/clipboard', icon: 'clipboard' },
+          { label: '带参菜单', to: '/demo/query-param', icon: 'param', query: { user: 'apex', tab: '1' } },
+          { label: '新窗口打开', to: '/demo/new-window', icon: 'newWindow', target: '_blank' },
+          { label: 'TanStack Query', to: '/demo/tanstack-query', icon: 'tanstack' },
+          { label: '参数序列化', to: '/demo/serialize', icon: 'serialize' },
+        ],
+      },
       {
         label: '菜单徽标',
         icon: 'badge',

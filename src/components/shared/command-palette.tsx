@@ -38,17 +38,17 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', down)
   }, [setCommandOpen])
 
-  // 页面清单（与侧边栏同口径：递归展开叶子 + 按权限过滤）
+  // 页面清单（与侧边栏同口径：递归展开叶子 + 按权限过滤；hideChildren 只显示节点本身）
   const pages = React.useMemo(() => {
-    const out: { trail: string; label: string; to: string }[] = []
+    const out: { trail: string; label: string; to: string; query?: Record<string, string | number> }[] = []
     const walk = (children: NavChild[], trail: string[]) => {
       for (const c of children) {
         if (c.permission && !hasPermission(c.permission)) continue
-        if (c.children?.length) {
+        if (c.children?.length && !c.hideChildren) {
           walk(c.children, [...trail, c.label])
           continue
         }
-        if (c.to) out.push({ trail: trail.join(' › '), label: c.label, to: c.to })
+        if (c.to) out.push({ trail: trail.join(' › '), label: c.label, to: c.to, query: c.query })
       }
     }
     for (const g of NAV_GROUPS) walk(g.children, [g.label])
@@ -58,9 +58,9 @@ export function CommandPalette() {
   // 任务直达（前 50 条，够用了）
   const { data: tasks } = useTasks({ page: 1, pageSize: 50 })
 
-  const go = (to: string) => {
+  const go = (to: string, query?: Record<string, string | number>) => {
     setCommandOpen(false)
-    void navigate({ to })
+    void navigate({ to, search: query })
   }
 
   return (
@@ -124,7 +124,7 @@ export function CommandPalette() {
               {/* 页面跳转 */}
               <Command.Group heading="页面" className="text-ink">
                 {pages.map((p) => (
-                  <Item key={p.to} label={p.label} hint={p.trail} onSelect={() => go(p.to)} />
+                  <Item key={p.to} label={p.label} hint={p.trail} onSelect={() => go(p.to, p.query)} />
                 ))}
               </Command.Group>
 
