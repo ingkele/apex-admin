@@ -4,8 +4,8 @@ import {
   AppWindow, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown, CircleAlert,
   CircleDashed, ClipboardCheck, ClipboardCopy, Component, Download, Droplets, ExternalLink,
   EyeOff, FlaskConical, Footprints, Frame, Info, KeyRound, Layers, LayoutDashboard, Link2,
-  ListChecks, ListTree, LogOut, Maximize, Menu, MenuSquare, MessageSquareDot, Network, Palette,
-  PanelLeftClose, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
+  ListChecks, ListTree, Lock, LogOut, Maximize, Menu, MenuSquare, MessageSquareDot, Network, Palette,
+  PanelLeftClose, Route, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
   SquareArrowOutUpRight, Table2, Tag, TextCursorInput, TimerOff, Users, Zap,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
@@ -62,6 +62,9 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   newWindow: SquareArrowOutUpRight,
   tanstack: Zap,
   serialize: Braces,
+  access: ShieldCheck,
+  breadcrumb: Route,
+  guarded: Lock,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */
@@ -316,13 +319,14 @@ export function Sidebar() {
     })
   }, [])
 
-  /** 可见树（按权限递归过滤） */
+  /** 可见树（按权限递归过滤）——依赖 user：hasPermission 是稳定引用，
+   *  切换角色后引用不变，必须以 user 变化驱动重算，否则菜单是陈旧快照 */
   const visibleGroups = React.useMemo(
     () =>
       NAV_GROUPS.map((g) => ({ ...g, children: filterNav(g.children, hasPermission) })).filter(
         (g) => g.children.length > 0,
       ),
-    [hasPermission],
+    [user, hasPermission],
   )
 
   /** 激活链路：任一后代激活的父级节点集合（键 = 分组/父级链） */

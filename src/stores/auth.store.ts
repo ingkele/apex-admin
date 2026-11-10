@@ -18,7 +18,16 @@ interface AuthState {
   token: string | null
   login: (email: string, password: string) => Promise<AuthUser>
   logout: () => void
+  /** 角色模拟器：不重新登录直接切换角色（演示菜单过滤/按钮权限/路由守卫） */
+  switchRole: (role: RoleKey) => void
   hasPermission: (code: PermissionCode) => boolean
+}
+
+/** 演示身份：切换角色时同步展示名与头像字，模拟三个不同账号 */
+const DEMO_IDENTITIES: Record<RoleKey, { name: string; avatarText: string }> = {
+  admin: { name: '陈昊', avatarText: 'CH' },
+  operator: { name: '林晓', avatarText: 'LX' },
+  viewer: { name: '访客', avatarText: 'FG' },
 }
 
 /** 权限通配匹配：'*' 全通过；'task:*' 匹配 'task:view' */
@@ -45,12 +54,13 @@ export const useAuthStore = create<AuthState>()(
         if (email.startsWith('admin')) role = 'admin'
         else if (email.startsWith('ops')) role = 'operator'
 
+        const identity = DEMO_IDENTITIES[role]
         const user: AuthUser = {
           id: 'usr_demo',
-          name: role === 'admin' ? '陈昊' : role === 'operator' ? '林晓' : '访客',
+          name: identity.name,
           email,
           role,
-          avatarText: role === 'admin' ? 'CH' : role === 'operator' ? 'LX' : 'FG',
+          avatarText: identity.avatarText,
           lastLoginAt: new Date().toISOString(),
         }
         // mock JWT：header.payload.signature 形态，仅供演示
@@ -60,6 +70,15 @@ export const useAuthStore = create<AuthState>()(
       },
 
       logout: () => set({ user: null, token: null }),
+
+      switchRole: (role) =>
+        set((s) => {
+          if (!s.user) return s
+          const identity = DEMO_IDENTITIES[role]
+          return {
+            user: { ...s.user, role, name: identity.name, avatarText: identity.avatarText },
+          }
+        }),
 
       hasPermission: (code) => {
         const { user } = get()

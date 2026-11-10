@@ -19,9 +19,11 @@ export const HOME_TAB = { path: '/dashboard', title: '工作台' } as const
 
 interface FlatEntry {
   group: string
-  /** 父级菜单链（如 ['成员与权限']） */
+  /** 父级菜单链（如 ['成员与权限']，含 breadcrumbParents 追加的） */
   parents: string[]
   title: string
+  /** 面包屑平级模式：只显示标题 */
+  flat?: boolean
 }
 
 /** 递归展开导航树：只收叶子节点（有 to 的）；hideChildren 节点自身算叶子，其子级仍登记（供 URL 直达时解析标题/面包屑） */
@@ -29,13 +31,18 @@ function flattenNav(children: NavChild[], group: string, parents: string[]): [st
   const out: [string, FlatEntry][] = []
   for (const c of children) {
     if (c.children?.length) {
-      if (c.hideChildren && c.to) out.push([c.to, { group, parents, title: c.label }])
+      if (c.hideChildren && c.to) out.push(...leafEntries(c, group, parents))
       out.push(...flattenNav(c.children, group, [...parents, c.label]))
     } else if (c.to) {
-      out.push([c.to, { group, parents, title: c.label }])
+      out.push(...leafEntries(c, group, parents))
     }
   }
   return out
+}
+
+/** 叶子登记：breadcrumbParents 追加父级标签，breadcrumbFlat 标记平级模式 */
+function leafEntries(c: NavChild, group: string, parents: string[]): [string, FlatEntry][] {
+  return [[c.to!, { group, parents: [...parents, ...(c.breadcrumbParents ?? [])], title: c.label, flat: c.breadcrumbFlat }]]
 }
 
 const FLAT = new Map<string, FlatEntry>(
@@ -66,5 +73,7 @@ export function resolveBreadcrumb(pathname: string): string[] {
   // 工作台为首页，原型只显示一级
   if (pathname === HOME_TAB.path) return [meta.title]
   if (/^\/tasks\/[^/]+$/.test(pathname)) return ['任务中心', '任务列表', '任务详情']
+  // 平级模式：只显示当前页标题
+  if (exact.flat) return [meta.title]
   return [meta.group, ...exact.parents, meta.title]
 }

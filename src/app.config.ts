@@ -22,6 +22,10 @@ export interface NavChild {
   target?: '_blank'
   /** 隐藏子菜单：有 children 但侧边栏折叠为单链接，子页面仅 URL 直达 */
   hideChildren?: boolean
+  /** 面包屑平级模式：只显示当前页标题，不带分组/父级链 */
+  breadcrumbFlat?: boolean
+  /** 面包屑追加父级标签（详情页保留层级链用，如 ['层级模式']） */
+  breadcrumbParents?: string[]
   permission?: PermissionCode
   /** 子菜单（递归嵌套，支持任意层级） */
   children?: NavChild[]
@@ -44,6 +48,7 @@ export type NavIcon =
   | 'demo' | 'badge' | 'sparkles' | 'external' | 'nested' | 'embed'
   | 'feature' | 'expired' | 'palette' | 'watermark' | 'preference' | 'tabs' | 'hideMenu'
   | 'fullscreen' | 'download' | 'clipboard' | 'param' | 'newWindow' | 'tanstack' | 'serialize'
+  | 'access' | 'breadcrumb' | 'guarded'
 
 export const appConfig = {
   /** 应用标识 */
@@ -300,6 +305,26 @@ export const NAV_GROUPS: NavGroup[] = [
           { label: '新窗口打开', to: '/demo/new-window', icon: 'newWindow', target: '_blank' },
           { label: 'TanStack Query', to: '/demo/tanstack-query', icon: 'tanstack' },
           { label: '参数序列化', to: '/demo/serialize', icon: 'serialize' },
+        ],
+      },
+      {
+        label: '前端权限',
+        icon: 'access',
+        children: [
+          { label: '页面访问', to: '/demo/access/page' },
+          { label: '按钮控制', to: '/demo/access/button' },
+          { label: '菜单可见(403)', to: '/demo/access/menu-403' },
+          { label: '受保护页面（守卫）', to: '/demo/access/guarded', icon: 'guarded', permission: 'user:manage' },
+          { label: 'Super 可见', to: '/demo/access/super', icon: 'guarded', permission: 'user:manage' },
+        ],
+      },
+      {
+        label: '面包屑导航',
+        icon: 'breadcrumb',
+        children: [
+          { label: '平级模式', to: '/demo/breadcrumb/flat', breadcrumbFlat: true },
+          { label: '层级模式', to: '/demo/breadcrumb/hierarchy' },
+          { label: '层级模式详情', to: '/demo/breadcrumb/detail', breadcrumbParents: ['层级模式'] },
         ],
       },
       {

@@ -57,8 +57,16 @@ import { Route as AuthSystemSettingsRouteImport } from './routes/_auth/system/se
 import { Route as AuthSystemUsersRouteImport } from './routes/_auth/system/users'
 import { Route as AuthTasksIndexRouteImport } from './routes/_auth/tasks/index'
 import { Route as AuthTasksIdRouteImport } from './routes/_auth/tasks/$id'
+import { Route as AuthDemoAccessButtonRouteImport } from './routes/_auth/demo/access/button'
+import { Route as AuthDemoAccessGuardedRouteImport } from './routes/_auth/demo/access/guarded'
+import { Route as AuthDemoAccessMenu403RouteImport } from './routes/_auth/demo/access/menu-403'
+import { Route as AuthDemoAccessPageRouteImport } from './routes/_auth/demo/access/page'
+import { Route as AuthDemoAccessSuperRouteImport } from './routes/_auth/demo/access/super'
 import { Route as AuthDemoActiveIconVariantRouteImport } from './routes/_auth/demo/active-icon.$variant'
 import { Route as AuthDemoBadgeVariantRouteImport } from './routes/_auth/demo/badge.$variant'
+import { Route as AuthDemoBreadcrumbDetailRouteImport } from './routes/_auth/demo/breadcrumb/detail'
+import { Route as AuthDemoBreadcrumbFlatRouteImport } from './routes/_auth/demo/breadcrumb/flat'
+import { Route as AuthDemoBreadcrumbHierarchyRouteImport } from './routes/_auth/demo/breadcrumb/hierarchy'
 import { Route as AuthDemoHideChildrenARouteImport } from './routes/_auth/demo/hide-children/a'
 import { Route as AuthDemoHideChildrenBRouteImport } from './routes/_auth/demo/hide-children/b'
 import { Route as AuthDemoIframeLocalRouteImport } from './routes/_auth/demo/iframe.local'
@@ -304,6 +312,31 @@ const AuthTasksIdRoute = AuthTasksIdRouteImport.update({
   path: '/tasks/$id',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoAccessButtonRoute = AuthDemoAccessButtonRouteImport.update({
+  id: '/demo/access/button',
+  path: '/demo/access/button',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoAccessGuardedRoute = AuthDemoAccessGuardedRouteImport.update({
+  id: '/demo/access/guarded',
+  path: '/demo/access/guarded',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoAccessMenu403Route = AuthDemoAccessMenu403RouteImport.update({
+  id: '/demo/access/menu-403',
+  path: '/demo/access/menu-403',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoAccessPageRoute = AuthDemoAccessPageRouteImport.update({
+  id: '/demo/access/page',
+  path: '/demo/access/page',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoAccessSuperRoute = AuthDemoAccessSuperRouteImport.update({
+  id: '/demo/access/super',
+  path: '/demo/access/super',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthDemoActiveIconVariantRoute =
   AuthDemoActiveIconVariantRouteImport.update({
     id: '/demo/active-icon/$variant',
@@ -315,6 +348,23 @@ const AuthDemoBadgeVariantRoute = AuthDemoBadgeVariantRouteImport.update({
   path: '/demo/badge/$variant',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoBreadcrumbDetailRoute =
+  AuthDemoBreadcrumbDetailRouteImport.update({
+    id: '/demo/breadcrumb/detail',
+    path: '/demo/breadcrumb/detail',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthDemoBreadcrumbFlatRoute = AuthDemoBreadcrumbFlatRouteImport.update({
+  id: '/demo/breadcrumb/flat',
+  path: '/demo/breadcrumb/flat',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoBreadcrumbHierarchyRoute =
+  AuthDemoBreadcrumbHierarchyRouteImport.update({
+    id: '/demo/breadcrumb/hierarchy',
+    path: '/demo/breadcrumb/hierarchy',
+    getParentRoute: () => AuthRoute,
+  } as any)
 const AuthDemoHideChildrenARoute = AuthDemoHideChildrenARouteImport.update({
   id: '/a',
   path: '/a',
@@ -389,8 +439,16 @@ export interface FileRoutesByFullPath {
   '/models/': typeof AuthModelsIndexRoute
   '/services/': typeof AuthServicesIndexRoute
   '/tasks/': typeof AuthTasksIndexRoute
+  '/demo/access/button': typeof AuthDemoAccessButtonRoute
+  '/demo/access/guarded': typeof AuthDemoAccessGuardedRoute
+  '/demo/access/menu-403': typeof AuthDemoAccessMenu403Route
+  '/demo/access/page': typeof AuthDemoAccessPageRoute
+  '/demo/access/super': typeof AuthDemoAccessSuperRoute
   '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/breadcrumb/detail': typeof AuthDemoBreadcrumbDetailRoute
+  '/demo/breadcrumb/flat': typeof AuthDemoBreadcrumbFlatRoute
+  '/demo/breadcrumb/hierarchy': typeof AuthDemoBreadcrumbHierarchyRoute
   '/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
   '/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
@@ -445,8 +503,16 @@ export interface FileRoutesByTo {
   '/models': typeof AuthModelsIndexRoute
   '/services': typeof AuthServicesIndexRoute
   '/tasks': typeof AuthTasksIndexRoute
+  '/demo/access/button': typeof AuthDemoAccessButtonRoute
+  '/demo/access/guarded': typeof AuthDemoAccessGuardedRoute
+  '/demo/access/menu-403': typeof AuthDemoAccessMenu403Route
+  '/demo/access/page': typeof AuthDemoAccessPageRoute
+  '/demo/access/super': typeof AuthDemoAccessSuperRoute
   '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/breadcrumb/detail': typeof AuthDemoBreadcrumbDetailRoute
+  '/demo/breadcrumb/flat': typeof AuthDemoBreadcrumbFlatRoute
+  '/demo/breadcrumb/hierarchy': typeof AuthDemoBreadcrumbHierarchyRoute
   '/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
   '/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
@@ -503,8 +569,16 @@ export interface FileRoutesById {
   '/_auth/models/': typeof AuthModelsIndexRoute
   '/_auth/services/': typeof AuthServicesIndexRoute
   '/_auth/tasks/': typeof AuthTasksIndexRoute
+  '/_auth/demo/access/button': typeof AuthDemoAccessButtonRoute
+  '/_auth/demo/access/guarded': typeof AuthDemoAccessGuardedRoute
+  '/_auth/demo/access/menu-403': typeof AuthDemoAccessMenu403Route
+  '/_auth/demo/access/page': typeof AuthDemoAccessPageRoute
+  '/_auth/demo/access/super': typeof AuthDemoAccessSuperRoute
   '/_auth/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
   '/_auth/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/_auth/demo/breadcrumb/detail': typeof AuthDemoBreadcrumbDetailRoute
+  '/_auth/demo/breadcrumb/flat': typeof AuthDemoBreadcrumbFlatRoute
+  '/_auth/demo/breadcrumb/hierarchy': typeof AuthDemoBreadcrumbHierarchyRoute
   '/_auth/demo/hide-children/a': typeof AuthDemoHideChildrenARoute
   '/_auth/demo/hide-children/b': typeof AuthDemoHideChildrenBRoute
   '/_auth/demo/iframe/local': typeof AuthDemoIframeLocalRoute
@@ -561,8 +635,16 @@ export interface FileRouteTypes {
     | '/models/'
     | '/services/'
     | '/tasks/'
+    | '/demo/access/button'
+    | '/demo/access/guarded'
+    | '/demo/access/menu-403'
+    | '/demo/access/page'
+    | '/demo/access/super'
     | '/demo/active-icon/$variant'
     | '/demo/badge/$variant'
+    | '/demo/breadcrumb/detail'
+    | '/demo/breadcrumb/flat'
+    | '/demo/breadcrumb/hierarchy'
     | '/demo/hide-children/a'
     | '/demo/hide-children/b'
     | '/demo/iframe/local'
@@ -617,8 +699,16 @@ export interface FileRouteTypes {
     | '/models'
     | '/services'
     | '/tasks'
+    | '/demo/access/button'
+    | '/demo/access/guarded'
+    | '/demo/access/menu-403'
+    | '/demo/access/page'
+    | '/demo/access/super'
     | '/demo/active-icon/$variant'
     | '/demo/badge/$variant'
+    | '/demo/breadcrumb/detail'
+    | '/demo/breadcrumb/flat'
+    | '/demo/breadcrumb/hierarchy'
     | '/demo/hide-children/a'
     | '/demo/hide-children/b'
     | '/demo/iframe/local'
@@ -674,8 +764,16 @@ export interface FileRouteTypes {
     | '/_auth/models/'
     | '/_auth/services/'
     | '/_auth/tasks/'
+    | '/_auth/demo/access/button'
+    | '/_auth/demo/access/guarded'
+    | '/_auth/demo/access/menu-403'
+    | '/_auth/demo/access/page'
+    | '/_auth/demo/access/super'
     | '/_auth/demo/active-icon/$variant'
     | '/_auth/demo/badge/$variant'
+    | '/_auth/demo/breadcrumb/detail'
+    | '/_auth/demo/breadcrumb/flat'
+    | '/_auth/demo/breadcrumb/hierarchy'
     | '/_auth/demo/hide-children/a'
     | '/_auth/demo/hide-children/b'
     | '/_auth/demo/iframe/local'
@@ -1027,6 +1125,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthTasksIdRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/demo/access/button': {
+      id: '/_auth/demo/access/button'
+      path: '/demo/access/button'
+      fullPath: '/demo/access/button'
+      preLoaderRoute: typeof AuthDemoAccessButtonRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/access/guarded': {
+      id: '/_auth/demo/access/guarded'
+      path: '/demo/access/guarded'
+      fullPath: '/demo/access/guarded'
+      preLoaderRoute: typeof AuthDemoAccessGuardedRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/access/menu-403': {
+      id: '/_auth/demo/access/menu-403'
+      path: '/demo/access/menu-403'
+      fullPath: '/demo/access/menu-403'
+      preLoaderRoute: typeof AuthDemoAccessMenu403RouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/access/page': {
+      id: '/_auth/demo/access/page'
+      path: '/demo/access/page'
+      fullPath: '/demo/access/page'
+      preLoaderRoute: typeof AuthDemoAccessPageRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/access/super': {
+      id: '/_auth/demo/access/super'
+      path: '/demo/access/super'
+      fullPath: '/demo/access/super'
+      preLoaderRoute: typeof AuthDemoAccessSuperRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/demo/active-icon/$variant': {
       id: '/_auth/demo/active-icon/$variant'
       path: '/demo/active-icon/$variant'
@@ -1039,6 +1172,27 @@ declare module '@tanstack/react-router' {
       path: '/demo/badge/$variant'
       fullPath: '/demo/badge/$variant'
       preLoaderRoute: typeof AuthDemoBadgeVariantRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/breadcrumb/detail': {
+      id: '/_auth/demo/breadcrumb/detail'
+      path: '/demo/breadcrumb/detail'
+      fullPath: '/demo/breadcrumb/detail'
+      preLoaderRoute: typeof AuthDemoBreadcrumbDetailRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/breadcrumb/flat': {
+      id: '/_auth/demo/breadcrumb/flat'
+      path: '/demo/breadcrumb/flat'
+      fullPath: '/demo/breadcrumb/flat'
+      preLoaderRoute: typeof AuthDemoBreadcrumbFlatRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/breadcrumb/hierarchy': {
+      id: '/_auth/demo/breadcrumb/hierarchy'
+      path: '/demo/breadcrumb/hierarchy'
+      fullPath: '/demo/breadcrumb/hierarchy'
+      preLoaderRoute: typeof AuthDemoBreadcrumbHierarchyRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/demo/hide-children/a': {
@@ -1138,8 +1292,16 @@ interface AuthRouteChildren {
   AuthModelsIndexRoute: typeof AuthModelsIndexRoute
   AuthServicesIndexRoute: typeof AuthServicesIndexRoute
   AuthTasksIndexRoute: typeof AuthTasksIndexRoute
+  AuthDemoAccessButtonRoute: typeof AuthDemoAccessButtonRoute
+  AuthDemoAccessGuardedRoute: typeof AuthDemoAccessGuardedRoute
+  AuthDemoAccessMenu403Route: typeof AuthDemoAccessMenu403Route
+  AuthDemoAccessPageRoute: typeof AuthDemoAccessPageRoute
+  AuthDemoAccessSuperRoute: typeof AuthDemoAccessSuperRoute
   AuthDemoActiveIconVariantRoute: typeof AuthDemoActiveIconVariantRoute
   AuthDemoBadgeVariantRoute: typeof AuthDemoBadgeVariantRoute
+  AuthDemoBreadcrumbDetailRoute: typeof AuthDemoBreadcrumbDetailRoute
+  AuthDemoBreadcrumbFlatRoute: typeof AuthDemoBreadcrumbFlatRoute
+  AuthDemoBreadcrumbHierarchyRoute: typeof AuthDemoBreadcrumbHierarchyRoute
   AuthDemoIframeLocalRoute: typeof AuthDemoIframeLocalRoute
   AuthDemoIframeTailwindRoute: typeof AuthDemoIframeTailwindRoute
   AuthDemoNestedSplatRoute: typeof AuthDemoNestedSplatRoute
@@ -1191,8 +1353,16 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthModelsIndexRoute: AuthModelsIndexRoute,
   AuthServicesIndexRoute: AuthServicesIndexRoute,
   AuthTasksIndexRoute: AuthTasksIndexRoute,
+  AuthDemoAccessButtonRoute: AuthDemoAccessButtonRoute,
+  AuthDemoAccessGuardedRoute: AuthDemoAccessGuardedRoute,
+  AuthDemoAccessMenu403Route: AuthDemoAccessMenu403Route,
+  AuthDemoAccessPageRoute: AuthDemoAccessPageRoute,
+  AuthDemoAccessSuperRoute: AuthDemoAccessSuperRoute,
   AuthDemoActiveIconVariantRoute: AuthDemoActiveIconVariantRoute,
   AuthDemoBadgeVariantRoute: AuthDemoBadgeVariantRoute,
+  AuthDemoBreadcrumbDetailRoute: AuthDemoBreadcrumbDetailRoute,
+  AuthDemoBreadcrumbFlatRoute: AuthDemoBreadcrumbFlatRoute,
+  AuthDemoBreadcrumbHierarchyRoute: AuthDemoBreadcrumbHierarchyRoute,
   AuthDemoIframeLocalRoute: AuthDemoIframeLocalRoute,
   AuthDemoIframeTailwindRoute: AuthDemoIframeTailwindRoute,
   AuthDemoNestedSplatRoute: AuthDemoNestedSplatRoute,
