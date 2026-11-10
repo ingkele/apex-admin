@@ -10,7 +10,7 @@ import { AppSelect } from '@/components/ui/select'
 import { PageHeader } from '@/components/shared/page-header'
 import { cn } from '@/lib/utils'
 
-export const Route = createFileRoute('/_auth/examples/form')({
+export const Route = createFileRoute('/_auth/examples/form/validation')({
   component: Page,
 })
 
@@ -18,7 +18,7 @@ function Page() {
   return (
     <>
       <PageHeader
-        eyebrow={<span>示例 › 表单校验 · 即时校验 + 提交载荷预览</span>}
+        eyebrow={<span>示例 › 表单 › 表单校验 · 即时校验 + 提交载荷预览</span>}
         title="表单校验"
         description="校验规则与提交按钮联动：错误信息贴在对应字段下方，提交后右侧实时显示请求载荷。"
       />

@@ -46,7 +46,6 @@ import { Route as AuthExamplesContextMenuRouteImport } from './routes/_auth/exam
 import { Route as AuthExamplesCountToRouteImport } from './routes/_auth/examples/count-to'
 import { Route as AuthExamplesDrawerRouteImport } from './routes/_auth/examples/drawer'
 import { Route as AuthExamplesEllipsisRouteImport } from './routes/_auth/examples/ellipsis'
-import { Route as AuthExamplesFormRouteImport } from './routes/_auth/examples/form'
 import { Route as AuthExamplesImageCropRouteImport } from './routes/_auth/examples/image-crop'
 import { Route as AuthExamplesJsonViewerRouteImport } from './routes/_auth/examples/json-viewer'
 import { Route as AuthExamplesListRouteImport } from './routes/_auth/examples/list'
@@ -91,6 +90,20 @@ import { Route as AuthDemoIframeLocalRouteImport } from './routes/_auth/demo/ifr
 import { Route as AuthDemoIframeTailwindRouteImport } from './routes/_auth/demo/iframe.tailwind'
 import { Route as AuthDemoNestedSplatRouteImport } from './routes/_auth/demo/nested.$'
 import { Route as AuthDemoTabsIndexRouteImport } from './routes/_auth/demo/tabs/index'
+import { Route as AuthExamplesFormApiRouteImport } from './routes/_auth/examples/form/api'
+import { Route as AuthExamplesFormArrayRouteImport } from './routes/_auth/examples/form/array'
+import { Route as AuthExamplesFormBasicRouteImport } from './routes/_auth/examples/form/basic'
+import { Route as AuthExamplesFormCollapseRouteImport } from './routes/_auth/examples/form/collapse'
+import { Route as AuthExamplesFormCustomRouteImport } from './routes/_auth/examples/form/custom'
+import { Route as AuthExamplesFormDemoRouteImport } from './routes/_auth/examples/form/demo'
+import { Route as AuthExamplesFormDynamicRouteImport } from './routes/_auth/examples/form/dynamic'
+import { Route as AuthExamplesFormLabelWidthRouteImport } from './routes/_auth/examples/form/label-width'
+import { Route as AuthExamplesFormLayoutRouteImport } from './routes/_auth/examples/form/layout'
+import { Route as AuthExamplesFormMergeRouteImport } from './routes/_auth/examples/form/merge'
+import { Route as AuthExamplesFormScrollToErrorRouteImport } from './routes/_auth/examples/form/scroll-to-error'
+import { Route as AuthExamplesFormSearchRouteImport } from './routes/_auth/examples/form/search'
+import { Route as AuthExamplesFormValidationRouteImport } from './routes/_auth/examples/form/validation'
+import { Route as AuthExamplesFormValueFormatRouteImport } from './routes/_auth/examples/form/value-format'
 import { Route as AuthDemoTabsDetailIdRouteImport } from './routes/_auth/demo/tabs/detail.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -275,11 +288,6 @@ const AuthExamplesDrawerRoute = AuthExamplesDrawerRouteImport.update({
 const AuthExamplesEllipsisRoute = AuthExamplesEllipsisRouteImport.update({
   id: '/examples/ellipsis',
   path: '/examples/ellipsis',
-  getParentRoute: () => AuthRoute,
-} as any)
-const AuthExamplesFormRoute = AuthExamplesFormRouteImport.update({
-  id: '/examples/form',
-  path: '/examples/form',
   getParentRoute: () => AuthRoute,
 } as any)
 const AuthExamplesImageCropRoute = AuthExamplesImageCropRouteImport.update({
@@ -506,6 +514,81 @@ const AuthDemoTabsIndexRoute = AuthDemoTabsIndexRouteImport.update({
   path: '/demo/tabs/',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthExamplesFormApiRoute = AuthExamplesFormApiRouteImport.update({
+  id: '/examples/form/api',
+  path: '/examples/form/api',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormArrayRoute = AuthExamplesFormArrayRouteImport.update({
+  id: '/examples/form/array',
+  path: '/examples/form/array',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormBasicRoute = AuthExamplesFormBasicRouteImport.update({
+  id: '/examples/form/basic',
+  path: '/examples/form/basic',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormCollapseRoute =
+  AuthExamplesFormCollapseRouteImport.update({
+    id: '/examples/form/collapse',
+    path: '/examples/form/collapse',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesFormCustomRoute = AuthExamplesFormCustomRouteImport.update({
+  id: '/examples/form/custom',
+  path: '/examples/form/custom',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormDemoRoute = AuthExamplesFormDemoRouteImport.update({
+  id: '/examples/form/demo',
+  path: '/examples/form/demo',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormDynamicRoute = AuthExamplesFormDynamicRouteImport.update({
+  id: '/examples/form/dynamic',
+  path: '/examples/form/dynamic',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormLabelWidthRoute =
+  AuthExamplesFormLabelWidthRouteImport.update({
+    id: '/examples/form/label-width',
+    path: '/examples/form/label-width',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesFormLayoutRoute = AuthExamplesFormLayoutRouteImport.update({
+  id: '/examples/form/layout',
+  path: '/examples/form/layout',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormMergeRoute = AuthExamplesFormMergeRouteImport.update({
+  id: '/examples/form/merge',
+  path: '/examples/form/merge',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormScrollToErrorRoute =
+  AuthExamplesFormScrollToErrorRouteImport.update({
+    id: '/examples/form/scroll-to-error',
+    path: '/examples/form/scroll-to-error',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesFormSearchRoute = AuthExamplesFormSearchRouteImport.update({
+  id: '/examples/form/search',
+  path: '/examples/form/search',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthExamplesFormValidationRoute =
+  AuthExamplesFormValidationRouteImport.update({
+    id: '/examples/form/validation',
+    path: '/examples/form/validation',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesFormValueFormatRoute =
+  AuthExamplesFormValueFormatRouteImport.update({
+    id: '/examples/form/value-format',
+    path: '/examples/form/value-format',
+    getParentRoute: () => AuthRoute,
+  } as any)
 const AuthDemoTabsDetailIdRoute = AuthDemoTabsDetailIdRouteImport.update({
   id: '/demo/tabs/detail/$id',
   path: '/demo/tabs/detail/$id',
@@ -547,7 +630,6 @@ export interface FileRoutesByFullPath {
   '/examples/count-to': typeof AuthExamplesCountToRoute
   '/examples/drawer': typeof AuthExamplesDrawerRoute
   '/examples/ellipsis': typeof AuthExamplesEllipsisRoute
-  '/examples/form': typeof AuthExamplesFormRoute
   '/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/examples/list': typeof AuthExamplesListRoute
@@ -593,6 +675,20 @@ export interface FileRoutesByFullPath {
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/examples/form/api': typeof AuthExamplesFormApiRoute
+  '/examples/form/array': typeof AuthExamplesFormArrayRoute
+  '/examples/form/basic': typeof AuthExamplesFormBasicRoute
+  '/examples/form/collapse': typeof AuthExamplesFormCollapseRoute
+  '/examples/form/custom': typeof AuthExamplesFormCustomRoute
+  '/examples/form/demo': typeof AuthExamplesFormDemoRoute
+  '/examples/form/dynamic': typeof AuthExamplesFormDynamicRoute
+  '/examples/form/label-width': typeof AuthExamplesFormLabelWidthRoute
+  '/examples/form/layout': typeof AuthExamplesFormLayoutRoute
+  '/examples/form/merge': typeof AuthExamplesFormMergeRoute
+  '/examples/form/scroll-to-error': typeof AuthExamplesFormScrollToErrorRoute
+  '/examples/form/search': typeof AuthExamplesFormSearchRoute
+  '/examples/form/validation': typeof AuthExamplesFormValidationRoute
+  '/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
   '/demo/tabs/': typeof AuthDemoTabsIndexRoute
   '/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -631,7 +727,6 @@ export interface FileRoutesByTo {
   '/examples/count-to': typeof AuthExamplesCountToRoute
   '/examples/drawer': typeof AuthExamplesDrawerRoute
   '/examples/ellipsis': typeof AuthExamplesEllipsisRoute
-  '/examples/form': typeof AuthExamplesFormRoute
   '/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/examples/list': typeof AuthExamplesListRoute
@@ -677,6 +772,20 @@ export interface FileRoutesByTo {
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/examples/form/api': typeof AuthExamplesFormApiRoute
+  '/examples/form/array': typeof AuthExamplesFormArrayRoute
+  '/examples/form/basic': typeof AuthExamplesFormBasicRoute
+  '/examples/form/collapse': typeof AuthExamplesFormCollapseRoute
+  '/examples/form/custom': typeof AuthExamplesFormCustomRoute
+  '/examples/form/demo': typeof AuthExamplesFormDemoRoute
+  '/examples/form/dynamic': typeof AuthExamplesFormDynamicRoute
+  '/examples/form/label-width': typeof AuthExamplesFormLabelWidthRoute
+  '/examples/form/layout': typeof AuthExamplesFormLayoutRoute
+  '/examples/form/merge': typeof AuthExamplesFormMergeRoute
+  '/examples/form/scroll-to-error': typeof AuthExamplesFormScrollToErrorRoute
+  '/examples/form/search': typeof AuthExamplesFormSearchRoute
+  '/examples/form/validation': typeof AuthExamplesFormValidationRoute
+  '/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
   '/demo/tabs': typeof AuthDemoTabsIndexRoute
   '/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -717,7 +826,6 @@ export interface FileRoutesById {
   '/_auth/examples/count-to': typeof AuthExamplesCountToRoute
   '/_auth/examples/drawer': typeof AuthExamplesDrawerRoute
   '/_auth/examples/ellipsis': typeof AuthExamplesEllipsisRoute
-  '/_auth/examples/form': typeof AuthExamplesFormRoute
   '/_auth/examples/image-crop': typeof AuthExamplesImageCropRoute
   '/_auth/examples/json-viewer': typeof AuthExamplesJsonViewerRoute
   '/_auth/examples/list': typeof AuthExamplesListRoute
@@ -763,6 +871,20 @@ export interface FileRoutesById {
   '/_auth/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/_auth/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/_auth/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/_auth/examples/form/api': typeof AuthExamplesFormApiRoute
+  '/_auth/examples/form/array': typeof AuthExamplesFormArrayRoute
+  '/_auth/examples/form/basic': typeof AuthExamplesFormBasicRoute
+  '/_auth/examples/form/collapse': typeof AuthExamplesFormCollapseRoute
+  '/_auth/examples/form/custom': typeof AuthExamplesFormCustomRoute
+  '/_auth/examples/form/demo': typeof AuthExamplesFormDemoRoute
+  '/_auth/examples/form/dynamic': typeof AuthExamplesFormDynamicRoute
+  '/_auth/examples/form/label-width': typeof AuthExamplesFormLabelWidthRoute
+  '/_auth/examples/form/layout': typeof AuthExamplesFormLayoutRoute
+  '/_auth/examples/form/merge': typeof AuthExamplesFormMergeRoute
+  '/_auth/examples/form/scroll-to-error': typeof AuthExamplesFormScrollToErrorRoute
+  '/_auth/examples/form/search': typeof AuthExamplesFormSearchRoute
+  '/_auth/examples/form/validation': typeof AuthExamplesFormValidationRoute
+  '/_auth/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
   '/_auth/demo/tabs/': typeof AuthDemoTabsIndexRoute
   '/_auth/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -803,7 +925,6 @@ export interface FileRouteTypes {
     | '/examples/count-to'
     | '/examples/drawer'
     | '/examples/ellipsis'
-    | '/examples/form'
     | '/examples/image-crop'
     | '/examples/json-viewer'
     | '/examples/list'
@@ -849,6 +970,20 @@ export interface FileRouteTypes {
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
+    | '/examples/form/api'
+    | '/examples/form/array'
+    | '/examples/form/basic'
+    | '/examples/form/collapse'
+    | '/examples/form/custom'
+    | '/examples/form/demo'
+    | '/examples/form/dynamic'
+    | '/examples/form/label-width'
+    | '/examples/form/layout'
+    | '/examples/form/merge'
+    | '/examples/form/scroll-to-error'
+    | '/examples/form/search'
+    | '/examples/form/validation'
+    | '/examples/form/value-format'
     | '/demo/tabs/'
     | '/demo/tabs/detail/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -887,7 +1022,6 @@ export interface FileRouteTypes {
     | '/examples/count-to'
     | '/examples/drawer'
     | '/examples/ellipsis'
-    | '/examples/form'
     | '/examples/image-crop'
     | '/examples/json-viewer'
     | '/examples/list'
@@ -933,6 +1067,20 @@ export interface FileRouteTypes {
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
+    | '/examples/form/api'
+    | '/examples/form/array'
+    | '/examples/form/basic'
+    | '/examples/form/collapse'
+    | '/examples/form/custom'
+    | '/examples/form/demo'
+    | '/examples/form/dynamic'
+    | '/examples/form/label-width'
+    | '/examples/form/layout'
+    | '/examples/form/merge'
+    | '/examples/form/scroll-to-error'
+    | '/examples/form/search'
+    | '/examples/form/validation'
+    | '/examples/form/value-format'
     | '/demo/tabs'
     | '/demo/tabs/detail/$id'
   id:
@@ -972,7 +1120,6 @@ export interface FileRouteTypes {
     | '/_auth/examples/count-to'
     | '/_auth/examples/drawer'
     | '/_auth/examples/ellipsis'
-    | '/_auth/examples/form'
     | '/_auth/examples/image-crop'
     | '/_auth/examples/json-viewer'
     | '/_auth/examples/list'
@@ -1018,6 +1165,20 @@ export interface FileRouteTypes {
     | '/_auth/demo/iframe/local'
     | '/_auth/demo/iframe/tailwind'
     | '/_auth/demo/nested/$'
+    | '/_auth/examples/form/api'
+    | '/_auth/examples/form/array'
+    | '/_auth/examples/form/basic'
+    | '/_auth/examples/form/collapse'
+    | '/_auth/examples/form/custom'
+    | '/_auth/examples/form/demo'
+    | '/_auth/examples/form/dynamic'
+    | '/_auth/examples/form/label-width'
+    | '/_auth/examples/form/layout'
+    | '/_auth/examples/form/merge'
+    | '/_auth/examples/form/scroll-to-error'
+    | '/_auth/examples/form/search'
+    | '/_auth/examples/form/validation'
+    | '/_auth/examples/form/value-format'
     | '/_auth/demo/tabs/'
     | '/_auth/demo/tabs/detail/$id'
   fileRoutesById: FileRoutesById
@@ -1287,13 +1448,6 @@ declare module '@tanstack/react-router' {
       path: '/examples/ellipsis'
       fullPath: '/examples/ellipsis'
       preLoaderRoute: typeof AuthExamplesEllipsisRouteImport
-      parentRoute: typeof AuthRoute
-    }
-    '/_auth/examples/form': {
-      id: '/_auth/examples/form'
-      path: '/examples/form'
-      fullPath: '/examples/form'
-      preLoaderRoute: typeof AuthExamplesFormRouteImport
       parentRoute: typeof AuthRoute
     }
     '/_auth/examples/image-crop': {
@@ -1604,6 +1758,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthDemoTabsIndexRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/examples/form/api': {
+      id: '/_auth/examples/form/api'
+      path: '/examples/form/api'
+      fullPath: '/examples/form/api'
+      preLoaderRoute: typeof AuthExamplesFormApiRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/array': {
+      id: '/_auth/examples/form/array'
+      path: '/examples/form/array'
+      fullPath: '/examples/form/array'
+      preLoaderRoute: typeof AuthExamplesFormArrayRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/basic': {
+      id: '/_auth/examples/form/basic'
+      path: '/examples/form/basic'
+      fullPath: '/examples/form/basic'
+      preLoaderRoute: typeof AuthExamplesFormBasicRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/collapse': {
+      id: '/_auth/examples/form/collapse'
+      path: '/examples/form/collapse'
+      fullPath: '/examples/form/collapse'
+      preLoaderRoute: typeof AuthExamplesFormCollapseRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/custom': {
+      id: '/_auth/examples/form/custom'
+      path: '/examples/form/custom'
+      fullPath: '/examples/form/custom'
+      preLoaderRoute: typeof AuthExamplesFormCustomRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/demo': {
+      id: '/_auth/examples/form/demo'
+      path: '/examples/form/demo'
+      fullPath: '/examples/form/demo'
+      preLoaderRoute: typeof AuthExamplesFormDemoRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/dynamic': {
+      id: '/_auth/examples/form/dynamic'
+      path: '/examples/form/dynamic'
+      fullPath: '/examples/form/dynamic'
+      preLoaderRoute: typeof AuthExamplesFormDynamicRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/label-width': {
+      id: '/_auth/examples/form/label-width'
+      path: '/examples/form/label-width'
+      fullPath: '/examples/form/label-width'
+      preLoaderRoute: typeof AuthExamplesFormLabelWidthRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/layout': {
+      id: '/_auth/examples/form/layout'
+      path: '/examples/form/layout'
+      fullPath: '/examples/form/layout'
+      preLoaderRoute: typeof AuthExamplesFormLayoutRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/merge': {
+      id: '/_auth/examples/form/merge'
+      path: '/examples/form/merge'
+      fullPath: '/examples/form/merge'
+      preLoaderRoute: typeof AuthExamplesFormMergeRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/scroll-to-error': {
+      id: '/_auth/examples/form/scroll-to-error'
+      path: '/examples/form/scroll-to-error'
+      fullPath: '/examples/form/scroll-to-error'
+      preLoaderRoute: typeof AuthExamplesFormScrollToErrorRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/search': {
+      id: '/_auth/examples/form/search'
+      path: '/examples/form/search'
+      fullPath: '/examples/form/search'
+      preLoaderRoute: typeof AuthExamplesFormSearchRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/validation': {
+      id: '/_auth/examples/form/validation'
+      path: '/examples/form/validation'
+      fullPath: '/examples/form/validation'
+      preLoaderRoute: typeof AuthExamplesFormValidationRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/form/value-format': {
+      id: '/_auth/examples/form/value-format'
+      path: '/examples/form/value-format'
+      fullPath: '/examples/form/value-format'
+      preLoaderRoute: typeof AuthExamplesFormValueFormatRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/demo/tabs/detail/$id': {
       id: '/_auth/demo/tabs/detail/$id'
       path: '/demo/tabs/detail/$id'
@@ -1660,7 +1912,6 @@ interface AuthRouteChildren {
   AuthExamplesCountToRoute: typeof AuthExamplesCountToRoute
   AuthExamplesDrawerRoute: typeof AuthExamplesDrawerRoute
   AuthExamplesEllipsisRoute: typeof AuthExamplesEllipsisRoute
-  AuthExamplesFormRoute: typeof AuthExamplesFormRoute
   AuthExamplesImageCropRoute: typeof AuthExamplesImageCropRoute
   AuthExamplesJsonViewerRoute: typeof AuthExamplesJsonViewerRoute
   AuthExamplesListRoute: typeof AuthExamplesListRoute
@@ -1704,6 +1955,20 @@ interface AuthRouteChildren {
   AuthDemoIframeLocalRoute: typeof AuthDemoIframeLocalRoute
   AuthDemoIframeTailwindRoute: typeof AuthDemoIframeTailwindRoute
   AuthDemoNestedSplatRoute: typeof AuthDemoNestedSplatRoute
+  AuthExamplesFormApiRoute: typeof AuthExamplesFormApiRoute
+  AuthExamplesFormArrayRoute: typeof AuthExamplesFormArrayRoute
+  AuthExamplesFormBasicRoute: typeof AuthExamplesFormBasicRoute
+  AuthExamplesFormCollapseRoute: typeof AuthExamplesFormCollapseRoute
+  AuthExamplesFormCustomRoute: typeof AuthExamplesFormCustomRoute
+  AuthExamplesFormDemoRoute: typeof AuthExamplesFormDemoRoute
+  AuthExamplesFormDynamicRoute: typeof AuthExamplesFormDynamicRoute
+  AuthExamplesFormLabelWidthRoute: typeof AuthExamplesFormLabelWidthRoute
+  AuthExamplesFormLayoutRoute: typeof AuthExamplesFormLayoutRoute
+  AuthExamplesFormMergeRoute: typeof AuthExamplesFormMergeRoute
+  AuthExamplesFormScrollToErrorRoute: typeof AuthExamplesFormScrollToErrorRoute
+  AuthExamplesFormSearchRoute: typeof AuthExamplesFormSearchRoute
+  AuthExamplesFormValidationRoute: typeof AuthExamplesFormValidationRoute
+  AuthExamplesFormValueFormatRoute: typeof AuthExamplesFormValueFormatRoute
   AuthDemoTabsIndexRoute: typeof AuthDemoTabsIndexRoute
   AuthDemoTabsDetailIdRoute: typeof AuthDemoTabsDetailIdRoute
 }
@@ -1741,7 +2006,6 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthExamplesCountToRoute: AuthExamplesCountToRoute,
   AuthExamplesDrawerRoute: AuthExamplesDrawerRoute,
   AuthExamplesEllipsisRoute: AuthExamplesEllipsisRoute,
-  AuthExamplesFormRoute: AuthExamplesFormRoute,
   AuthExamplesImageCropRoute: AuthExamplesImageCropRoute,
   AuthExamplesJsonViewerRoute: AuthExamplesJsonViewerRoute,
   AuthExamplesListRoute: AuthExamplesListRoute,
@@ -1785,6 +2049,20 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthDemoIframeLocalRoute: AuthDemoIframeLocalRoute,
   AuthDemoIframeTailwindRoute: AuthDemoIframeTailwindRoute,
   AuthDemoNestedSplatRoute: AuthDemoNestedSplatRoute,
+  AuthExamplesFormApiRoute: AuthExamplesFormApiRoute,
+  AuthExamplesFormArrayRoute: AuthExamplesFormArrayRoute,
+  AuthExamplesFormBasicRoute: AuthExamplesFormBasicRoute,
+  AuthExamplesFormCollapseRoute: AuthExamplesFormCollapseRoute,
+  AuthExamplesFormCustomRoute: AuthExamplesFormCustomRoute,
+  AuthExamplesFormDemoRoute: AuthExamplesFormDemoRoute,
+  AuthExamplesFormDynamicRoute: AuthExamplesFormDynamicRoute,
+  AuthExamplesFormLabelWidthRoute: AuthExamplesFormLabelWidthRoute,
+  AuthExamplesFormLayoutRoute: AuthExamplesFormLayoutRoute,
+  AuthExamplesFormMergeRoute: AuthExamplesFormMergeRoute,
+  AuthExamplesFormScrollToErrorRoute: AuthExamplesFormScrollToErrorRoute,
+  AuthExamplesFormSearchRoute: AuthExamplesFormSearchRoute,
+  AuthExamplesFormValidationRoute: AuthExamplesFormValidationRoute,
+  AuthExamplesFormValueFormatRoute: AuthExamplesFormValueFormatRoute,
   AuthDemoTabsIndexRoute: AuthDemoTabsIndexRoute,
   AuthDemoTabsDetailIdRoute: AuthDemoTabsDetailIdRoute,
 }

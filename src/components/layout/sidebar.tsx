@@ -1,13 +1,14 @@
 import * as React from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
-  AppWindow, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown, CircleAlert,
-  CircleDashed, ClipboardCheck, ClipboardCopy, Columns2, Component, Crop, Download, Droplets,
-  ExternalLink, EyeOff, FileJson, Film, FlaskConical, Footprints, Frame, Gauge, Hash, Info,
-  KeyRound, Layers, LayoutDashboard, Link2, ListChecks, ListTree, LoaderCircle, Lock, LogOut,
-  Maximize, Menu, MenuSquare, MessageSquareDot, MessageSquareMore, MoreHorizontal,
-  MousePointerClick, Network, Palette, PanelLeftClose, PanelRightOpen, PanelsTopLeft, PenLine,
-  Route, Scaling, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
+  AppWindow, Binary, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown,
+  ChevronsDownUp, CircleAlert, CircleDashed, ClipboardCheck, ClipboardCopy, ClipboardList,
+  Columns2, Combine, Component, Crop, Download, Droplets, ExternalLink, EyeOff, FileJson,
+  Film, FlaskConical, Footprints, Frame, Gauge, Hash, Info, KeyRound, Layers, LayoutDashboard,
+  LayoutGrid, Link2, ListChecks, ListPlus, ListTree, LoaderCircle, LocateFixed, Lock, LogOut, Maximize,
+  Menu, MenuSquare, MessageSquareDot, MessageSquareMore, MoreHorizontal, MousePointerClick,
+  Network, Palette, PanelLeftClose, PanelRightOpen, PanelsTopLeft, PenLine, Plug, Puzzle, Route,
+  Rows3, Ruler, Scaling, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
   SquareArrowOutUpRight, Table2, TableProperties, Tag, TextCursorInput, TimerOff, Users, Zap,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
@@ -83,6 +84,20 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   contextMenu: MousePointerClick,
   imageCrop: Crop,
   richText: PenLine,
+  formBasic: ClipboardList,
+  formSearch: SlidersHorizontal,
+  formValue: Binary,
+  formValid: ShieldCheck,
+  formDynamic: ListPlus,
+  formLayout: LayoutGrid,
+  formCustom: Puzzle,
+  formApi: Plug,
+  formMerge: Combine,
+  formScroll: LocateFixed,
+  formCollapse: ChevronsDownUp,
+  formLabel: Ruler,
+  formArray: Rows3,
+  formDemo: FlaskConical,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */

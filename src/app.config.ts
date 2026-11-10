@@ -56,6 +56,8 @@ export type NavIcon =
   | 'modal' | 'drawer' | 'ellipsis' | 'resize' | 'colPage' | 'tippy' | 'json'
   | 'motion' | 'countTo' | 'loading' | 'buttons'
   | 'tableOps' | 'contextMenu' | 'imageCrop' | 'richText'
+  | 'formBasic' | 'formSearch' | 'formValue' | 'formValid' | 'formDynamic' | 'formLayout' | 'formCustom'
+  | 'formApi' | 'formMerge' | 'formScroll' | 'formCollapse' | 'formLabel' | 'formArray' | 'formDemo'
 
 export const appConfig = {
   /** 应用标识 */
@@ -275,7 +277,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'examples',
         children: [
           { label: '列表 CRUD', to: '/examples/list', icon: 'list' },
-          { label: '表单校验', to: '/examples/form', icon: 'form' },
+          { label: '表单校验', to: '/examples/form/validation', icon: 'form' },
           { label: '分步流程', to: '/examples/steps', icon: 'flow' },
           { label: '状态占位', to: '/examples/states', icon: 'state' },
         ],
@@ -417,6 +419,26 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: '上下文菜单', to: '/examples/context-menu', icon: 'contextMenu' },
       { label: '图片裁剪', to: '/examples/image-crop', icon: 'imageCrop' },
       { label: '富文本编辑器', to: '/examples/rich-text', icon: 'richText' },
+    ],
+  },
+  {
+    label: '表单',
+    icon: 'form',
+    children: [
+      { label: '基础表单', to: '/examples/form/basic', icon: 'formBasic' },
+      { label: '查询表单', to: '/examples/form/search', icon: 'formSearch' },
+      { label: '值格式化', to: '/examples/form/value-format', icon: 'formValue' },
+      { label: '表单校验', to: '/examples/form/validation', icon: 'formValid' },
+      { label: '动态表单', to: '/examples/form/dynamic', icon: 'formDynamic' },
+      { label: '自定义布局', to: '/examples/form/layout', icon: 'formLayout' },
+      { label: '自定义组件', to: '/examples/form/custom', icon: 'formCustom' },
+      { label: 'Api', to: '/examples/form/api', icon: 'formApi' },
+      { label: '合并表单', to: '/examples/form/merge', icon: 'formMerge' },
+      { label: '滚动到错误字段', to: '/examples/form/scroll-to-error', icon: 'formScroll' },
+      { label: '单项表单折叠', to: '/examples/form/collapse', icon: 'formCollapse' },
+      { label: 'Label 自动宽度', to: '/examples/form/label-width', icon: 'formLabel' },
+      { label: '表单数组', to: '/examples/form/array', icon: 'formArray' },
+      { label: 'Demo', to: '/examples/form/demo', icon: 'formDemo' },
     ],
   },
   {
