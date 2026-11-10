@@ -53,6 +53,8 @@ export type NavIcon =
   | 'feature' | 'expired' | 'palette' | 'watermark' | 'preference' | 'tabs' | 'hideMenu'
   | 'fullscreen' | 'download' | 'clipboard' | 'param' | 'newWindow' | 'tanstack' | 'serialize'
   | 'access' | 'breadcrumb' | 'guarded' | 'bigint'
+  | 'modal' | 'drawer' | 'ellipsis' | 'resize' | 'colPage' | 'tippy' | 'json'
+  | 'motion' | 'countTo' | 'loading' | 'buttons'
 
 export const appConfig = {
   /** 应用标识 */
@@ -393,6 +395,23 @@ export const NAV_GROUPS: NavGroup[] = [
           },
         ],
       },
+    ],
+  },
+  {
+    label: '示例',
+    icon: 'examples',
+    children: [
+      { label: '弹窗', to: '/examples/modal', icon: 'modal' },
+      { label: '抽屉', to: '/examples/drawer', icon: 'drawer' },
+      { label: '文本省略', to: '/examples/ellipsis', icon: 'ellipsis' },
+      { label: '拖动调整', to: '/examples/resize', icon: 'resize' },
+      { label: '双列布局', to: '/examples/col-page', icon: 'colPage', badge: { text: 'Alpha', tone: 'rose' } },
+      { label: 'Tippy', to: '/examples/tippy', icon: 'tippy' },
+      { label: 'JsonViewer', to: '/examples/json-viewer', icon: 'json' },
+      { label: 'Motion', to: '/examples/motion', icon: 'motion' },
+      { label: 'CountTo', to: '/examples/count-to', icon: 'countTo' },
+      { label: 'Loading', to: '/examples/loading', icon: 'loading' },
+      { label: '按钮组', to: '/examples/button-group', icon: 'buttons' },
     ],
   },
   {

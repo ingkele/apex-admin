@@ -2,11 +2,13 @@ import * as React from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   AppWindow, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown, CircleAlert,
-  CircleDashed, ClipboardCheck, ClipboardCopy, Component, Download, Droplets, ExternalLink,
-  EyeOff, FlaskConical, Footprints, Frame, Hash, Info, KeyRound, Layers, LayoutDashboard, Link2,
-  ListChecks, ListTree, Lock, LogOut, Maximize, Menu, MenuSquare, MessageSquareDot, Network, Palette,
-  PanelLeftClose, Route, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
-  SquareArrowOutUpRight, Table2, Tag, TextCursorInput, TimerOff, Users, Zap,
+  CircleDashed, ClipboardCheck, ClipboardCopy, Columns2, Component, Download, Droplets, ExternalLink,
+  EyeOff, FileJson, Film, FlaskConical, Footprints, Frame, Gauge, Hash, Info, KeyRound, Layers,
+  LayoutDashboard, Link2, ListChecks, ListTree, LoaderCircle, Lock, LogOut, Maximize, Menu,
+  MenuSquare, MessageSquareDot, MessageSquareMore, MoreHorizontal, MousePointerClick, Network, Palette,
+  PanelLeftClose, PanelRightOpen, PanelsTopLeft, Route, Scaling, ScrollText, Server, Settings,
+  ShieldCheck, SlidersHorizontal, Sparkles, SquareArrowOutUpRight, Table2, Tag, TextCursorInput,
+  TimerOff, Users, Zap,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
 import { AppMenu } from '@/components/ui/menu'
@@ -66,6 +68,17 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   breadcrumb: Route,
   guarded: Lock,
   bigint: Hash,
+  modal: PanelsTopLeft,
+  drawer: PanelRightOpen,
+  ellipsis: MoreHorizontal,
+  resize: Scaling,
+  colPage: Columns2,
+  tippy: MessageSquareMore,
+  json: FileJson,
+  motion: Film,
+  countTo: Gauge,
+  loading: LoaderCircle,
+  buttons: MousePointerClick,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */
