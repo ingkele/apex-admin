@@ -44,6 +44,11 @@ import { Route as AuthSystemSettingsRouteImport } from './routes/_auth/system/se
 import { Route as AuthSystemUsersRouteImport } from './routes/_auth/system/users'
 import { Route as AuthTasksIndexRouteImport } from './routes/_auth/tasks/index'
 import { Route as AuthTasksIdRouteImport } from './routes/_auth/tasks/$id'
+import { Route as AuthDemoActiveIconVariantRouteImport } from './routes/_auth/demo/active-icon.$variant'
+import { Route as AuthDemoBadgeVariantRouteImport } from './routes/_auth/demo/badge.$variant'
+import { Route as AuthDemoIframeLocalRouteImport } from './routes/_auth/demo/iframe.local'
+import { Route as AuthDemoIframeTailwindRouteImport } from './routes/_auth/demo/iframe.tailwind'
+import { Route as AuthDemoNestedSplatRouteImport } from './routes/_auth/demo/nested.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -219,6 +224,32 @@ const AuthTasksIdRoute = AuthTasksIdRouteImport.update({
   path: '/tasks/$id',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthDemoActiveIconVariantRoute =
+  AuthDemoActiveIconVariantRouteImport.update({
+    id: '/demo/active-icon/$variant',
+    path: '/demo/active-icon/$variant',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthDemoBadgeVariantRoute = AuthDemoBadgeVariantRouteImport.update({
+  id: '/demo/badge/$variant',
+  path: '/demo/badge/$variant',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoIframeLocalRoute = AuthDemoIframeLocalRouteImport.update({
+  id: '/demo/iframe/local',
+  path: '/demo/iframe/local',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoIframeTailwindRoute = AuthDemoIframeTailwindRouteImport.update({
+  id: '/demo/iframe/tailwind',
+  path: '/demo/iframe/tailwind',
+  getParentRoute: () => AuthRoute,
+} as any)
+const AuthDemoNestedSplatRoute = AuthDemoNestedSplatRouteImport.update({
+  id: '/demo/nested/$',
+  path: '/demo/nested/$',
+  getParentRoute: () => AuthRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -255,6 +286,11 @@ export interface FileRoutesByFullPath {
   '/models/': typeof AuthModelsIndexRoute
   '/services/': typeof AuthServicesIndexRoute
   '/tasks/': typeof AuthTasksIndexRoute
+  '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
+  '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
+  '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
+  '/demo/nested/$': typeof AuthDemoNestedSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -291,6 +327,11 @@ export interface FileRoutesByTo {
   '/models': typeof AuthModelsIndexRoute
   '/services': typeof AuthServicesIndexRoute
   '/tasks': typeof AuthTasksIndexRoute
+  '/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
+  '/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
+  '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
+  '/demo/nested/$': typeof AuthDemoNestedSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -329,6 +370,11 @@ export interface FileRoutesById {
   '/_auth/models/': typeof AuthModelsIndexRoute
   '/_auth/services/': typeof AuthServicesIndexRoute
   '/_auth/tasks/': typeof AuthTasksIndexRoute
+  '/_auth/demo/active-icon/$variant': typeof AuthDemoActiveIconVariantRoute
+  '/_auth/demo/badge/$variant': typeof AuthDemoBadgeVariantRoute
+  '/_auth/demo/iframe/local': typeof AuthDemoIframeLocalRoute
+  '/_auth/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
+  '/_auth/demo/nested/$': typeof AuthDemoNestedSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -367,6 +413,11 @@ export interface FileRouteTypes {
     | '/models/'
     | '/services/'
     | '/tasks/'
+    | '/demo/active-icon/$variant'
+    | '/demo/badge/$variant'
+    | '/demo/iframe/local'
+    | '/demo/iframe/tailwind'
+    | '/demo/nested/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -403,6 +454,11 @@ export interface FileRouteTypes {
     | '/models'
     | '/services'
     | '/tasks'
+    | '/demo/active-icon/$variant'
+    | '/demo/badge/$variant'
+    | '/demo/iframe/local'
+    | '/demo/iframe/tailwind'
+    | '/demo/nested/$'
   id:
     | '__root__'
     | '/'
@@ -440,6 +496,11 @@ export interface FileRouteTypes {
     | '/_auth/models/'
     | '/_auth/services/'
     | '/_auth/tasks/'
+    | '/_auth/demo/active-icon/$variant'
+    | '/_auth/demo/badge/$variant'
+    | '/_auth/demo/iframe/local'
+    | '/_auth/demo/iframe/tailwind'
+    | '/_auth/demo/nested/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -695,6 +756,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthTasksIdRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/demo/active-icon/$variant': {
+      id: '/_auth/demo/active-icon/$variant'
+      path: '/demo/active-icon/$variant'
+      fullPath: '/demo/active-icon/$variant'
+      preLoaderRoute: typeof AuthDemoActiveIconVariantRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/badge/$variant': {
+      id: '/_auth/demo/badge/$variant'
+      path: '/demo/badge/$variant'
+      fullPath: '/demo/badge/$variant'
+      preLoaderRoute: typeof AuthDemoBadgeVariantRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/iframe/local': {
+      id: '/_auth/demo/iframe/local'
+      path: '/demo/iframe/local'
+      fullPath: '/demo/iframe/local'
+      preLoaderRoute: typeof AuthDemoIframeLocalRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/iframe/tailwind': {
+      id: '/_auth/demo/iframe/tailwind'
+      path: '/demo/iframe/tailwind'
+      fullPath: '/demo/iframe/tailwind'
+      preLoaderRoute: typeof AuthDemoIframeTailwindRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/demo/nested/$': {
+      id: '/_auth/demo/nested/$'
+      path: '/demo/nested/$'
+      fullPath: '/demo/nested/$'
+      preLoaderRoute: typeof AuthDemoNestedSplatRouteImport
+      parentRoute: typeof AuthRoute
+    }
   }
 }
 
@@ -731,6 +827,11 @@ interface AuthRouteChildren {
   AuthModelsIndexRoute: typeof AuthModelsIndexRoute
   AuthServicesIndexRoute: typeof AuthServicesIndexRoute
   AuthTasksIndexRoute: typeof AuthTasksIndexRoute
+  AuthDemoActiveIconVariantRoute: typeof AuthDemoActiveIconVariantRoute
+  AuthDemoBadgeVariantRoute: typeof AuthDemoBadgeVariantRoute
+  AuthDemoIframeLocalRoute: typeof AuthDemoIframeLocalRoute
+  AuthDemoIframeTailwindRoute: typeof AuthDemoIframeTailwindRoute
+  AuthDemoNestedSplatRoute: typeof AuthDemoNestedSplatRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
@@ -766,6 +867,11 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthModelsIndexRoute: AuthModelsIndexRoute,
   AuthServicesIndexRoute: AuthServicesIndexRoute,
   AuthTasksIndexRoute: AuthTasksIndexRoute,
+  AuthDemoActiveIconVariantRoute: AuthDemoActiveIconVariantRoute,
+  AuthDemoBadgeVariantRoute: AuthDemoBadgeVariantRoute,
+  AuthDemoIframeLocalRoute: AuthDemoIframeLocalRoute,
+  AuthDemoIframeTailwindRoute: AuthDemoIframeTailwindRoute,
+  AuthDemoNestedSplatRoute: AuthDemoNestedSplatRoute,
 }
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)

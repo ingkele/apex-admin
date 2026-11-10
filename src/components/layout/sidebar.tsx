@@ -2,9 +2,10 @@ import * as React from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   Blocks, BookMarked, Brain, ChartNoAxesCombined, ChevronDown, CircleAlert, CircleDashed,
-  ClipboardCheck, Component, Footprints, Info, KeyRound, Layers, LayoutDashboard, ListChecks,
-  LogOut, Menu, MenuSquare, MessageSquareDot, Network, PanelLeftClose,
-  ScrollText, Server, Settings, ShieldCheck, Table2, TextCursorInput, Users,
+  ClipboardCheck, Component, ExternalLink, FlaskConical, Footprints, Frame, Info, KeyRound,
+  Layers, LayoutDashboard, ListChecks, ListTree, LogOut, Menu, MenuSquare, MessageSquareDot,
+  Network, PanelLeftClose, ScrollText, Server, Settings, ShieldCheck, Sparkles, Table2,
+  Tag, TextCursorInput, Users,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
 import { AppMenu } from '@/components/ui/menu'
@@ -40,11 +41,40 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   about: Info,
   audit: ScrollText,
   settings: Settings,
+  demo: FlaskConical,
+  badge: Tag,
+  sparkles: Sparkles,
+  external: ExternalLink,
+  nested: ListTree,
+  embed: Frame,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */
 function isActive(pathname: string, to: string) {
   return to === '/dashboard' ? pathname === '/dashboard' : pathname.startsWith(to)
+}
+
+/** 菜单徽标（数字 / 短文本，多色调） */
+function NavBadge({ badge }: { badge: NonNullable<NavChild['badge']> }) {
+  const tone = badge.tone ?? 'brand'
+  const skin: Record<string, string> = {
+    brand: 'bg-brand-500 text-white',
+    rose: 'bg-rose-500 text-white',
+    amber: 'bg-amber-500 text-white',
+    slate: 'bg-slate-500/90 text-white',
+  }
+  const isNumeric = /^\d+$/.test(badge.text)
+  return (
+    <span
+      className={cn(
+        'ml-auto shrink-0 rounded-full text-[10px] font-semibold leading-none',
+        isNumeric ? 'min-w-[16px] px-1 py-[3px] text-center' : 'px-1.5 py-[3px]',
+        skin[tone],
+      )}
+    >
+      {badge.text}
+    </span>
+  )
 }
 
 /** 按权限递归过滤子树：父级无可见子级时整体隐藏 */
@@ -90,14 +120,37 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
   const open = expanded.has(idPath)
   const childActive = hasKids && activeTrail.has(idPath)
   const selfActive = !hasKids && !!node.to && isActive(pathname, node.to)
-  const Icon = ICONS[node.icon ?? groupIcon]
+  const active = childActive || selfActive
+  // 激活态可换图标（activeIcon）
+  const Icon = ICONS[active && node.activeIcon ? node.activeIcon : (node.icon ?? groupIcon)]
 
   const rowCls = cn(
     'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] outline-none transition-colors',
-    childActive || selfActive
+    active
       ? 'bg-sidebar-active font-medium text-sidebar-active-ink'
       : 'text-sidebar-muted hover:bg-sidebar-hover hover:text-sidebar-ink',
   )
+
+  // —— 外链：新窗口打开，不参与站内激活态 ——
+  if (node.external && !hasKids) {
+    return (
+      <a
+        href={node.external}
+        target="_blank"
+        rel="noreferrer noopener"
+        title={node.label}
+        className={cn(rowCls, collapsed && 'justify-center px-0')}
+      >
+        <Icon className="h-[15px] w-[15px] shrink-0" />
+        {!collapsed && (
+          <>
+            <span className="truncate">{node.label}</span>
+            <ExternalLink className="ml-auto h-3 w-3 shrink-0 text-sidebar-muted/60" />
+          </>
+        )}
+      </a>
+    )
+  }
 
   // —— 折叠态（64px 图标栏）——
   if (collapsed) {
@@ -134,9 +187,15 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
   if (hasKids) {
     return (
       <div>
-        <button type="button" onClick={() => onToggle(idPath)} className={cn(rowCls, 'w-full')}>
+        <button
+          type="button"
+          onClick={() => onToggle(idPath)}
+          data-nav-active={active ? 'true' : undefined}
+          className={cn(rowCls, 'w-full')}
+        >
           <Icon className="h-[15px] w-[15px] shrink-0" />
           <span className="min-w-0 flex-1 truncate text-left">{node.label}</span>
+          {node.badge ? <NavBadge badge={node.badge} /> : null}
           <ChevronDown
             className={cn(
               'h-3.5 w-3.5 shrink-0 text-sidebar-muted/70 transition-transform duration-200',
@@ -179,9 +238,10 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
   // —— 展开态：叶子 ——
   if (!node.to) return null
   return (
-    <Link to={node.to} title={node.label} className={rowCls}>
+    <Link to={node.to} title={node.label} data-nav-active={selfActive ? 'true' : undefined} className={rowCls}>
       <Icon className="h-[15px] w-[15px] shrink-0" />
-      <span className="truncate">{node.label}</span>
+      <span className="min-w-0 flex-1 truncate">{node.label}</span>
+      {node.badge ? <NavBadge badge={node.badge} /> : null}
     </Link>
   )
 }
@@ -260,6 +320,18 @@ export function Sidebar() {
     void navigate({ to: '/login' })
   }, [logout, navigate])
 
+  /** 激活项滚入视野：菜单变长后，深层页面激活项可能在可视区外 */
+  const navRef = React.useRef<HTMLElement>(null)
+  React.useEffect(() => {
+    if (collapsed) return
+    // 等展开动画（200ms）结束后再量位置，否则算出来是收起态高度
+    const timer = window.setTimeout(() => {
+      const nodes = navRef.current?.querySelectorAll<HTMLElement>('[data-nav-active="true"]')
+      nodes?.item(nodes.length - 1)?.scrollIntoView({ block: 'nearest' })
+    }, 240)
+    return () => window.clearTimeout(timer)
+  }, [pathname, collapsed, activeTrail])
+
   return (
     <aside
       className={cn(
@@ -293,7 +365,7 @@ export function Sidebar() {
       </div>
 
       {/* 导航 */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4">
+      <nav ref={navRef} className="flex-1 overflow-y-auto px-3 py-4">
         {visibleGroups.map((group) => (
           <div key={group.label} className="mb-4">
             {!collapsed ? (

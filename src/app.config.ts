@@ -10,10 +10,18 @@ export interface NavChild {
   to?: string
   /** 子项独立图标（不填则沿用分组图标） */
   icon?: NavIcon
+  /** 激活态图标（当前页命中时替换 icon） */
+  activeIcon?: NavIcon
+  /** 右侧徽标：数字或短文本 */
+  badge?: { text: string; tone?: NavBadgeTone }
+  /** 外链：新窗口打开，不走站内路由 */
+  external?: string
   permission?: PermissionCode
   /** 子菜单（递归嵌套，支持任意层级） */
   children?: NavChild[]
 }
+
+export type NavBadgeTone = 'brand' | 'rose' | 'amber' | 'slate'
 
 export interface NavGroup {
   label: string
@@ -27,6 +35,7 @@ export type NavIcon =
   | 'users' | 'roles' | 'menu' | 'dept' | 'dict' | 'audit' | 'settings'
   | 'components' | 'examples' | 'errors' | 'about'
   | 'component' | 'input' | 'feedback' | 'navigation' | 'table' | 'list' | 'form' | 'flow' | 'state'
+  | 'demo' | 'badge' | 'sparkles' | 'external' | 'nested' | 'embed'
 
 export const appConfig = {
   /** 应用标识 */
@@ -249,6 +258,57 @@ export const NAV_GROUPS: NavGroup[] = [
           { label: '表单校验', to: '/examples/form', icon: 'form' },
           { label: '分步流程', to: '/examples/steps', icon: 'flow' },
           { label: '状态占位', to: '/examples/states', icon: 'state' },
+        ],
+      },
+    ],
+  },
+  {
+    label: '演示',
+    icon: 'demo',
+    children: [
+      {
+        label: '菜单徽标',
+        icon: 'badge',
+        children: [
+          { label: '点徽标 10', to: '/demo/badge/dot', badge: { text: '10', tone: 'rose' } },
+          { label: '文本徽标 Hot', to: '/demo/badge/text', badge: { text: 'Hot', tone: 'brand' } },
+          { label: '徽标颜色', to: '/demo/badge/color', badge: { text: 'new', tone: 'amber' } },
+        ],
+      },
+      {
+        label: '菜单激活图标',
+        icon: 'sparkles',
+        children: [
+          { label: '一级激活图标', to: '/demo/active-icon/menu', icon: 'list', activeIcon: 'sparkles' },
+          { label: '子级激活图标', to: '/demo/active-icon/sub', icon: 'list', activeIcon: 'sparkles' },
+        ],
+      },
+      {
+        label: '外部页面',
+        icon: 'external',
+        children: [
+          { label: '内嵌 · 本地演示页', to: '/demo/iframe/local', icon: 'embed' },
+          { label: '内嵌 · Tailwindcss', to: '/demo/iframe/tailwind', icon: 'embed' },
+          { label: '外链 · Vite', external: 'https://vite.dev', icon: 'external' },
+          { label: '外链 · VueUse', external: 'https://vueuse.org', icon: 'external' },
+        ],
+      },
+      {
+        label: '嵌套菜单',
+        icon: 'nested',
+        children: [
+          { label: '菜单 1', to: '/demo/nested/menu1' },
+          { label: '菜单 2', to: '/demo/nested/menu2' },
+          {
+            label: '菜单 3',
+            children: [
+              { label: '菜单 3-1', to: '/demo/nested/menu3/menu3-1' },
+              {
+                label: '菜单 3-2',
+                children: [{ label: '菜单 3-2-1', to: '/demo/nested/menu3/menu3-2/menu3-2-1' }],
+              },
+            ],
+          },
         ],
       },
     ],
