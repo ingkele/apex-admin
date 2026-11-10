@@ -81,6 +81,8 @@ allowed_dirs:
     purpose: init 实测既有子目录
   - path: src/routes/_auth/examples/vxe-table/*
     purpose: init 实测既有子目录
+  - path: src/routes/_auth/examples/captcha/*
+    purpose: 第 9 批验证码示例子目录（canvas 手写零依赖）
   - path: src/routes/_auth/models/*
     purpose: init 实测既有子目录
   - path: src/routes/_auth/services/*

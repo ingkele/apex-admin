@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T20:09:57.6953626+08:00",
+  "generatedAt": "2026-11-10T21:16:16.8608901+08:00",
   "pairs": [
     {
       "key": "8588276444e9159b",
@@ -490,6 +490,36 @@
       "key": "2c2b1e440a8625de",
       "a": ".TaskListPage@src/routes/_auth/tasks/index.tsx",
       "b": ".App@src/main.tsx"
+    },
+    {
+      "key": "1869dfa4be6724b8",
+      "a": ".async@.e2e-run-code.js",
+      "b": ".async@.e2e-captcha.js"
+    },
+    {
+      "key": "8d3a52c061aa9d31",
+      "a": ".async@.e2e-vxe.js",
+      "b": ".async@.e2e-captcha.js"
+    },
+    {
+      "key": "c022b830591772ac",
+      "a": ".Page@src/routes/_auth/examples/captcha/click.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "112d8af4411e54d6",
+      "a": ".Page@src/routes/_auth/examples/captcha/puzzle.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "7684880fbf079cde",
+      "a": ".Page@src/routes/_auth/examples/captcha/slider.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "633f6a910bf1d547",
+      "a": ".Page@src/routes/_auth/examples/captcha/slider.tsx",
+      "b": ".Page@src/routes/_auth/examples/captcha/puzzle.tsx"
     }
   ],
   "detectorVersion": 4

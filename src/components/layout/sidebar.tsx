@@ -7,8 +7,8 @@ import {
   Film, FlaskConical, Footprints, Frame, Gauge, Hash, Info, KeyRound, Layers, LayoutDashboard,
   LayoutGrid, Link2, ListChecks, ListPlus, ListTree, LoaderCircle, LocateFixed, Lock, LogOut, Maximize,
   Menu, MenuSquare, MessageSquareDot, MessageSquareMore, MoreHorizontal, MousePointerClick,
-  Network, Palette, Paintbrush, PanelLeftClose, PanelRightOpen, PanelsTopLeft, PenLine, Pin, Plug,
-  Puzzle, Route, Rows3, Ruler, Scaling, ScrollText, Search, Server, Settings, ShieldCheck,
+  MoveHorizontal, Network, Palette, Paintbrush, PanelLeftClose, PanelRightOpen, PanelsTopLeft, PenLine, Pin, Plug,
+  Puzzle, RotateCw, Route, Rows3, Ruler, Scaling, ScrollText, Search, Server, Settings, ShieldCheck,
   SlidersHorizontal, Sparkles, SquareArrowOutUpRight, SquareKanban, SquarePen, Table2,
   TableProperties, Tag, TextCursorInput, TimerOff, Users, Zap,
 } from 'lucide-react'
@@ -109,6 +109,10 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   vxeEditRow: SquareKanban,
   vxeVirtual: ScrollText,
   vxeViewed: Bookmark,
+  capSlider: MoveHorizontal,
+  capRotate: RotateCw,
+  capPuzzle: Puzzle,
+  capClick: MousePointerClick,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */

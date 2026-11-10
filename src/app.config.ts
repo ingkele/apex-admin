@@ -60,6 +60,7 @@ export type NavIcon =
   | 'formApi' | 'formMerge' | 'formScroll' | 'formCollapse' | 'formLabel' | 'formArray' | 'formDemo'
   | 'vxeBasic' | 'vxeRemote' | 'vxeTree' | 'vxeFixed' | 'vxeCell' | 'vxeForm'
   | 'vxeEditCell' | 'vxeEditRow' | 'vxeVirtual' | 'vxeViewed'
+  | 'capSlider' | 'capRotate' | 'capPuzzle' | 'capClick'
 
 export const appConfig = {
   /** 应用标识 */
@@ -457,6 +458,16 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: '行编辑', to: '/examples/vxe-table/edit-row', icon: 'vxeEditRow' },
       { label: '虚拟滚动', to: '/examples/vxe-table/virtual', icon: 'vxeVirtual' },
       { label: '行标记', to: '/examples/vxe-table/viewed', icon: 'vxeViewed' },
+    ],
+  },
+  {
+    label: '验证码',
+    icon: 'access',
+    children: [
+      { label: '滑块验证', to: '/examples/captcha/slider', icon: 'capSlider' },
+      { label: '旋转验证', to: '/examples/captcha/rotate', icon: 'capRotate' },
+      { label: '拼图滑块验证', to: '/examples/captcha/puzzle', icon: 'capPuzzle' },
+      { label: '点选验证', to: '/examples/captcha/click', icon: 'capClick' },
     ],
   },
   {

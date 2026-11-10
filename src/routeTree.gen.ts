@@ -90,6 +90,10 @@ import { Route as AuthDemoIframeLocalRouteImport } from './routes/_auth/demo/ifr
 import { Route as AuthDemoIframeTailwindRouteImport } from './routes/_auth/demo/iframe.tailwind'
 import { Route as AuthDemoNestedSplatRouteImport } from './routes/_auth/demo/nested.$'
 import { Route as AuthDemoTabsIndexRouteImport } from './routes/_auth/demo/tabs/index'
+import { Route as AuthExamplesCaptchaClickRouteImport } from './routes/_auth/examples/captcha/click'
+import { Route as AuthExamplesCaptchaPuzzleRouteImport } from './routes/_auth/examples/captcha/puzzle'
+import { Route as AuthExamplesCaptchaRotateRouteImport } from './routes/_auth/examples/captcha/rotate'
+import { Route as AuthExamplesCaptchaSliderRouteImport } from './routes/_auth/examples/captcha/slider'
 import { Route as AuthExamplesFormApiRouteImport } from './routes/_auth/examples/form/api'
 import { Route as AuthExamplesFormArrayRouteImport } from './routes/_auth/examples/form/array'
 import { Route as AuthExamplesFormBasicRouteImport } from './routes/_auth/examples/form/basic'
@@ -524,6 +528,30 @@ const AuthDemoTabsIndexRoute = AuthDemoTabsIndexRouteImport.update({
   path: '/demo/tabs/',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthExamplesCaptchaClickRoute =
+  AuthExamplesCaptchaClickRouteImport.update({
+    id: '/examples/captcha/click',
+    path: '/examples/captcha/click',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesCaptchaPuzzleRoute =
+  AuthExamplesCaptchaPuzzleRouteImport.update({
+    id: '/examples/captcha/puzzle',
+    path: '/examples/captcha/puzzle',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesCaptchaRotateRoute =
+  AuthExamplesCaptchaRotateRouteImport.update({
+    id: '/examples/captcha/rotate',
+    path: '/examples/captcha/rotate',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesCaptchaSliderRoute =
+  AuthExamplesCaptchaSliderRouteImport.update({
+    id: '/examples/captcha/slider',
+    path: '/examples/captcha/slider',
+    getParentRoute: () => AuthRoute,
+  } as any)
 const AuthExamplesFormApiRoute = AuthExamplesFormApiRouteImport.update({
   id: '/examples/form/api',
   path: '/examples/form/api',
@@ -745,6 +773,10 @@ export interface FileRoutesByFullPath {
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/examples/captcha/click': typeof AuthExamplesCaptchaClickRoute
+  '/examples/captcha/puzzle': typeof AuthExamplesCaptchaPuzzleRoute
+  '/examples/captcha/rotate': typeof AuthExamplesCaptchaRotateRoute
+  '/examples/captcha/slider': typeof AuthExamplesCaptchaSliderRoute
   '/examples/form/api': typeof AuthExamplesFormApiRoute
   '/examples/form/array': typeof AuthExamplesFormArrayRoute
   '/examples/form/basic': typeof AuthExamplesFormBasicRoute
@@ -852,6 +884,10 @@ export interface FileRoutesByTo {
   '/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/examples/captcha/click': typeof AuthExamplesCaptchaClickRoute
+  '/examples/captcha/puzzle': typeof AuthExamplesCaptchaPuzzleRoute
+  '/examples/captcha/rotate': typeof AuthExamplesCaptchaRotateRoute
+  '/examples/captcha/slider': typeof AuthExamplesCaptchaSliderRoute
   '/examples/form/api': typeof AuthExamplesFormApiRoute
   '/examples/form/array': typeof AuthExamplesFormArrayRoute
   '/examples/form/basic': typeof AuthExamplesFormBasicRoute
@@ -961,6 +997,10 @@ export interface FileRoutesById {
   '/_auth/demo/iframe/local': typeof AuthDemoIframeLocalRoute
   '/_auth/demo/iframe/tailwind': typeof AuthDemoIframeTailwindRoute
   '/_auth/demo/nested/$': typeof AuthDemoNestedSplatRoute
+  '/_auth/examples/captcha/click': typeof AuthExamplesCaptchaClickRoute
+  '/_auth/examples/captcha/puzzle': typeof AuthExamplesCaptchaPuzzleRoute
+  '/_auth/examples/captcha/rotate': typeof AuthExamplesCaptchaRotateRoute
+  '/_auth/examples/captcha/slider': typeof AuthExamplesCaptchaSliderRoute
   '/_auth/examples/form/api': typeof AuthExamplesFormApiRoute
   '/_auth/examples/form/array': typeof AuthExamplesFormArrayRoute
   '/_auth/examples/form/basic': typeof AuthExamplesFormBasicRoute
@@ -1070,6 +1110,10 @@ export interface FileRouteTypes {
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
+    | '/examples/captcha/click'
+    | '/examples/captcha/puzzle'
+    | '/examples/captcha/rotate'
+    | '/examples/captcha/slider'
     | '/examples/form/api'
     | '/examples/form/array'
     | '/examples/form/basic'
@@ -1177,6 +1221,10 @@ export interface FileRouteTypes {
     | '/demo/iframe/local'
     | '/demo/iframe/tailwind'
     | '/demo/nested/$'
+    | '/examples/captcha/click'
+    | '/examples/captcha/puzzle'
+    | '/examples/captcha/rotate'
+    | '/examples/captcha/slider'
     | '/examples/form/api'
     | '/examples/form/array'
     | '/examples/form/basic'
@@ -1285,6 +1333,10 @@ export interface FileRouteTypes {
     | '/_auth/demo/iframe/local'
     | '/_auth/demo/iframe/tailwind'
     | '/_auth/demo/nested/$'
+    | '/_auth/examples/captcha/click'
+    | '/_auth/examples/captcha/puzzle'
+    | '/_auth/examples/captcha/rotate'
+    | '/_auth/examples/captcha/slider'
     | '/_auth/examples/form/api'
     | '/_auth/examples/form/array'
     | '/_auth/examples/form/basic'
@@ -1888,6 +1940,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthDemoTabsIndexRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/examples/captcha/click': {
+      id: '/_auth/examples/captcha/click'
+      path: '/examples/captcha/click'
+      fullPath: '/examples/captcha/click'
+      preLoaderRoute: typeof AuthExamplesCaptchaClickRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/captcha/puzzle': {
+      id: '/_auth/examples/captcha/puzzle'
+      path: '/examples/captcha/puzzle'
+      fullPath: '/examples/captcha/puzzle'
+      preLoaderRoute: typeof AuthExamplesCaptchaPuzzleRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/captcha/rotate': {
+      id: '/_auth/examples/captcha/rotate'
+      path: '/examples/captcha/rotate'
+      fullPath: '/examples/captcha/rotate'
+      preLoaderRoute: typeof AuthExamplesCaptchaRotateRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/captcha/slider': {
+      id: '/_auth/examples/captcha/slider'
+      path: '/examples/captcha/slider'
+      fullPath: '/examples/captcha/slider'
+      preLoaderRoute: typeof AuthExamplesCaptchaSliderRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/examples/form/api': {
       id: '/_auth/examples/form/api'
       path: '/examples/form/api'
@@ -2155,6 +2235,10 @@ interface AuthRouteChildren {
   AuthDemoIframeLocalRoute: typeof AuthDemoIframeLocalRoute
   AuthDemoIframeTailwindRoute: typeof AuthDemoIframeTailwindRoute
   AuthDemoNestedSplatRoute: typeof AuthDemoNestedSplatRoute
+  AuthExamplesCaptchaClickRoute: typeof AuthExamplesCaptchaClickRoute
+  AuthExamplesCaptchaPuzzleRoute: typeof AuthExamplesCaptchaPuzzleRoute
+  AuthExamplesCaptchaRotateRoute: typeof AuthExamplesCaptchaRotateRoute
+  AuthExamplesCaptchaSliderRoute: typeof AuthExamplesCaptchaSliderRoute
   AuthExamplesFormApiRoute: typeof AuthExamplesFormApiRoute
   AuthExamplesFormArrayRoute: typeof AuthExamplesFormArrayRoute
   AuthExamplesFormBasicRoute: typeof AuthExamplesFormBasicRoute
@@ -2259,6 +2343,10 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthDemoIframeLocalRoute: AuthDemoIframeLocalRoute,
   AuthDemoIframeTailwindRoute: AuthDemoIframeTailwindRoute,
   AuthDemoNestedSplatRoute: AuthDemoNestedSplatRoute,
+  AuthExamplesCaptchaClickRoute: AuthExamplesCaptchaClickRoute,
+  AuthExamplesCaptchaPuzzleRoute: AuthExamplesCaptchaPuzzleRoute,
+  AuthExamplesCaptchaRotateRoute: AuthExamplesCaptchaRotateRoute,
+  AuthExamplesCaptchaSliderRoute: AuthExamplesCaptchaSliderRoute,
   AuthExamplesFormApiRoute: AuthExamplesFormApiRoute,
   AuthExamplesFormArrayRoute: AuthExamplesFormArrayRoute,
   AuthExamplesFormBasicRoute: AuthExamplesFormBasicRoute,
