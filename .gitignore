@@ -38,3 +38,6 @@ data/*.sqlite-journal
 
 # guardAI 台账（本地记录，不出本机）
 .guard/records/
+
+# 脚手架模板是主项目的同步产物（sync-template.js 生成），不入库；发布前同步
+packages/create-apex-admin/template/

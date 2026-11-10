@@ -107,6 +107,8 @@ allowed_dirs:
     purpose: 脚本
   - path: docs/**
     purpose: 文档
+  - path: packages/create-apex-admin/*
+    purpose: npm 脚手架包（create-apex-admin CLI 与模板同步脚本）
 
 # 落位规则：文件名命中 file_pattern 时，所在目录必须命中 dir_pattern
 # scope: 适用项目形态（app / library / all），只在 project_type 匹配时生效
@@ -131,3 +133,5 @@ placement_rules:
 exclusions:
   - path: .env.example
     reason: 环境变量示例文件（刻意入库的模板，仅含占位值零真实凭据；.env* 实际文件已被 .gitignore 排除）
+  - path: packages/create-apex-admin/template/**
+    reason: 脚手架模板是主项目源码的同步产物（sync-template.js 生成，不入库），与主项目天然重复

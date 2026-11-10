@@ -1,0 +1,37 @@
+{
+  "name": "create-apex-admin",
+  "version": "0.1.0",
+  "description": "Apex Admin 脚手架：一条命令创建 React 19 + TanStack Router + Base UI + Tailwind v4 后台管理模板项目",
+  "type": "module",
+  "bin": {
+    "create-apex-admin": "cli.js"
+  },
+  "files": [
+    "cli.js",
+    "template"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "apex-admin",
+    "admin",
+    "admin-template",
+    "react",
+    "react19",
+    "tanstack-router",
+    "tailwindcss",
+    "scaffold",
+    "create"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingkele/apex-admin.git",
+    "directory": "packages/create-apex-admin"
+  },
+  "homepage": "https://github.com/ingkele/apex-admin#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}
