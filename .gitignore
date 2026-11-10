@@ -35,3 +35,6 @@ data/*.sqlite-journal
 
 # Playwright CLI 调试产物
 .playwright-cli/
+
+# guardAI 台账（本地记录，不出本机）
+.guard/records/

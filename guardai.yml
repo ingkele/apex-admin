@@ -1,0 +1,131 @@
+# ============================================================
+# guardAI 项目骨架规则配置（由 guardAI init 生成，可人工修改）
+# 项目: apex-admin | 生态: Node | 骨架: Generic
+# 本文件是"规则资产"——引擎只是执行宿主，升级宿主时配置原样沿用。
+# 语法：支持 key: value、嵌套、- 列表、# 注释。字符串含空格请加引号。
+# ============================================================
+
+version: 1
+
+# 项目形态：app（应用）/ library（类库）。落位规则按 scope 匹配此值才生效
+# init 自动判定，可人工修改（类库项目的扩展类放模块根是惯例，落位规则 scope: app 不适用）
+project_type: app
+
+# 参与检查的文件扩展名（小写，带点）
+# init 按仓库实测到的代码文件扩展名生成，改用其他扩展名后请同步更新
+include_extensions:
+  - .js
+  - .ts
+  - .tsx
+
+# 同义目录黑名单：路径中出现任一目录名即违规（不区分大小写）
+# 注意：规范目录名（如 Utils/Extensions）不在黑名单——它们是合法归宿
+# 前端适配（2026-11-10）：shared / lib 是 React+shadcn 生态标准惯例目录
+# （shadcn 官方脚手架即 src/lib/utils），已从黑名单移除；其余野目录黑名单照旧
+banned_dirs:
+  - utils2
+  - util
+  - uitli
+  - uitls
+  - helper
+  - helpers
+  - common
+  - misc
+  - temp
+  - tmp
+  - libs
+  - commonutils
+  - mynewhelpers
+
+# 目录白名单：文件相对路径必须命中至少一条（** 任意层，* 单层）
+# 前段是 init 实测的目录基线快照（每层既有目录一条 '目录/*'，精确放行存量骨架）；
+# 后段是通用兜底；新增目录先与团队确认后补进来
+allowed_dirs:
+  - path: src/*
+    purpose: 代码目录（init 实测既有目录）
+  - path: src/api/*
+    purpose: init 实测既有子目录
+  - path: src/api/modules/*
+    purpose: init 实测既有子目录
+  - path: src/components/*
+    purpose: init 实测既有子目录
+  - path: src/components/layout/*
+    purpose: init 实测既有子目录
+  - path: src/components/shared/*
+    purpose: 跨页面复用的业务共享组件（DemoBlock/PageHeader/FilterBar 等；React 生态惯例目录）
+  - path: src/components/ui/*
+    purpose: init 实测既有子目录
+  - path: src/lib/*
+    purpose: 基础工具与单例模块（utils/http/format 等；shadcn 生态惯例即 src/lib/utils）
+  - path: src/mocks/*
+    purpose: init 实测既有子目录
+  - path: src/routes/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/demo/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/demo/access/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/demo/breadcrumb/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/demo/hide-children/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/demo/tabs/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/error/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/examples/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/examples/form/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/examples/vxe-table/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/models/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/services/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/system/*
+    purpose: init 实测既有子目录
+  - path: src/routes/_auth/tasks/*
+    purpose: init 实测既有子目录
+  - path: src/stores/*
+    purpose: init 实测既有子目录
+  - path: src/styles/*
+    purpose: init 实测既有子目录
+  - path: *
+    purpose: 仓库根目录代码文件（init 实测既有）
+  - path: tests/**
+    purpose: 测试
+  - path: config/**
+    purpose: 配置
+  - path: templates/**
+    purpose: 模板资产
+  - path: scripts/**
+    purpose: 脚本
+  - path: docs/**
+    purpose: 文档
+
+# 落位规则：文件名命中 file_pattern 时，所在目录必须命中 dir_pattern
+# scope: 适用项目形态（app / library / all），只在 project_type 匹配时生效
+placement_rules:
+  - name: 工具类必须放 Utils 目录
+    file_pattern: "*Helper.cs"
+    dir_pattern: "**/Utils/**"
+    suggest: "移动到所在项目的 Utils/ 目录下，例如 src/MyApp.Infrastructure/Utils/"
+    scope: app
+  - name: 工具类必须放 Utils 目录
+    file_pattern: "*Utils.cs"
+    dir_pattern: "**/Utils/**"
+    suggest: "移动到所在项目的 Utils/ 目录下；优先复用已有 Utils/ 内的同类方法"
+    scope: app
+  - name: 扩展类必须放 Extensions 目录
+    file_pattern: "*Extensions.cs"
+    dir_pattern: "**/Extensions/**"
+    suggest: "移动到所在项目的 Extensions/ 目录下；先检索是否已有同名扩展方法"
+    scope: app
+
+# 豁免规则：命中 path 的文件整体跳过检查（合法例外，逐条注明理由）
+exclusions:
+  - path: .env.example
+    reason: 环境变量示例文件（刻意入库的模板，仅含占位值零真实凭据；.env* 实际文件已被 .gitignore 排除）

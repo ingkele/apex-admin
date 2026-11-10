@@ -1,0 +1,496 @@
+{
+  "generatedAt": "2026-11-10T20:09:57.6953626+08:00",
+  "pairs": [
+    {
+      "key": "8588276444e9159b",
+      "a": ".async@.e2e-vxe.js",
+      "b": ".async@.e2e-run-code.js"
+    },
+    {
+      "key": "864eb6485c686823",
+      "a": ".useCan@src/components/shared/can.tsx",
+      "b": ".Can@src/components/shared/can.tsx"
+    },
+    {
+      "key": "807b66ac8d9152c3",
+      "a": ".CommandPalette@src/components/shared/command-palette.tsx",
+      "b": ".collectLeaves@src/components/layout/sidebar.tsx"
+    },
+    {
+      "key": "99a7e03bafd5fbe1",
+      "a": "ButtonProps.Button@src/components/ui/button.tsx",
+      "b": "BadgeProps.Badge@src/components/ui/badge.tsx"
+    },
+    {
+      "key": "e4dccd868181d2cd",
+      "a": ".CardHeader@src/components/ui/card.tsx",
+      "b": ".Card@src/components/ui/card.tsx"
+    },
+    {
+      "key": "98425172027c8954",
+      "a": ".CardTitle@src/components/ui/card.tsx",
+      "b": ".Card@src/components/ui/card.tsx"
+    },
+    {
+      "key": "b944b7585f486498",
+      "a": ".CardTitle@src/components/ui/card.tsx",
+      "b": ".CardHeader@src/components/ui/card.tsx"
+    },
+    {
+      "key": "c0ff956a1035f6c6",
+      "a": ".CardContent@src/components/ui/card.tsx",
+      "b": ".Card@src/components/ui/card.tsx"
+    },
+    {
+      "key": "5da874b0624446f3",
+      "a": ".CardContent@src/components/ui/card.tsx",
+      "b": ".CardHeader@src/components/ui/card.tsx"
+    },
+    {
+      "key": "5bda05e9d90faf9d",
+      "a": ".CardContent@src/components/ui/card.tsx",
+      "b": ".CardTitle@src/components/ui/card.tsx"
+    },
+    {
+      "key": "d40a831b754dd245",
+      "a": ".Textarea@src/components/ui/input.tsx",
+      "b": ".Card@src/components/ui/card.tsx"
+    },
+    {
+      "key": "dcba0bb9e5dddd29",
+      "a": ".Textarea@src/components/ui/input.tsx",
+      "b": ".CardHeader@src/components/ui/card.tsx"
+    },
+    {
+      "key": "d6e7225b6d9648d8",
+      "a": ".Textarea@src/components/ui/input.tsx",
+      "b": ".CardTitle@src/components/ui/card.tsx"
+    },
+    {
+      "key": "4b648ccf4376b6a6",
+      "a": ".Label@src/components/ui/input.tsx",
+      "b": ".Card@src/components/ui/card.tsx"
+    },
+    {
+      "key": "d952f744e345282a",
+      "a": ".Label@src/components/ui/input.tsx",
+      "b": ".CardHeader@src/components/ui/card.tsx"
+    },
+    {
+      "key": "d804c4d9650153ed",
+      "a": ".Label@src/components/ui/input.tsx",
+      "b": ".CardTitle@src/components/ui/card.tsx"
+    },
+    {
+      "key": "98fd47e145d0100f",
+      "a": ".Label@src/components/ui/input.tsx",
+      "b": ".CardContent@src/components/ui/card.tsx"
+    },
+    {
+      "key": "31c0a2c509191e15",
+      "a": ".Label@src/components/ui/input.tsx",
+      "b": ".Textarea@src/components/ui/input.tsx"
+    },
+    {
+      "key": "ca15d4a1d9a3ef0a",
+      "a": ".Skeleton@src/components/ui/skeleton.tsx",
+      "b": ".CommandPalette@src/components/shared/command-palette.tsx"
+    },
+    {
+      "key": "2ab2536331e33f2f",
+      "a": ".Skeleton@src/components/ui/skeleton.tsx",
+      "b": ".MiniStat@src/components/shared/stat-tile.tsx"
+    },
+    {
+      "key": "4adef9d991be9bb5",
+      "a": ".Skeleton@src/components/ui/skeleton.tsx",
+      "b": ".CardContent@src/components/ui/card.tsx"
+    },
+    {
+      "key": "cfa8ba4a4742124d",
+      "a": ".formatDateTimeSec@src/lib/format.ts",
+      "b": ".formatDateTime@src/lib/format.ts"
+    },
+    {
+      "key": "deb7d8db5a188e5d",
+      "a": ".LoginPage@src/routes/login.tsx",
+      "b": ".Row@src/components/shared/demo-block.tsx"
+    },
+    {
+      "key": "0af78f83b93229db",
+      "a": ".AnalyticsPage@src/routes/_auth/analytics.tsx",
+      "b": ".PageHeader@src/components/shared/page-header.tsx"
+    },
+    {
+      "key": "39d6a612f20dbe2a",
+      "a": ".failTimeOf@src/routes/_auth/dashboard.tsx",
+      "b": ".formatDateTime@src/lib/format.ts"
+    },
+    {
+      "key": "3e99293a7db38284",
+      "a": ".failTimeOf@src/routes/_auth/dashboard.tsx",
+      "b": ".formatDateTimeSec@src/lib/format.ts"
+    },
+    {
+      "key": "6298a27ca49ac5cb",
+      "a": ".DragHandle@src/routes/_auth/dashboard.tsx",
+      "b": ".Sidebar@src/components/layout/sidebar.tsx"
+    },
+    {
+      "key": "fe61656511f9ac5a",
+      "a": ".DragHandle@src/routes/_auth/dashboard.tsx",
+      "b": ".TabBar@src/components/layout/tab-bar.tsx"
+    },
+    {
+      "key": "d66626ab3af79bcd",
+      "a": ".DragHandle@src/routes/_auth/dashboard.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "a357a79f44137b0c",
+      "a": ".DashboardPage@src/routes/_auth/dashboard.tsx",
+      "b": ".Row@src/components/shared/demo-block.tsx"
+    },
+    {
+      "key": "48ec6b7783defbc8",
+      "a": ".DashboardPage@src/routes/_auth/dashboard.tsx",
+      "b": ".App@src/main.tsx"
+    },
+    {
+      "key": "7b2747abec41564f",
+      "a": ".DashboardPage@src/routes/_auth/dashboard.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "df08be0c09454b8c",
+      "a": ".Page@src/routes/_auth/demo/hide-children/b.tsx",
+      "b": ".Page@src/routes/_auth/demo/hide-children/a.tsx"
+    },
+    {
+      "key": "a75854ac503e39f7",
+      "a": ".Page@src/routes/_auth/demo/iframe.tailwind.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "a3f364b959670b58",
+      "a": ".Page@src/routes/_auth/demo/tanstack-query.tsx",
+      "b": ".Row@src/components/shared/demo-block.tsx"
+    },
+    {
+      "key": "dadbfc76a832b16c",
+      "a": ".Page@src/routes/_auth/examples/col-page.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "2136086eb90b9751",
+      "a": ".Page@src/routes/_auth/examples/context-menu.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "5ad23e775815562b",
+      "a": ".Page@src/routes/_auth/examples/form/api.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "75f28ab239e3158c",
+      "a": ".Page@src/routes/_auth/examples/form/basic.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/array.tsx"
+    },
+    {
+      "key": "8fb8d8cbe2d72223",
+      "a": ".BasicForm@src/routes/_auth/examples/form/basic.tsx",
+      "b": ".ago@src/mocks/db.ts"
+    },
+    {
+      "key": "836b7cb90a893c09",
+      "a": ".Page@src/routes/_auth/examples/form/collapse.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "e272b50f9fafcc04",
+      "a": ".Page@src/routes/_auth/examples/form/demo.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/array.tsx"
+    },
+    {
+      "key": "d0c9b62c258df01b",
+      "a": ".Page@src/routes/_auth/examples/form/demo.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/basic.tsx"
+    },
+    {
+      "key": "cf1f79bdaa17b339",
+      "a": ".WizardDemo@src/routes/_auth/examples/form/demo.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "8ddde1d78faf64c5",
+      "a": ".Page@src/routes/_auth/examples/form/dynamic.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/array.tsx"
+    },
+    {
+      "key": "14183a5066a863b8",
+      "a": ".Page@src/routes/_auth/examples/form/dynamic.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/basic.tsx"
+    },
+    {
+      "key": "604666c6fa9da420",
+      "a": ".Page@src/routes/_auth/examples/form/dynamic.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/demo.tsx"
+    },
+    {
+      "key": "595ff5e7b88b578e",
+      "a": ".Page@src/routes/_auth/examples/form/merge.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/array.tsx"
+    },
+    {
+      "key": "b43047f829d019ea",
+      "a": ".Page@src/routes/_auth/examples/form/merge.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/basic.tsx"
+    },
+    {
+      "key": "a3f4fc399d798ca8",
+      "a": ".Page@src/routes/_auth/examples/form/merge.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/demo.tsx"
+    },
+    {
+      "key": "9cfb03aa6b746b98",
+      "a": ".Page@src/routes/_auth/examples/form/merge.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/dynamic.tsx"
+    },
+    {
+      "key": "de2323bdc1ac85ae",
+      "a": ".Page@src/routes/_auth/examples/form/search.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/array.tsx"
+    },
+    {
+      "key": "64f830a5b35674ba",
+      "a": ".Page@src/routes/_auth/examples/form/validation.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "1261ddb4b61a7f6a",
+      "a": ".Page@src/routes/_auth/examples/form/validation.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/search.tsx"
+    },
+    {
+      "key": "c5c744db286b738b",
+      "a": ".Page@src/routes/_auth/examples/image-crop.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "023fc2c519d85980",
+      "a": ".Page@src/routes/_auth/examples/image-crop.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/search.tsx"
+    },
+    {
+      "key": "663388a0f63d8652",
+      "a": ".Page@src/routes/_auth/examples/loading.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "4f4dffb07ee77f87",
+      "a": ".Page@src/routes/_auth/examples/loading.tsx",
+      "b": ".Page@src/routes/_auth/demo/iframe.tailwind.tsx"
+    },
+    {
+      "key": "b4facda3a7d828af",
+      "a": ".Page@src/routes/_auth/examples/resize.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "78061e004cb2d8e8",
+      "a": ".Page@src/routes/_auth/examples/rich-text.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "a36e056a7573679f",
+      "a": ".Page@src/routes/_auth/examples/rich-text.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/search.tsx"
+    },
+    {
+      "key": "c2619b8041ad0e29",
+      "a": ".Page@src/routes/_auth/examples/states.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "7fc269b6a9dff39d",
+      "a": ".Page@src/routes/_auth/examples/states.tsx",
+      "b": ".Page@src/routes/_auth/examples/loading.tsx"
+    },
+    {
+      "key": "0d2b3d0365f9cb4a",
+      "a": ".Page@src/routes/_auth/examples/steps.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "12c305f166781a63",
+      "a": ".Page@src/routes/_auth/examples/steps.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/search.tsx"
+    },
+    {
+      "key": "c5b95fb8049c0872",
+      "a": ".Page@src/routes/_auth/examples/steps.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/validation.tsx"
+    },
+    {
+      "key": "7199feb733032b39",
+      "a": ".Page@src/routes/_auth/examples/steps.tsx",
+      "b": ".Page@src/routes/_auth/examples/image-crop.tsx"
+    },
+    {
+      "key": "4539597568ba337e",
+      "a": ".StepsDemo@src/routes/_auth/examples/steps.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "e609e8d52968b943",
+      "a": ".Page@src/routes/_auth/examples/table-ops.tsx",
+      "b": ".Page@src/routes/_auth/examples/states.tsx"
+    },
+    {
+      "key": "0fc91f3758b83b5a",
+      "a": ".TableOpsDemo@src/routes/_auth/examples/table-ops.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "d23207227c11a0b5",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/form.tsx",
+      "b": ".AnalyticsPage@src/routes/_auth/analytics.tsx"
+    },
+    {
+      "key": "3eebad9b8affd5f8",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/form.tsx",
+      "b": ".Page@src/routes/_auth/examples/steps.tsx"
+    },
+    {
+      "key": "95a7158e5f2f9816",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/form.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/basic.tsx"
+    },
+    {
+      "key": "dc4574202b8403a9",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/remote.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/search.tsx"
+    },
+    {
+      "key": "b4ec19dbbe75b535",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/remote.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/validation.tsx"
+    },
+    {
+      "key": "fff32728f47b3915",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/remote.tsx",
+      "b": ".Page@src/routes/_auth/examples/steps.tsx"
+    },
+    {
+      "key": "0bcbd85bc19f7c29",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/remote.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/basic.tsx"
+    },
+    {
+      "key": "8a6979b3067c41e2",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/tree.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/remote.tsx"
+    },
+    {
+      "key": "5080a7001c5d1e17",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/viewed.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/edit-row.tsx"
+    },
+    {
+      "key": "95520de4b9815363",
+      "a": ".ViewedTable@src/routes/_auth/examples/vxe-table/viewed.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "c49d5334c78bd0d5",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/virtual.tsx",
+      "b": ".Page@src/routes/_auth/examples/form/basic.tsx"
+    },
+    {
+      "key": "a41aa94deb7b63d5",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/virtual.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/basic.tsx"
+    },
+    {
+      "key": "2a2d446d6c943212",
+      "a": ".Page@src/routes/_auth/examples/vxe-table/virtual.tsx",
+      "b": ".Page@src/routes/_auth/examples/vxe-table/form.tsx"
+    },
+    {
+      "key": "ae1838ff78c75295",
+      "a": ".ProfilePage@src/routes/_auth/profile.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "1ab1153f52a47f0a",
+      "a": ".DeptsPage@src/routes/_auth/system/depts.tsx",
+      "b": ".PageHeader@src/components/shared/page-header.tsx"
+    },
+    {
+      "key": "3886abf0a2a4457f",
+      "a": ".DeptsPage@src/routes/_auth/system/depts.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "8e6121f9ba99d860",
+      "a": ".DeptsPage@src/routes/_auth/system/depts.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "62e5739708e8e984",
+      "a": ".DictsPage@src/routes/_auth/system/dicts.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "2b648a023641ffa9",
+      "a": ".buildRows@src/routes/_auth/system/menus.tsx",
+      "b": ".buildRows@src/routes/_auth/system/depts.tsx"
+    },
+    {
+      "key": "82dfa1539d6de5d6",
+      "a": ".MenusPage@src/routes/_auth/system/menus.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "9c3dbda9a3992b2d",
+      "a": ".RolesPage@src/routes/_auth/system/roles.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "c42ce110ebec37de",
+      "a": ".SettingsPage@src/routes/_auth/system/settings.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "870a6867b915f202",
+      "a": ".TaskDetailPage@src/routes/_auth/tasks/$id.tsx",
+      "b": ".Row@src/components/shared/demo-block.tsx"
+    },
+    {
+      "key": "c32239c06e6e714b",
+      "a": ".TaskDetailPage@src/routes/_auth/tasks/$id.tsx",
+      "b": ".PageHeader@src/components/shared/page-header.tsx"
+    },
+    {
+      "key": "241ce32dbf8153ca",
+      "a": ".TaskDetailPage@src/routes/_auth/tasks/$id.tsx",
+      "b": ".StatTile@src/components/shared/stat-tile.tsx"
+    },
+    {
+      "key": "88d4d4a2b495e728",
+      "a": ".TaskDetailPage@src/routes/_auth/tasks/$id.tsx",
+      "b": ".Skeleton@src/components/ui/skeleton.tsx"
+    },
+    {
+      "key": "4219861361e751b1",
+      "a": ".TaskDetailPage@src/routes/_auth/tasks/$id.tsx",
+      "b": ".DragHandle@src/routes/_auth/dashboard.tsx"
+    },
+    {
+      "key": "2c2b1e440a8625de",
+      "a": ".TaskListPage@src/routes/_auth/tasks/index.tsx",
+      "b": ".App@src/main.tsx"
+    }
+  ],
+  "detectorVersion": 4
+}
