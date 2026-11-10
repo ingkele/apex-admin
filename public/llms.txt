@@ -1,0 +1,20 @@
+# apex-admin
+
+> 开箱即用的后台管理前端模板：React 19 + TanStack Router + Base UI + Tailwind v4，内置权限、主题、多页签与 mock/live 双模数据层。AI 编码工具参与开发前，请先读 AGENTS.md。
+
+核心入口（按优先级）：
+
+- [AGENTS.md](AGENTS.md): 项目使用手册——技术栈、目录结构、路由三处同步铁律、组件体系速查、设计 token、新增页面 7 步配方、测试约定、开发红线。AI 编码必读。
+- [README.md](README.md): 项目介绍与快速开始。
+- [guardai.yml](guardai.yml): 目录白名单（allowed_dirs）——新建文件必须落进白名单目录。
+
+关键源码索引：
+
+- [src/app.config.ts](src/app.config.ts): 应用配置 + 导航树 NAV_GROUPS + NavIcon 类型（改导航必改此处）。
+- [src/components/layout/sidebar.tsx](src/components/layout/sidebar.tsx): 侧边栏与图标映射 ICONS（改导航第三处同步点）。
+- [src/routes/](src/routes/): TanStack Router 文件路由，页面组件都在这里。
+- [src/components/ui/](src/components/ui/): 基础控件（Base UI 封装）。
+- [src/components/shared/](src/components/shared/): 业务通用件（DemoBlock / PageHeader / FilterBar / FormKit 等）。
+- [src/mocks/](src/mocks/): 演示数据；示例页一律自包含 mock，不发真实请求。
+
+常用命令：`pnpm dev`（端口 5180）/ `pnpm build` / `pnpm typecheck`。注意 `src/routeTree.gen.ts` 自动生成、禁止手改；typecheck 报路由类型错时先 build 刷新路由树。
