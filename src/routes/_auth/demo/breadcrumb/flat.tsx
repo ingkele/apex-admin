@@ -1,4 +1,4 @@
-import { createFileRoute, useLocation } from '@tanstack/react-router'
+import { createFileRoute, Link, useLocation } from '@tanstack/react-router'
 import { Card } from '@/components/ui/card'
 import { DemoBlock } from '@/components/shared/demo-block'
 import { PageHeader } from '@/components/shared/page-header'
@@ -37,6 +37,13 @@ if (exact.flat) return [meta.title]  // 只返回标题`}
             <p className="mt-3 text-[11.5px] leading-relaxed text-muted">
               适合「独立工具页」—— 与主业务层级无关的页面（如个人中心、关于），
               显示完整层级反而误导时用平级模式。
+            </p>
+            <p className="mt-2 text-[11.5px] leading-relaxed text-muted">
+              进阶：{' '}
+              <Link to="/demo/breadcrumb/flat-detail" className="text-brand-600 underline underline-offset-2">
+                平级模式详情（隐藏页）
+              </Link>{' '}
+              —— 菜单里没有入口的详情页如何保持面包屑与菜单高亮。
             </p>
           </DemoBlock>
         </div>

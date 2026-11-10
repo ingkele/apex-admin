@@ -43,6 +43,7 @@ export function CommandPalette() {
     const out: { trail: string; label: string; to: string; query?: Record<string, string | number> }[] = []
     const walk = (children: NavChild[], trail: string[]) => {
       for (const c of children) {
+        if (c.hideInMenu) continue
         if (c.permission && !hasPermission(c.permission)) continue
         if (c.children?.length && !c.hideChildren) {
           walk(c.children, [...trail, c.label])

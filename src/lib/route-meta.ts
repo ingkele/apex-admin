@@ -59,6 +59,11 @@ export function resolveRouteMeta(pathname: string): RouteMeta {
   if (/^\/tasks\/[^/]+$/.test(pathname)) {
     return { group: '任务中心', title: '任务详情', closable: true }
   }
+  // 标签页详情（隐藏详情页：hideInMenu + 页签上限演示），标题带 id 便于页签区分
+  const tabDetail = /^\/demo\/tabs\/detail\/([^/]+)$/.exec(pathname)
+  if (tabDetail) {
+    return { group: '演示', title: `标签页详情 #${tabDetail[1]}`, closable: true }
+  }
   if (pathname === '/profile') return { title: '个人中心', closable: true }
   if (pathname === '/about') return { title: '关于', closable: true }
 
@@ -67,12 +72,16 @@ export function resolveRouteMeta(pathname: string): RouteMeta {
 
 /** 面包屑层级：「其他」组只显示一级，其余「分组 › …父级链 › 页面」 */
 export function resolveBreadcrumb(pathname: string): string[] {
+  // 动态详情页：面包屑继承父级链（与菜单树登记同口径）
+  if (/^\/tasks\/[^/]+$/.test(pathname)) return ['任务中心', '任务列表', '任务详情']
+  const tabDetail = /^\/demo\/tabs\/detail\/([^/]+)$/.exec(pathname)
+  if (tabDetail) return ['演示', '功能', '标签页', `标签页详情 #${tabDetail[1]}`]
+
   const meta = resolveRouteMeta(pathname)
   const exact = FLAT.get(pathname)
   if (!exact || !meta.group || meta.group === '其他') return [meta.title]
   // 工作台为首页，原型只显示一级
   if (pathname === HOME_TAB.path) return [meta.title]
-  if (/^\/tasks\/[^/]+$/.test(pathname)) return ['任务中心', '任务列表', '任务详情']
   // 平级模式：只显示当前页标题
   if (exact.flat) return [meta.title]
   return [meta.group, ...exact.parents, meta.title]

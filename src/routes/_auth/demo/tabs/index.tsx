@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import * as React from 'react'
 import { toast } from 'sonner'
 import { Home, Layers, X } from 'lucide-react'
@@ -9,7 +9,7 @@ import { PageHeader } from '@/components/shared/page-header'
 import { useTabsStore } from '@/stores/tabs.store'
 import { cn } from '@/lib/utils'
 
-export const Route = createFileRoute('/_auth/demo/tabs')({
+export const Route = createFileRoute('/_auth/demo/tabs/')({
   component: Page,
 })
 
@@ -75,6 +75,37 @@ tabs.closeAll()             // 全关，回工作台`}
             </div>
             <p className="mt-3 text-[11px] leading-relaxed text-soft">
               「关闭当前」会自动跳到相邻页签；固定页签「工作台」永远保留，不可被任何 API 关闭。
+            </p>
+          </DemoBlock>
+
+          <DemoBlock
+            title="隐藏详情页与页签上限"
+            desc="详情页是动态路由 /demo/tabs/detail/:id：不进菜单（hideInMenu），但激活时侧边栏高亮「标签页」（activePath）；同组页签最多 3 个（maxNumOfOpenTab: 3）"
+            code={`// route-meta.ts —— 动态路由登记标题（带 id 区分页签）
+const tabDetail = /^\\/demo\\/tabs\\/detail\\/([^/]+)$/g.exec(pathname)
+→ { title: '标签页详情 #1', closable: true }
+
+// tabs.store.ts —— 同组页签上限
+const TAB_GROUP_LIMITS = [
+  { prefix: '/demo/tabs/detail', max: 3 },
+]  // 超出自动关闭最早的（对齐 vben maxNumOfOpenTab）`}
+          >
+            <div className="flex flex-wrap gap-2.5">
+              {['1', '2', '3', '4'].map((n) => (
+                <Link
+                  key={n}
+                  to="/demo/tabs/detail/$id"
+                  params={{ id: n }}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-[12px] text-ink transition hover:border-brand-300 hover:bg-brand-50/60 hover:text-brand-700"
+                >
+                  <Layers className="h-3 w-3" />
+                  打开详情 #{n}
+                </Link>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] leading-relaxed text-soft">
+              连点 4 个详情：页签栏里「标签页详情」组永远最多 3 个 —— 打开 #4 时 #1 自动关闭。
+              详情页不在左侧菜单里（URL / 页内链接直达），但面包屑会补齐「演示 › 功能 › 标签页 › 详情」链。
             </p>
           </DemoBlock>
         </div>

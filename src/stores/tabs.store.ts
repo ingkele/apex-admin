@@ -12,6 +12,11 @@ export interface AppTab {
   title: string
 }
 
+/** 同组页签数量上限（对齐 vben 路由 maxNumOfOpenTab）：路径前缀分组，超出时自动关闭最早的 */
+const TAB_GROUP_LIMITS: { prefix: string; max: number }[] = [
+  { prefix: '/demo/tabs/detail', max: 3 },
+]
+
 interface TabsState {
   tabs: AppTab[]
   /** 登记/更新页签（标题可能因路由元信息变化而更新） */
@@ -39,7 +44,16 @@ export const useTabsStore = create<TabsState>()(
             if (exist.title === tab.title) return s
             return { tabs: s.tabs.map((t) => (t.path === tab.path ? { ...t, title: tab.title } : t)) }
           }
-          return { tabs: [...s.tabs, tab] }
+          let next = s.tabs
+          // 页签上限：同组已满时先淘汰最早的（固定页签的路径不会命中任何分组前缀）
+          const limit = TAB_GROUP_LIMITS.find((l) => tab.path.startsWith(l.prefix))
+          if (limit) {
+            const group = next.filter((t) => t.path.startsWith(limit.prefix))
+            for (const evict of group.slice(0, Math.max(0, group.length - limit.max + 1))) {
+              next = next.filter((t) => t.path !== evict.path)
+            }
+          }
+          return { tabs: [...next, tab] }
         }),
 
       close: (path) => {

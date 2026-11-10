@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import {
   AppWindow, Blocks, BookMarked, Brain, Braces, ChartNoAxesCombined, ChevronDown, CircleAlert,
   CircleDashed, ClipboardCheck, ClipboardCopy, Component, Download, Droplets, ExternalLink,
-  EyeOff, FlaskConical, Footprints, Frame, Info, KeyRound, Layers, LayoutDashboard, Link2,
+  EyeOff, FlaskConical, Footprints, Frame, Hash, Info, KeyRound, Layers, LayoutDashboard, Link2,
   ListChecks, ListTree, Lock, LogOut, Maximize, Menu, MenuSquare, MessageSquareDot, Network, Palette,
   PanelLeftClose, Route, ScrollText, Server, Settings, ShieldCheck, SlidersHorizontal, Sparkles,
   SquareArrowOutUpRight, Table2, Tag, TextCursorInput, TimerOff, Users, Zap,
@@ -65,11 +65,25 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   access: ShieldCheck,
   breadcrumb: Route,
   guarded: Lock,
+  bigint: Hash,
 }
 
 /** 激活判断：工作台精确匹配，其余前缀匹配 */
 function isActive(pathname: string, to: string) {
   return to === '/dashboard' ? pathname === '/dashboard' : pathname.startsWith(to)
+}
+
+/** 激活让渡（activePath）：命中 hideInMenu 隐藏项时，返回其 activePath 指向的菜单路径集合 */
+function resolveActiveAliases(pathname: string): ReadonlySet<string> {
+  const out = new Set<string>()
+  const walk = (children: NavChild[]) => {
+    for (const c of children) {
+      if (c.hideInMenu && c.activePath && c.to && isActive(pathname, c.to)) out.add(c.activePath)
+      if (c.children?.length) walk(c.children)
+    }
+  }
+  for (const g of NAV_GROUPS) walk(g.children)
+  return out
 }
 
 /** 菜单徽标（数字 / 短文本，多色调） */
@@ -128,18 +142,22 @@ interface NavNodeProps {
   onToggle: (id: string) => void
   /** 激活链路（含任一后代激活的父级 idPath） */
   activeTrail: ReadonlySet<string>
+  /** 激活让渡：hideInMenu 隐藏页命中时应高亮的菜单路径集合 */
+  activeAliases: ReadonlySet<string>
   pathname: string
   collapsed: boolean
 }
 
 /** 单个导航节点：叶子 → 链接；父级 → 展开/收起（折叠态侧弹） */
-function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pathname, collapsed }: NavNodeProps) {
+function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, activeAliases, pathname, collapsed }: NavNodeProps) {
   const navigate = useNavigate()
+  // hideInMenu：不渲染（页面仅 URL / 页内链接直达），标题仍登记在 route-meta
+  if (node.hideInMenu) return null
   // hideChildren：有 children 但折叠为单链接，子页面仅 URL 直达
   const hasKids = !!node.children?.length && !node.hideChildren
   const open = expanded.has(idPath)
   const childActive = hasKids && activeTrail.has(idPath)
-  const selfActive = !hasKids && !!node.to && isActive(pathname, node.to)
+  const selfActive = !hasKids && !!node.to && (isActive(pathname, node.to) || activeAliases.has(node.to))
   const active = childActive || selfActive
   // 激活态可换图标（activeIcon）
   const Icon = ICONS[active && node.activeIcon ? node.activeIcon : (node.icon ?? groupIcon)]
@@ -270,6 +288,7 @@ function NavNode({ node, groupIcon, idPath, expanded, onToggle, activeTrail, pat
                   expanded={expanded}
                   onToggle={onToggle}
                   activeTrail={activeTrail}
+                  activeAliases={activeAliases}
                   pathname={pathname}
                   collapsed={collapsed}
                 />
@@ -328,6 +347,9 @@ export function Sidebar() {
       ),
     [user, hasPermission],
   )
+
+  /** 激活让渡集合：hideInMenu 隐藏页命中时高亮 activePath 指向的菜单项 */
+  const activeAliases = React.useMemo(() => resolveActiveAliases(pathname), [pathname])
 
   /** 激活链路：任一后代激活的父级节点集合（键 = 分组/父级链） */
   const activeTrail = React.useMemo(() => {
@@ -439,6 +461,7 @@ export function Sidebar() {
                     expanded={expanded}
                     onToggle={onToggle}
                     activeTrail={activeTrail}
+                    activeAliases={activeAliases}
                     pathname={pathname}
                     collapsed={collapsed}
                   />

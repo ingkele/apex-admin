@@ -22,6 +22,10 @@ export interface NavChild {
   target?: '_blank'
   /** 隐藏子菜单：有 children 但侧边栏折叠为单链接，子页面仅 URL 直达 */
   hideChildren?: boolean
+  /** 隐藏菜单项：侧边栏与命令面板均不渲染，页面仅 URL / 页内链接直达（详情页常用） */
+  hideInMenu?: boolean
+  /** 激活让渡：隐藏项命中时，侧边栏改为高亮此路径指向的菜单项（对齐 vben activePath） */
+  activePath?: string
   /** 面包屑平级模式：只显示当前页标题，不带分组/父级链 */
   breadcrumbFlat?: boolean
   /** 面包屑追加父级标签（详情页保留层级链用，如 ['层级模式']） */
@@ -48,7 +52,7 @@ export type NavIcon =
   | 'demo' | 'badge' | 'sparkles' | 'external' | 'nested' | 'embed'
   | 'feature' | 'expired' | 'palette' | 'watermark' | 'preference' | 'tabs' | 'hideMenu'
   | 'fullscreen' | 'download' | 'clipboard' | 'param' | 'newWindow' | 'tanstack' | 'serialize'
-  | 'access' | 'breadcrumb' | 'guarded'
+  | 'access' | 'breadcrumb' | 'guarded' | 'bigint'
 
 export const appConfig = {
   /** 应用标识 */
@@ -305,6 +309,7 @@ export const NAV_GROUPS: NavGroup[] = [
           { label: '新窗口打开', to: '/demo/new-window', icon: 'newWindow', target: '_blank' },
           { label: 'TanStack Query', to: '/demo/tanstack-query', icon: 'tanstack' },
           { label: '参数序列化', to: '/demo/serialize', icon: 'serialize' },
+          { label: 'JSON BigInt', to: '/demo/json-bigint', icon: 'bigint' },
         ],
       },
       {
@@ -316,6 +321,8 @@ export const NAV_GROUPS: NavGroup[] = [
           { label: '菜单可见(403)', to: '/demo/access/menu-403' },
           { label: '受保护页面（守卫）', to: '/demo/access/guarded', icon: 'guarded', permission: 'user:manage' },
           { label: 'Super 可见', to: '/demo/access/super', icon: 'guarded', permission: 'user:manage' },
+          { label: 'Admin 可见', to: '/demo/access/admin', permission: 'task:retry' },
+          { label: 'User 可见', to: '/demo/access/user' },
         ],
       },
       {
@@ -323,8 +330,19 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'breadcrumb',
         children: [
           { label: '平级模式', to: '/demo/breadcrumb/flat', breadcrumbFlat: true },
+          { label: '平级模式详情', to: '/demo/breadcrumb/flat-detail', hideInMenu: true, activePath: '/demo/breadcrumb/flat', breadcrumbFlat: true },
           { label: '层级模式', to: '/demo/breadcrumb/hierarchy' },
           { label: '层级模式详情', to: '/demo/breadcrumb/detail', breadcrumbParents: ['层级模式'] },
+        ],
+      },
+      {
+        label: '缺省页',
+        icon: 'errors',
+        children: [
+          { label: '403 无权限', to: '/error/403' },
+          { label: '404 不存在', to: '/error/404' },
+          { label: '500 异常', to: '/error/500' },
+          { label: '离线页面', to: '/error/offline' },
         ],
       },
       {
@@ -359,7 +377,10 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'nested',
         children: [
           { label: '菜单 1', to: '/demo/nested/menu1' },
-          { label: '菜单 2', to: '/demo/nested/menu2' },
+          {
+            label: '菜单 2',
+            children: [{ label: '菜单 2-1', to: '/demo/nested/menu2/menu2-1' }],
+          },
           {
             label: '菜单 3',
             children: [
@@ -376,13 +397,7 @@ export const NAV_GROUPS: NavGroup[] = [
   },
   {
     label: '其他',
-    icon: 'errors',
-    children: [
-      { label: '403 无权限', to: '/error/403' },
-      { label: '404 不存在', to: '/error/404' },
-      { label: '500 异常', to: '/error/500' },
-      { label: '离线页面', to: '/error/offline' },
-      { label: '关于', to: '/about' },
-    ],
+    icon: 'about',
+    children: [{ label: '关于', to: '/about' }],
   },
 ]
