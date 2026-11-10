@@ -104,6 +104,16 @@ import { Route as AuthExamplesFormScrollToErrorRouteImport } from './routes/_aut
 import { Route as AuthExamplesFormSearchRouteImport } from './routes/_auth/examples/form/search'
 import { Route as AuthExamplesFormValidationRouteImport } from './routes/_auth/examples/form/validation'
 import { Route as AuthExamplesFormValueFormatRouteImport } from './routes/_auth/examples/form/value-format'
+import { Route as AuthExamplesVxeTableBasicRouteImport } from './routes/_auth/examples/vxe-table/basic'
+import { Route as AuthExamplesVxeTableCustomCellRouteImport } from './routes/_auth/examples/vxe-table/custom-cell'
+import { Route as AuthExamplesVxeTableEditCellRouteImport } from './routes/_auth/examples/vxe-table/edit-cell'
+import { Route as AuthExamplesVxeTableEditRowRouteImport } from './routes/_auth/examples/vxe-table/edit-row'
+import { Route as AuthExamplesVxeTableFixedRouteImport } from './routes/_auth/examples/vxe-table/fixed'
+import { Route as AuthExamplesVxeTableFormRouteImport } from './routes/_auth/examples/vxe-table/form'
+import { Route as AuthExamplesVxeTableRemoteRouteImport } from './routes/_auth/examples/vxe-table/remote'
+import { Route as AuthExamplesVxeTableTreeRouteImport } from './routes/_auth/examples/vxe-table/tree'
+import { Route as AuthExamplesVxeTableViewedRouteImport } from './routes/_auth/examples/vxe-table/viewed'
+import { Route as AuthExamplesVxeTableVirtualRouteImport } from './routes/_auth/examples/vxe-table/virtual'
 import { Route as AuthDemoTabsDetailIdRouteImport } from './routes/_auth/demo/tabs/detail.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -589,6 +599,66 @@ const AuthExamplesFormValueFormatRoute =
     path: '/examples/form/value-format',
     getParentRoute: () => AuthRoute,
   } as any)
+const AuthExamplesVxeTableBasicRoute =
+  AuthExamplesVxeTableBasicRouteImport.update({
+    id: '/examples/vxe-table/basic',
+    path: '/examples/vxe-table/basic',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableCustomCellRoute =
+  AuthExamplesVxeTableCustomCellRouteImport.update({
+    id: '/examples/vxe-table/custom-cell',
+    path: '/examples/vxe-table/custom-cell',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableEditCellRoute =
+  AuthExamplesVxeTableEditCellRouteImport.update({
+    id: '/examples/vxe-table/edit-cell',
+    path: '/examples/vxe-table/edit-cell',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableEditRowRoute =
+  AuthExamplesVxeTableEditRowRouteImport.update({
+    id: '/examples/vxe-table/edit-row',
+    path: '/examples/vxe-table/edit-row',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableFixedRoute =
+  AuthExamplesVxeTableFixedRouteImport.update({
+    id: '/examples/vxe-table/fixed',
+    path: '/examples/vxe-table/fixed',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableFormRoute =
+  AuthExamplesVxeTableFormRouteImport.update({
+    id: '/examples/vxe-table/form',
+    path: '/examples/vxe-table/form',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableRemoteRoute =
+  AuthExamplesVxeTableRemoteRouteImport.update({
+    id: '/examples/vxe-table/remote',
+    path: '/examples/vxe-table/remote',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableTreeRoute =
+  AuthExamplesVxeTableTreeRouteImport.update({
+    id: '/examples/vxe-table/tree',
+    path: '/examples/vxe-table/tree',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableViewedRoute =
+  AuthExamplesVxeTableViewedRouteImport.update({
+    id: '/examples/vxe-table/viewed',
+    path: '/examples/vxe-table/viewed',
+    getParentRoute: () => AuthRoute,
+  } as any)
+const AuthExamplesVxeTableVirtualRoute =
+  AuthExamplesVxeTableVirtualRouteImport.update({
+    id: '/examples/vxe-table/virtual',
+    path: '/examples/vxe-table/virtual',
+    getParentRoute: () => AuthRoute,
+  } as any)
 const AuthDemoTabsDetailIdRoute = AuthDemoTabsDetailIdRouteImport.update({
   id: '/demo/tabs/detail/$id',
   path: '/demo/tabs/detail/$id',
@@ -689,6 +759,16 @@ export interface FileRoutesByFullPath {
   '/examples/form/search': typeof AuthExamplesFormSearchRoute
   '/examples/form/validation': typeof AuthExamplesFormValidationRoute
   '/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
+  '/examples/vxe-table/basic': typeof AuthExamplesVxeTableBasicRoute
+  '/examples/vxe-table/custom-cell': typeof AuthExamplesVxeTableCustomCellRoute
+  '/examples/vxe-table/edit-cell': typeof AuthExamplesVxeTableEditCellRoute
+  '/examples/vxe-table/edit-row': typeof AuthExamplesVxeTableEditRowRoute
+  '/examples/vxe-table/fixed': typeof AuthExamplesVxeTableFixedRoute
+  '/examples/vxe-table/form': typeof AuthExamplesVxeTableFormRoute
+  '/examples/vxe-table/remote': typeof AuthExamplesVxeTableRemoteRoute
+  '/examples/vxe-table/tree': typeof AuthExamplesVxeTableTreeRoute
+  '/examples/vxe-table/viewed': typeof AuthExamplesVxeTableViewedRoute
+  '/examples/vxe-table/virtual': typeof AuthExamplesVxeTableVirtualRoute
   '/demo/tabs/': typeof AuthDemoTabsIndexRoute
   '/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -786,6 +866,16 @@ export interface FileRoutesByTo {
   '/examples/form/search': typeof AuthExamplesFormSearchRoute
   '/examples/form/validation': typeof AuthExamplesFormValidationRoute
   '/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
+  '/examples/vxe-table/basic': typeof AuthExamplesVxeTableBasicRoute
+  '/examples/vxe-table/custom-cell': typeof AuthExamplesVxeTableCustomCellRoute
+  '/examples/vxe-table/edit-cell': typeof AuthExamplesVxeTableEditCellRoute
+  '/examples/vxe-table/edit-row': typeof AuthExamplesVxeTableEditRowRoute
+  '/examples/vxe-table/fixed': typeof AuthExamplesVxeTableFixedRoute
+  '/examples/vxe-table/form': typeof AuthExamplesVxeTableFormRoute
+  '/examples/vxe-table/remote': typeof AuthExamplesVxeTableRemoteRoute
+  '/examples/vxe-table/tree': typeof AuthExamplesVxeTableTreeRoute
+  '/examples/vxe-table/viewed': typeof AuthExamplesVxeTableViewedRoute
+  '/examples/vxe-table/virtual': typeof AuthExamplesVxeTableVirtualRoute
   '/demo/tabs': typeof AuthDemoTabsIndexRoute
   '/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -885,6 +975,16 @@ export interface FileRoutesById {
   '/_auth/examples/form/search': typeof AuthExamplesFormSearchRoute
   '/_auth/examples/form/validation': typeof AuthExamplesFormValidationRoute
   '/_auth/examples/form/value-format': typeof AuthExamplesFormValueFormatRoute
+  '/_auth/examples/vxe-table/basic': typeof AuthExamplesVxeTableBasicRoute
+  '/_auth/examples/vxe-table/custom-cell': typeof AuthExamplesVxeTableCustomCellRoute
+  '/_auth/examples/vxe-table/edit-cell': typeof AuthExamplesVxeTableEditCellRoute
+  '/_auth/examples/vxe-table/edit-row': typeof AuthExamplesVxeTableEditRowRoute
+  '/_auth/examples/vxe-table/fixed': typeof AuthExamplesVxeTableFixedRoute
+  '/_auth/examples/vxe-table/form': typeof AuthExamplesVxeTableFormRoute
+  '/_auth/examples/vxe-table/remote': typeof AuthExamplesVxeTableRemoteRoute
+  '/_auth/examples/vxe-table/tree': typeof AuthExamplesVxeTableTreeRoute
+  '/_auth/examples/vxe-table/viewed': typeof AuthExamplesVxeTableViewedRoute
+  '/_auth/examples/vxe-table/virtual': typeof AuthExamplesVxeTableVirtualRoute
   '/_auth/demo/tabs/': typeof AuthDemoTabsIndexRoute
   '/_auth/demo/tabs/detail/$id': typeof AuthDemoTabsDetailIdRoute
 }
@@ -984,6 +1084,16 @@ export interface FileRouteTypes {
     | '/examples/form/search'
     | '/examples/form/validation'
     | '/examples/form/value-format'
+    | '/examples/vxe-table/basic'
+    | '/examples/vxe-table/custom-cell'
+    | '/examples/vxe-table/edit-cell'
+    | '/examples/vxe-table/edit-row'
+    | '/examples/vxe-table/fixed'
+    | '/examples/vxe-table/form'
+    | '/examples/vxe-table/remote'
+    | '/examples/vxe-table/tree'
+    | '/examples/vxe-table/viewed'
+    | '/examples/vxe-table/virtual'
     | '/demo/tabs/'
     | '/demo/tabs/detail/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -1081,6 +1191,16 @@ export interface FileRouteTypes {
     | '/examples/form/search'
     | '/examples/form/validation'
     | '/examples/form/value-format'
+    | '/examples/vxe-table/basic'
+    | '/examples/vxe-table/custom-cell'
+    | '/examples/vxe-table/edit-cell'
+    | '/examples/vxe-table/edit-row'
+    | '/examples/vxe-table/fixed'
+    | '/examples/vxe-table/form'
+    | '/examples/vxe-table/remote'
+    | '/examples/vxe-table/tree'
+    | '/examples/vxe-table/viewed'
+    | '/examples/vxe-table/virtual'
     | '/demo/tabs'
     | '/demo/tabs/detail/$id'
   id:
@@ -1179,6 +1299,16 @@ export interface FileRouteTypes {
     | '/_auth/examples/form/search'
     | '/_auth/examples/form/validation'
     | '/_auth/examples/form/value-format'
+    | '/_auth/examples/vxe-table/basic'
+    | '/_auth/examples/vxe-table/custom-cell'
+    | '/_auth/examples/vxe-table/edit-cell'
+    | '/_auth/examples/vxe-table/edit-row'
+    | '/_auth/examples/vxe-table/fixed'
+    | '/_auth/examples/vxe-table/form'
+    | '/_auth/examples/vxe-table/remote'
+    | '/_auth/examples/vxe-table/tree'
+    | '/_auth/examples/vxe-table/viewed'
+    | '/_auth/examples/vxe-table/virtual'
     | '/_auth/demo/tabs/'
     | '/_auth/demo/tabs/detail/$id'
   fileRoutesById: FileRoutesById
@@ -1856,6 +1986,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthExamplesFormValueFormatRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/examples/vxe-table/basic': {
+      id: '/_auth/examples/vxe-table/basic'
+      path: '/examples/vxe-table/basic'
+      fullPath: '/examples/vxe-table/basic'
+      preLoaderRoute: typeof AuthExamplesVxeTableBasicRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/custom-cell': {
+      id: '/_auth/examples/vxe-table/custom-cell'
+      path: '/examples/vxe-table/custom-cell'
+      fullPath: '/examples/vxe-table/custom-cell'
+      preLoaderRoute: typeof AuthExamplesVxeTableCustomCellRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/edit-cell': {
+      id: '/_auth/examples/vxe-table/edit-cell'
+      path: '/examples/vxe-table/edit-cell'
+      fullPath: '/examples/vxe-table/edit-cell'
+      preLoaderRoute: typeof AuthExamplesVxeTableEditCellRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/edit-row': {
+      id: '/_auth/examples/vxe-table/edit-row'
+      path: '/examples/vxe-table/edit-row'
+      fullPath: '/examples/vxe-table/edit-row'
+      preLoaderRoute: typeof AuthExamplesVxeTableEditRowRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/fixed': {
+      id: '/_auth/examples/vxe-table/fixed'
+      path: '/examples/vxe-table/fixed'
+      fullPath: '/examples/vxe-table/fixed'
+      preLoaderRoute: typeof AuthExamplesVxeTableFixedRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/form': {
+      id: '/_auth/examples/vxe-table/form'
+      path: '/examples/vxe-table/form'
+      fullPath: '/examples/vxe-table/form'
+      preLoaderRoute: typeof AuthExamplesVxeTableFormRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/remote': {
+      id: '/_auth/examples/vxe-table/remote'
+      path: '/examples/vxe-table/remote'
+      fullPath: '/examples/vxe-table/remote'
+      preLoaderRoute: typeof AuthExamplesVxeTableRemoteRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/tree': {
+      id: '/_auth/examples/vxe-table/tree'
+      path: '/examples/vxe-table/tree'
+      fullPath: '/examples/vxe-table/tree'
+      preLoaderRoute: typeof AuthExamplesVxeTableTreeRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/viewed': {
+      id: '/_auth/examples/vxe-table/viewed'
+      path: '/examples/vxe-table/viewed'
+      fullPath: '/examples/vxe-table/viewed'
+      preLoaderRoute: typeof AuthExamplesVxeTableViewedRouteImport
+      parentRoute: typeof AuthRoute
+    }
+    '/_auth/examples/vxe-table/virtual': {
+      id: '/_auth/examples/vxe-table/virtual'
+      path: '/examples/vxe-table/virtual'
+      fullPath: '/examples/vxe-table/virtual'
+      preLoaderRoute: typeof AuthExamplesVxeTableVirtualRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/demo/tabs/detail/$id': {
       id: '/_auth/demo/tabs/detail/$id'
       path: '/demo/tabs/detail/$id'
@@ -1969,6 +2169,16 @@ interface AuthRouteChildren {
   AuthExamplesFormSearchRoute: typeof AuthExamplesFormSearchRoute
   AuthExamplesFormValidationRoute: typeof AuthExamplesFormValidationRoute
   AuthExamplesFormValueFormatRoute: typeof AuthExamplesFormValueFormatRoute
+  AuthExamplesVxeTableBasicRoute: typeof AuthExamplesVxeTableBasicRoute
+  AuthExamplesVxeTableCustomCellRoute: typeof AuthExamplesVxeTableCustomCellRoute
+  AuthExamplesVxeTableEditCellRoute: typeof AuthExamplesVxeTableEditCellRoute
+  AuthExamplesVxeTableEditRowRoute: typeof AuthExamplesVxeTableEditRowRoute
+  AuthExamplesVxeTableFixedRoute: typeof AuthExamplesVxeTableFixedRoute
+  AuthExamplesVxeTableFormRoute: typeof AuthExamplesVxeTableFormRoute
+  AuthExamplesVxeTableRemoteRoute: typeof AuthExamplesVxeTableRemoteRoute
+  AuthExamplesVxeTableTreeRoute: typeof AuthExamplesVxeTableTreeRoute
+  AuthExamplesVxeTableViewedRoute: typeof AuthExamplesVxeTableViewedRoute
+  AuthExamplesVxeTableVirtualRoute: typeof AuthExamplesVxeTableVirtualRoute
   AuthDemoTabsIndexRoute: typeof AuthDemoTabsIndexRoute
   AuthDemoTabsDetailIdRoute: typeof AuthDemoTabsDetailIdRoute
 }
@@ -2063,6 +2273,16 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthExamplesFormSearchRoute: AuthExamplesFormSearchRoute,
   AuthExamplesFormValidationRoute: AuthExamplesFormValidationRoute,
   AuthExamplesFormValueFormatRoute: AuthExamplesFormValueFormatRoute,
+  AuthExamplesVxeTableBasicRoute: AuthExamplesVxeTableBasicRoute,
+  AuthExamplesVxeTableCustomCellRoute: AuthExamplesVxeTableCustomCellRoute,
+  AuthExamplesVxeTableEditCellRoute: AuthExamplesVxeTableEditCellRoute,
+  AuthExamplesVxeTableEditRowRoute: AuthExamplesVxeTableEditRowRoute,
+  AuthExamplesVxeTableFixedRoute: AuthExamplesVxeTableFixedRoute,
+  AuthExamplesVxeTableFormRoute: AuthExamplesVxeTableFormRoute,
+  AuthExamplesVxeTableRemoteRoute: AuthExamplesVxeTableRemoteRoute,
+  AuthExamplesVxeTableTreeRoute: AuthExamplesVxeTableTreeRoute,
+  AuthExamplesVxeTableViewedRoute: AuthExamplesVxeTableViewedRoute,
+  AuthExamplesVxeTableVirtualRoute: AuthExamplesVxeTableVirtualRoute,
   AuthDemoTabsIndexRoute: AuthDemoTabsIndexRoute,
   AuthDemoTabsDetailIdRoute: AuthDemoTabsDetailIdRoute,
 }

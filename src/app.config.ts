@@ -58,6 +58,8 @@ export type NavIcon =
   | 'tableOps' | 'contextMenu' | 'imageCrop' | 'richText'
   | 'formBasic' | 'formSearch' | 'formValue' | 'formValid' | 'formDynamic' | 'formLayout' | 'formCustom'
   | 'formApi' | 'formMerge' | 'formScroll' | 'formCollapse' | 'formLabel' | 'formArray' | 'formDemo'
+  | 'vxeBasic' | 'vxeRemote' | 'vxeTree' | 'vxeFixed' | 'vxeCell' | 'vxeForm'
+  | 'vxeEditCell' | 'vxeEditRow' | 'vxeVirtual' | 'vxeViewed'
 
 export const appConfig = {
   /** 应用标识 */
@@ -439,6 +441,22 @@ export const NAV_GROUPS: NavGroup[] = [
       { label: 'Label 自动宽度', to: '/examples/form/label-width', icon: 'formLabel' },
       { label: '表单数组', to: '/examples/form/array', icon: 'formArray' },
       { label: 'Demo', to: '/examples/form/demo', icon: 'formDemo' },
+    ],
+  },
+  {
+    label: 'Vxe 表格',
+    icon: 'table',
+    children: [
+      { label: '基础表格', to: '/examples/vxe-table/basic', icon: 'vxeBasic' },
+      { label: '远程加载', to: '/examples/vxe-table/remote', icon: 'vxeRemote' },
+      { label: '树形表格', to: '/examples/vxe-table/tree', icon: 'vxeTree' },
+      { label: '固定表头/列', to: '/examples/vxe-table/fixed', icon: 'vxeFixed' },
+      { label: '自定义单元格', to: '/examples/vxe-table/custom-cell', icon: 'vxeCell' },
+      { label: '搜索表单', to: '/examples/vxe-table/form', icon: 'vxeForm' },
+      { label: '单元格编辑', to: '/examples/vxe-table/edit-cell', icon: 'vxeEditCell' },
+      { label: '行编辑', to: '/examples/vxe-table/edit-row', icon: 'vxeEditRow' },
+      { label: '虚拟滚动', to: '/examples/vxe-table/virtual', icon: 'vxeVirtual' },
+      { label: '行标记', to: '/examples/vxe-table/viewed', icon: 'vxeViewed' },
     ],
   },
   {
