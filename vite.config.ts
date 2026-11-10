@@ -1,14 +1,29 @@
+import { copyFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
+/** SPA 深链兜底：GitHub Pages 等静态托管对未知路径回退 404.html（内容同 index.html） */
+function spaFallback(): Plugin {
+  return {
+    name: 'spa-fallback',
+    apply: 'build',
+    closeBundle() {
+      copyFileSync('dist/index.html', 'dist/404.html')
+    },
+  }
+}
+
 export default defineConfig({
+  // 子路径部署（如 GitHub Pages 的 /apex-admin/）由 CI 设 VITE_BASE，本地保持 /
+  base: process.env.VITE_BASE || '/',
   plugins: [
     TanStackRouterVite({ autoCodeSplitting: true }),
     react(),
     tailwindcss(),
+    spaFallback(),
   ],
   resolve: {
     alias: {

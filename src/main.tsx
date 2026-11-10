@@ -10,6 +10,8 @@ import './styles/index.css'
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
+  // 子路径部署（VITE_BASE=/apex-admin/）时路由需知道 basepath，本地为 '/' 不影响
+  basepath: import.meta.env.BASE_URL.replace(/\/$/, '') || '/',
 })
 
 declare module '@tanstack/react-router' {
