@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useLocation, useNavigate } from '@tanstack/react-router'
-import { ChevronRight, Info, LogOut, PanelLeft, Palette, Search, UserRound } from 'lucide-react'
+import { ChevronRight, Code2, GitFork, Info, LogOut, PanelLeft, Palette, Search, UserRound } from 'lucide-react'
 import { AppMenu } from '@/components/ui/menu'
 import { NotificationBell } from '@/components/shared/notification-bell'
 import { useAuthStore } from '@/stores/auth.store'
@@ -67,6 +67,26 @@ export function Topbar({ onOpenTheme }: { onOpenTheme: () => void }) {
         </button>
 
         <div className="flex items-center gap-1.5">
+          {/* 开源仓库 */}
+          <a
+            href="https://github.com/ingkele/apex-admin"
+            target="_blank"
+            rel="noreferrer"
+            title="GitHub 仓库"
+            className="rounded-lg p-2 text-muted transition hover:bg-hover hover:text-ink"
+          >
+            <Code2 className="h-[17px] w-[17px]" />
+          </a>
+          <a
+            href="https://gitee.com/guangxi-witchc-network/apex-admin"
+            target="_blank"
+            rel="noreferrer"
+            title="Gitee 仓库"
+            className="rounded-lg p-2 text-muted transition hover:bg-hover hover:text-ink"
+          >
+            <GitFork className="h-[17px] w-[17px]" />
+          </a>
+
           {/* 通知 */}
           <NotificationBell />
 

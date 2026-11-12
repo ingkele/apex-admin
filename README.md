@@ -3,6 +3,8 @@
 开箱即用的后台管理前端模板：**React 19 + TanStack Router + Base UI + Tailwind v4**。
 内置权限、主题、多页签、可拖拽工作台与 mock/live 双模数据层，clone 下来直接写业务，不用再搭一遍架子。
 
+**仓库地址**：[GitHub](https://github.com/ingkele/apex-admin) · [Gitee](https://gitee.com/guangxi-witchc-network/apex-admin)　｜　**在线预览**：<https://ingkele.github.io/apex-admin/>
+
 ![工作台（浅色）](docs/screenshots/dashboard-light.png)
 
 ## 特性

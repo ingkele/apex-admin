@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import {
-  ArrowUpRight, Boxes, CheckCircle2, Code2, Database, GitBranch, Layers,
+  ArrowUpRight, Boxes, CheckCircle2, Code2, Database, GitBranch, GitFork, Layers,
   Package, Rocket, Server, Sparkles,
 } from 'lucide-react'
 import { PageHeader } from '@/components/shared/page-header'
@@ -25,7 +25,9 @@ const CHANGELOG = [
   { version: 'v2.2.0', date: '2026-10-12', tag: '', items: ['任务详情页重构：进度卡 + 执行时间线 + 断点续跑', 'API Key 增加到期提醒与环境标识'] },
 ]
 
-const LINKS = [
+const LINKS: { label: string; desc: string; icon: typeof Layers; href?: string }[] = [
+  { label: 'GitHub 仓库', desc: 'github.com/ingkele/apex-admin', icon: Code2, href: 'https://github.com/ingkele/apex-admin' },
+  { label: 'Gitee 仓库', desc: 'gitee.com/guangxi-witchc-network/apex-admin', icon: GitFork, href: 'https://gitee.com/guangxi-witchc-network/apex-admin' },
   { label: '设计规范', desc: '设计 token、间距与组件约定', icon: Layers },
   { label: '接入文档', desc: 'API 契约、DTO 与错误码', icon: Package },
   { label: '问题反馈', desc: '提交缺陷或需求建议', icon: GitBranch },
@@ -70,6 +72,22 @@ function AboutPage() {
                 <span>构建号 build 20261108.3</span>
                 <span>MIT License</span>
                 <span>{appConfig.copyright}</span>
+                <a
+                  href="https://github.com/ingkele/apex-admin"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-brand-600 transition hover:underline"
+                >
+                  <Code2 className="h-3 w-3" /> GitHub
+                </a>
+                <a
+                  href="https://gitee.com/guangxi-witchc-network/apex-admin"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-brand-600 transition hover:underline"
+                >
+                  <GitFork className="h-3 w-3" /> Gitee
+                </a>
               </div>
             </div>
           </div>
@@ -160,22 +178,31 @@ function AboutPage() {
           </section>
 
           <section className="overflow-hidden rounded-xl border border-line bg-surface">
-            {LINKS.map((l) => (
-              <button
-                key={l.label}
-                type="button"
-                className="flex w-full items-center gap-3 border-b border-line px-5 py-3 text-left transition last:border-0 hover:bg-hover/60"
-              >
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-canvas text-soft">
-                  <l.icon className="h-3.5 w-3.5" />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[12px] font-medium text-ink">{l.label}</span>
-                  <span className="block text-[10.5px] text-soft">{l.desc}</span>
-                </span>
-                <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-soft" />
-              </button>
-            ))}
+            {LINKS.map((l) => {
+              const inner = (
+                <>
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-canvas text-soft">
+                    <l.icon className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[12px] font-medium text-ink">{l.label}</span>
+                    <span className="block text-[10.5px] text-soft">{l.desc}</span>
+                  </span>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-soft" />
+                </>
+              )
+              const cls =
+                'flex w-full items-center gap-3 border-b border-line px-5 py-3 text-left transition last:border-0 hover:bg-hover/60'
+              return l.href ? (
+                <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className={cls}>
+                  {inner}
+                </a>
+              ) : (
+                <button key={l.label} type="button" className={cls}>
+                  {inner}
+                </button>
+              )
+            })}
           </section>
         </div>
       </div>
