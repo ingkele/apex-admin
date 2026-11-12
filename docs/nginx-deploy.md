@@ -1,7 +1,7 @@
 # 云服务器 nginx 部署配置（备用）
 
-> 当前线上预览由 GitHub Pages 自动部署：<https://ingkele.github.io/apex-admin/>
-> 本文档供迁移到自有云服务器时参考。构建产物是纯静态文件，任何静态服务器均可托管。
+> 当前线上预览：腾讯云 <https://apex.witchc.cn/>（GitHub Actions 自动发布） · GitHub Pages <https://ingkele.github.io/apex-admin/>
+> 1Panel / OpenResty 形态的自动发布配置见 [server-auto-deploy.md](server-auto-deploy.md)；本文档供裸 nginx 手写配置时参考。构建产物是纯静态文件，任何静态服务器均可托管。
 
 ## 构建
 
