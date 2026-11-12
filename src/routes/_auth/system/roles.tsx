@@ -235,6 +235,7 @@ function RolesPage() {
                 <div key={group.key} className="mb-5 overflow-hidden rounded-xl border border-line last:mb-0">
                   <div className="flex items-center gap-3 border-b border-line bg-canvas/60 px-4 py-3">
                     <input
+                      id={`perm-group-${group.key}`}
                       type="checkbox"
                       checked={allOn}
                       onChange={(e) => toggleGroup(group.codes, e.target.checked)}
@@ -278,6 +279,7 @@ function RolesPage() {
                           className="flex cursor-pointer items-start gap-2.5 rounded-lg px-3 py-2.5 transition hover:bg-hover/60"
                         >
                           <input
+                            name={`perm-${code}`}
                             type="checkbox"
                             checked={checked}
                             onChange={() => toggle(code)}

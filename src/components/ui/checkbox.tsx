@@ -21,6 +21,7 @@ export function Checkbox({
   className?: string
 }) {
   const ref = React.useRef<HTMLInputElement>(null)
+  const autoId = React.useId()
 
   React.useEffect(() => {
     if (ref.current) ref.current.indeterminate = Boolean(indeterminate) && !checked
@@ -29,6 +30,7 @@ export function Checkbox({
   const box = (
     <span className="relative mt-[1px] flex h-4 w-4 shrink-0 items-center justify-center">
       <input
+        id={autoId}
         ref={ref}
         type="checkbox"
         checked={checked}

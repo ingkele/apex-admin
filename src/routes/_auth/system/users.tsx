@@ -221,6 +221,7 @@ function UsersPage() {
           <div className="flex h-8 w-[260px] items-center gap-2 rounded-lg border border-line bg-canvas/60 px-2.5 focus-within:border-brand-300 focus-within:bg-surface">
             <Search className="h-3.5 w-3.5 shrink-0 text-soft" />
             <input
+              id="user-keyword"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="搜索用户名或邮箱…"

@@ -199,6 +199,7 @@ function Page() {
               <div>
                 <Label>小数位数：{decimals}</Label>
                 <input
+                  id="count-to-decimals"
                   type="range"
                   min={0}
                   max={4}

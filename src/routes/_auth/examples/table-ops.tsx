@@ -201,6 +201,7 @@ headerRef.current.indeterminate = someChecked // 半选
               <tr className="border-b border-line bg-canvas/40 text-left text-soft">
                 <th className="w-10 px-3 py-2.5">
                   <input
+                    id="table-ops-select-all"
                     ref={headerRef}
                     type="checkbox"
                     checked={allChecked}
@@ -228,6 +229,7 @@ headerRef.current.indeterminate = someChecked // 半选
                   >
                     <td className="px-3 py-2" onClick={(e) => e.stopPropagation()}>
                       <input
+                        name="table-ops-row"
                         type="checkbox"
                         checked={isChecked}
                         onChange={() => toggleOne(row.id)}

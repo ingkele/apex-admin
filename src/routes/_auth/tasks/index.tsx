@@ -85,6 +85,7 @@ function TaskListPage() {
       id: 'select',
       header: () => (
         <input
+          id="task-select-all"
           type="checkbox"
           className="h-3.5 w-3.5 accent-[var(--brand-600)]"
           checked={selectedIds.length > 0 && selectedIds.length === (list.data?.items.length ?? 0)}
@@ -97,6 +98,7 @@ function TaskListPage() {
       ),
       cell: ({ row }) => (
         <input
+          id={`task-select-${row.original.id}`}
           type="checkbox"
           className="h-3.5 w-3.5 accent-[var(--brand-600)]"
           checked={!!selected[row.original.id]}
@@ -274,6 +276,7 @@ function TaskListPage() {
             <label className="mb-1.5 block text-[11.5px] text-muted">提交日期</label>
             <div className="flex items-center gap-1.5">
               <input
+                id="task-date-from"
                 type="date"
                 value={draft.from}
                 onChange={(e) => setDraft((d) => ({ ...d, from: e.target.value }))}
@@ -281,6 +284,7 @@ function TaskListPage() {
               />
               <span className="text-[11px] text-soft">至</span>
               <input
+                id="task-date-to"
                 type="date"
                 value={draft.to}
                 onChange={(e) => setDraft((d) => ({ ...d, to: e.target.value }))}

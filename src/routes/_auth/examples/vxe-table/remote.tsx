@@ -92,7 +92,7 @@ useEffect(() => { load(page) }, [page])`}
     >
       <div className="mb-3 flex items-center justify-between">
         <label className="flex cursor-pointer items-center gap-2 text-[11px] text-muted">
-          <input type="checkbox" checked={failNext} onChange={(e) => setFailNext(e.target.checked)} className="accent-rose-600" />
+          <input id="vxe-remote-fail-toggle" type="checkbox" checked={failNext} onChange={(e) => setFailNext(e.target.checked)} className="accent-rose-600" />
           模拟失败（下一次请求返回 500）
         </label>
         <Button size="sm" variant="outline" onClick={() => load(page)}>

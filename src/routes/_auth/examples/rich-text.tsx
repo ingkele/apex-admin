@@ -162,6 +162,7 @@ function Page() {
             {linkOpen ? (
               <div className="flex items-center gap-2 border-x border-line bg-canvas/40 px-3 py-2">
                 <input
+                  id="rich-text-link"
                   value={linkText}
                   onChange={(e) => setLinkText(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && insertLink()}

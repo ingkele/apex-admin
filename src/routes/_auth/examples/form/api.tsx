@@ -129,7 +129,7 @@ fetchCities(province).then((opts) => {
 
           <div className="mt-2 flex items-center justify-between border-t border-line pt-4">
             <label className="flex cursor-pointer items-center gap-2 text-[11px] text-muted">
-              <input type="checkbox" checked={failMode} onChange={(e) => setFailMode(e.target.checked)} className="accent-rose-600" />
+              <input id="form-api-fail-mode" type="checkbox" checked={failMode} onChange={(e) => setFailMode(e.target.checked)} className="accent-rose-600" />
               模拟接口失败（演练错误与重试路径）
             </label>
             <Button size="sm" disabled={submitting} onClick={submit}>

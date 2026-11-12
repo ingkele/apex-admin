@@ -74,6 +74,7 @@ function Slider({ value, onChange }: { value: number; onChange: (v: number) => v
   return (
     <div className="flex items-center gap-3">
       <input
+        id="form-custom-slider"
         type="range"
         min={0}
         max={100}

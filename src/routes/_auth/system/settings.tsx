@@ -427,6 +427,7 @@ function Field({ item, onChange }: { item: SettingItem; onChange: (value: string
                 className="flex cursor-pointer items-center gap-2 rounded-lg border border-line px-3 py-2.5 text-[11.5px] text-ink transition hover:bg-hover"
               >
                 <input
+                  name="setting-options"
                   type="checkbox"
                   checked={checked}
                   onChange={() =>

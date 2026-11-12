@@ -239,6 +239,8 @@ function LoginPage() {
               <div className="flex items-center justify-between">
                 <label className="flex cursor-pointer items-center gap-2.5 text-[12px] text-slate-600">
                   <input
+                    id="remember-device"
+                    name="remember"
                     type="checkbox"
                     checked={remember}
                     onChange={(e) => setRemember(e.target.checked)}

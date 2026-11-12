@@ -135,6 +135,7 @@ export function TerminalPanel({ session }: { session: TerminalSession }) {
           <div className="flex gap-2 px-4 py-[1px] font-mono text-[11px] leading-[1.85]">
             <span className="shrink-0 text-emerald-400">{session.prompt}</span>
             <input
+              id="terminal-command"
               ref={inputRef}
               data-testid="terminal-input"
               value={session.input}

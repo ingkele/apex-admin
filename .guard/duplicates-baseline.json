@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T12:28:10.8228574+08:00",
+  "generatedAt": "2026-11-12T12:53:33.2851546+08:00",
   "pairs": [
     {
       "key": "8588276444e9159b",
@@ -530,6 +530,11 @@
       "key": "a29b19c63e17841c",
       "a": ".Page@src/routes/_auth/examples/image-crop.tsx",
       "b": ".Page@src/routes/_auth/demo/iframe.local.tsx"
+    },
+    {
+      "key": "91befc070fbfac09",
+      "a": ".Textarea@src/components/ui/input.tsx",
+      "b": ".Input@src/components/ui/input.tsx"
     }
   ],
   "detectorVersion": 4

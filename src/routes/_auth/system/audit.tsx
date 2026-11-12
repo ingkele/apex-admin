@@ -229,6 +229,7 @@ function AuditPage() {
           <div className="relative">
             <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-soft" />
             <input
+              id="audit-keyword"
               value={draft.keyword}
               onChange={(e) => setDraft((d) => ({ ...d, keyword: e.target.value }))}
               onKeyDown={(e) => e.key === 'Enter' && applySearch()}

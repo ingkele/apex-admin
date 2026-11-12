@@ -80,6 +80,7 @@ function Page() {
             <Row label="字号">
               <span className="font-mono text-[11px] text-muted">{fontSize}px</span>
               <input
+                id="watermark-font-size"
                 type="range"
                 min={10}
                 max={22}
@@ -91,6 +92,7 @@ function Page() {
             <Row label="间距">
               <span className="font-mono text-[11px] text-muted">{gap}px</span>
               <input
+                id="watermark-gap"
                 type="range"
                 min={40}
                 max={220}

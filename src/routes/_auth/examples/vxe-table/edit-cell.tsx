@@ -148,6 +148,7 @@ onBlur → commit()        // 失焦也提交
                       {isEditing ? (
                         c.key === 'priority' ? (
                           <select
+                            name="edit-cell-value"
                             ref={inputRef as React.RefObject<HTMLSelectElement>}
                             value={draft}
                             onChange={(e) => setDraft(e.target.value)}
@@ -164,6 +165,7 @@ onBlur → commit()        // 失焦也提交
                           </select>
                         ) : (
                           <input
+                            name="edit-cell-value"
                             ref={inputRef as React.RefObject<HTMLInputElement>}
                             value={draft}
                             type={c.key === 'concurrency' ? 'number' : 'text'}

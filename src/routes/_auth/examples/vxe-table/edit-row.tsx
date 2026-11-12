@@ -138,6 +138,7 @@ const save = () => {
                   <td className="border-l border-line px-4 py-2.5">
                     {editing ? (
                       <input
+                        name="edit-row-name"
                         value={d.name}
                         onChange={(e) => setDraft({ ...d, name: e.target.value })}
                         onKeyDown={(e) => {
@@ -153,6 +154,7 @@ const save = () => {
                   <td className="border-l border-line px-4 py-2.5">
                     {editing ? (
                       <input
+                        name="edit-row-owner"
                         value={d.owner}
                         onChange={(e) => setDraft({ ...d, owner: e.target.value })}
                         onKeyDown={(e) => {
@@ -168,6 +170,7 @@ const save = () => {
                   <td className="border-l border-line px-4 py-2.5">
                     {editing ? (
                       <select
+                        name="edit-row-priority"
                         value={d.priority}
                         onChange={(e) => setDraft({ ...d, priority: e.target.value as EditRow['priority'] })}
                         className="h-7 w-full rounded-md border border-brand-500 bg-surface px-2 text-[11.5px] text-ink outline-none ring-2 ring-brand-500/15"
@@ -192,6 +195,7 @@ const save = () => {
                   <td className="border-l border-line px-4 py-2.5">
                     {editing ? (
                       <select
+                        name="edit-row-status"
                         value={d.status}
                         onChange={(e) => setDraft({ ...d, status: e.target.value })}
                         className="h-7 w-full rounded-md border border-brand-500 bg-surface px-2 text-[11.5px] text-ink outline-none ring-2 ring-brand-500/15"
