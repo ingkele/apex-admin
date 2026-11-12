@@ -29,7 +29,7 @@ echo 'ssh-ed25519 AAAA... apex-admin-deploy' >> ~/.ssh/authorized_keys
 |---|---|---|
 | `DEPLOY_HOST` | 服务器 IP 或域名 | ✅ |
 | `DEPLOY_USER` | SSH 登录用户（如 `root`） | ✅ |
-| `DEPLOY_PATH` | 部署目录（如 `/var/www/apex-admin`，**目录须存在**） | ✅ |
+| `DEPLOY_PATH` | 部署目录（如 `/var/www/apex-admin`，**目录须存在**；1Panel 形态填网站运行目录，见下节） | ✅ |
 | `DEPLOY_KEY` | `apex-deploy` 私钥**全部内容**（含首尾 BEGIN/END 行） | ✅ |
 | `DEPLOY_PORT` | SSH 端口（不填默认 22） | 可选 |
 | `VITE_BASE` | 部署路径 base（不填默认 `/` 根路径） | 可选 |
@@ -37,19 +37,48 @@ echo 'ssh-ed25519 AAAA... apex-admin-deploy' >> ~/.ssh/authorized_keys
 > 若部署到子路径（如 `/apex-admin/`），把 `VITE_BASE` 设为 `/apex-admin/`，
 > 且 `DEPLOY_PATH` 设为该子路径对应的目录——两者必须匹配。
 
-## 四、首次部署
+## 四、1Panel（OpenResty 网站）适配
 
-服务器上先建目录：
+服务器用 1Panel 的「网站」功能（OpenResty）托管时，不手写 nginx 配置文件，
+在面板里填两处即可：
+
+### 1. 运行目录 = `DEPLOY_PATH`
+
+1Panel → 网站 → 选中站点 → 设置 → 网站目录 → **运行目录**，典型值：
+
+```
+/opt/1panel/apps/openresty/openresty/www/sites/<站点名>/index
+```
+
+把这个值填进 GitHub Secret `DEPLOY_PATH`。rsync 推的是宿主机目录，OpenResty
+容器挂载该目录，静态文件落盘即生效——**不需要重启容器、不需要重建镜像**。
+
+### 2. 伪静态 = SPA 回退规则
+
+站点设置 → **伪静态**，填入（替代 `docs/nginx-deploy.md` 的手写配置）：
+
+```nginx
+location / {
+    try_files $uri $uri.html $uri/ /index.html;
+}
+```
+
+保存即生效（1Panel 自动重载 OpenResty）。这一步配一次就不用再动。
+
+## 五、首次部署
+
+1Panel 形态下目录已随建站自动创建，**跳过**下面的 mkdir。裸 nginx 形态先建目录：
 
 ```bash
 mkdir -p /var/www/apex-admin && chown -R $USER /var/www/apex-admin
 ```
 
 然后任意提交推 `main`（或仓库 Actions 页手动跑 `Deploy to Tencent Cloud`）。
-部署用 rsync `--delete` 同步（服务器上多余文件会被清掉），完成后 nginx 按
-`docs/nginx-deploy.md` 配置即可（nginx 配置一次就不用再动）。
+部署用 rsync `--delete` 同步（服务器上多余文件会被清掉）。回退规则：1Panel
+形态按上节填伪静态即可；裸 nginx 形态按 `docs/nginx-deploy.md` 配置
+（都是配一次就不用再动）。
 
-## 五、验证
+## 六、验证
 
 ```bash
 curl -I http://你的服务器地址/        # 200
