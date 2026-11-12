@@ -1,17 +1,51 @@
-import { copyFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
-/** SPA 深链兜底：GitHub Pages 等静态托管对未知路径回退 404.html（内容同 index.html） */
+/**
+ * SPA 深链兜底（GitHub Pages 等静态托管）：
+ * 1. 未知/动态路由 → 404.html（内容同 index.html：状态码 404 但应用正常启动并匹配 $ 参数路由）
+ * 2. 静态路由 → <path>.html（GitHub Pages 无扩展名解析 /xxx 命中 xxx.html 返回 200，深链刷新零 404 噪音）
+ *              + <path>/index.html（目录索引兜底；/xxx/ 尾斜杠形态也返回 200）
+ * 所有副本内置「尾斜杠归一脚本」：路由不认尾斜杠（实测 /services/ 落空壳 404 页），
+ * 进应用前先 history.replaceState 去掉尾斜杠；等于 base 的根路径是合法首页，不归一。
+ * GitHub Pages 对同名 xxx.html 与 xxx/ 目录的解析先后无官方保证，两份都放壳+归一即可全覆盖。
+ */
 function spaFallback(): Plugin {
   return {
     name: 'spa-fallback',
     apply: 'build',
     closeBundle() {
-      copyFileSync('dist/index.html', 'dist/404.html')
+      const root = fileURLToPath(new URL('.', import.meta.url))
+      const dist = join(root, 'dist')
+      const base = process.env.VITE_BASE || '/'
+      const stripScript = `<script>(function(){var p=location.pathname;if(p.endsWith('/')&&p!==${JSON.stringify(base)}){history.replaceState(null,'',p.replace(/\\/+$/,'')+location.search+location.hash)}})();</script>`
+      const html = readFileSync(join(dist, 'index.html'), 'utf8').replace('<head>', `<head>${stripScript}`)
+
+      const writeShell = (target: string) => {
+        mkdirSync(dirname(target), { recursive: true })
+        writeFileSync(target, html)
+      }
+
+      writeShell(join(dist, '404.html'))
+
+      // 从路由树提取静态全路径（跳过 $ 动态段与根路径），去重后逐一落副本
+      const routeTree = readFileSync(join(root, 'src/routeTree.gen.ts'), 'utf8')
+      const rels = new Set<string>()
+      for (const m of routeTree.matchAll(/path: '([^']+)'/g)) {
+        const p = m[1]
+        if (p === '/' || p.includes('$')) continue
+        const rel = p.replace(/^\/+|\/+$/g, '')
+        if (rel) rels.add(rel)
+      }
+      for (const rel of rels) {
+        writeShell(join(dist, `${rel}.html`))
+        writeShell(join(dist, rel, 'index.html'))
+      }
     },
   }
 }

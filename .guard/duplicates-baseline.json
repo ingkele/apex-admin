@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-10T21:16:16.8608901+08:00",
+  "generatedAt": "2026-11-12T12:28:10.8228574+08:00",
   "pairs": [
     {
       "key": "8588276444e9159b",
@@ -520,6 +520,16 @@
       "key": "633f6a910bf1d547",
       "a": ".Page@src/routes/_auth/examples/captcha/slider.tsx",
       "b": ".Page@src/routes/_auth/examples/captcha/puzzle.tsx"
+    },
+    {
+      "key": "62c99db321f39831",
+      "a": ".Page@src/routes/_auth/demo/tabs/index.tsx",
+      "b": ".Page@src/routes/_auth/demo/iframe.local.tsx"
+    },
+    {
+      "key": "a29b19c63e17841c",
+      "a": ".Page@src/routes/_auth/examples/image-crop.tsx",
+      "b": ".Page@src/routes/_auth/demo/iframe.local.tsx"
     }
   ],
   "detectorVersion": 4

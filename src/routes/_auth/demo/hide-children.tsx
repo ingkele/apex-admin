@@ -3,6 +3,7 @@ import { EyeOff, Link2 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { DemoBlock } from '@/components/shared/demo-block'
 import { PageHeader } from '@/components/shared/page-header'
+import { withBase } from '@/lib/utils'
 
 export const Route = createFileRoute('/_auth/demo/hide-children')({
   component: Page,
@@ -59,14 +60,14 @@ function Page() {
             </p>
             <div className="mt-3 space-y-2">
               <a
-                href="/demo/hide-children/a"
+                href={withBase('demo/hide-children/a')}
                 className="flex items-center gap-2 rounded-lg border border-line px-3 py-2.5 font-mono text-[11.5px] text-brand-600 transition-colors hover:bg-hover"
               >
                 <Link2 className="h-3.5 w-3.5" />
                 /demo/hide-children/a
               </a>
               <a
-                href="/demo/hide-children/b"
+                href={withBase('demo/hide-children/b')}
                 className="flex items-center gap-2 rounded-lg border border-line px-3 py-2.5 font-mono text-[11.5px] text-brand-600 transition-colors hover:bg-hover"
               >
                 <Link2 className="h-3.5 w-3.5" />

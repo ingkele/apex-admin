@@ -14,7 +14,7 @@ import {
   PERMISSIONS, PERMISSION_GROUPS, PERMISSION_HINTS,
   type PermissionCode,
 } from '@/app.config'
-import { cn } from '@/lib/utils'
+import { cn, withBase } from '@/lib/utils'
 import { toast } from 'sonner'
 
 export const Route = createFileRoute('/_auth/system/roles')({
@@ -116,7 +116,7 @@ function RolesPage() {
           权限变更保存后即时生效，但不会中断当前已登录会话。所有权限修改均记录审计日志。
         </p>
         <a
-          href="/system/audit"
+          href={withBase('system/audit')}
           className="ml-auto flex shrink-0 items-center gap-1 text-[11px] font-medium text-brand-700 hover:text-brand-800 dark:text-brand-400"
         >
           查看权限变更记录 <ArrowUpRight className="h-3 w-3" />

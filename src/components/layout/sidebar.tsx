@@ -17,7 +17,7 @@ import { AppMenu } from '@/components/ui/menu'
 import { useAuthStore } from '@/stores/auth.store'
 import { useSidebarStore } from '@/stores/sidebar.store'
 import { useTabsStore } from '@/stores/tabs.store'
-import { cn } from '@/lib/utils'
+import { cn, withBase } from '@/lib/utils'
 
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   dashboard: LayoutDashboard,
@@ -470,7 +470,7 @@ export function Sidebar() {
           collapsed && 'justify-center',
         )}
       >
-        <img src="/logo.svg" alt={appConfig.name} className="h-8 w-8 shrink-0" />
+        <img src={withBase('logo.svg')} alt={appConfig.name} className="h-8 w-8 shrink-0" />
         {!collapsed ? (
           <>
             <div className="min-w-0 flex-1 truncate text-[14px] font-semibold text-sidebar-ink">

@@ -5,6 +5,7 @@ import {
   Loader2, LockKeyhole, Mail, ShieldCheck, Workflow,
 } from 'lucide-react'
 import { toast } from 'sonner'
+import { withBase } from '@/lib/utils'
 import { useAuthStore } from '@/stores/auth.store'
 
 export const Route = createFileRoute('/login')({
@@ -51,7 +52,7 @@ function LoginPage() {
 
         {/* logo */}
         <div className="relative z-10 flex items-center gap-3">
-          <img src="/logo.svg" alt="Apex Admin" className="h-10 w-10" />
+          <img src={withBase('logo.svg')} alt="Apex Admin" className="h-10 w-10" />
           <div>
             <div className="text-[17px] font-semibold tracking-tight text-slate-900">Apex Admin</div>
             <div className="text-[10px] font-medium tracking-[0.16em] text-slate-500">AI PLATFORM CONSOLE</div>
@@ -154,7 +155,7 @@ function LoginPage() {
         {/* 顶栏 */}
         <div className="flex items-center justify-between px-8 py-7 xl:px-12">
           <div className="flex items-center gap-2.5 lg:hidden">
-            <img src="/logo.svg" alt="Apex Admin" className="h-8 w-8" />
+            <img src={withBase('logo.svg')} alt="Apex Admin" className="h-8 w-8" />
             <span className="text-[15px] font-semibold">Apex Admin</span>
           </div>
           <div className="ml-auto flex items-center gap-2 text-[12px] text-slate-500">

@@ -6,7 +6,7 @@ import {
 } from 'lucide-react'
 import { PageHeader } from '@/components/shared/page-header'
 import { appConfig } from '@/app.config'
-import { cn } from '@/lib/utils'
+import { cn, withBase } from '@/lib/utils'
 
 export const Route = createFileRoute('/_auth/about')({
   component: AboutPage,
@@ -53,7 +53,7 @@ function AboutPage() {
         <div className="pointer-events-none absolute -top-24 right-0 h-56 w-72 rounded-full bg-gradient-to-br from-brand-500/15 to-brand-600/5 blur-2xl" />
         <div className="relative flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <img src="/logo.svg" alt={appConfig.name} className="h-12 w-12 shrink-0" />
+            <img src={withBase('logo.svg')} alt={appConfig.name} className="h-12 w-12 shrink-0" />
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="text-[19px] font-semibold tracking-tight text-ink">{appConfig.name}</h1>

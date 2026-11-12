@@ -12,7 +12,7 @@ import { Can } from '@/components/shared/can'
 import { useTask, useTaskActions } from '@/api'
 import { formatDateTime, formatDuration, formatNumber } from '@/lib/format'
 import { logLines, type TaskParam } from '@/mocks/db'
-import { cn } from '@/lib/utils'
+import { cn, withBase } from '@/lib/utils'
 import { toast } from 'sonner'
 
 export const Route = createFileRoute('/_auth/tasks/$id')({
@@ -62,7 +62,7 @@ function TaskDetailPage() {
       {/* 面包屑 */}
       <div className="mb-5 flex items-center gap-2 text-[11.5px] text-muted">
         <a
-          href="/tasks"
+          href={withBase('tasks')}
           onClick={(e) => {
             e.preventDefault()
             void navigate({ to: '/tasks' })
@@ -389,7 +389,7 @@ function TaskDetailPage() {
                     </div>
                     <div className="col-span-1 font-mono text-[10.5px] text-muted">{s.latency}</div>
                     <div className="col-span-1 text-right">
-                      <a href="/services" className="text-[10.5px] text-brand-600 hover:text-brand-700 dark:text-brand-400">
+                      <a href={withBase('services')} className="text-[10.5px] text-brand-600 hover:text-brand-700 dark:text-brand-400">
                         查看
                       </a>
                     </div>
