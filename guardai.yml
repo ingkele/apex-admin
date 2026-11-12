@@ -53,6 +53,8 @@ allowed_dirs:
     purpose: init 实测既有子目录
   - path: src/components/shared/*
     purpose: 跨页面复用的业务共享组件（DemoBlock/PageHeader/FilterBar 等；React 生态惯例目录）
+  - path: src/components/shared/terminal/*
+    purpose: 模拟终端组件子目录（终端面板/会话 hook/命令注册表/传输层四件套）
   - path: src/components/ui/*
     purpose: init 实测既有子目录
   - path: src/lib/*

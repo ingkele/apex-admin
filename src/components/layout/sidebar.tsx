@@ -10,7 +10,7 @@ import {
   MoveHorizontal, Network, Palette, Paintbrush, PanelLeftClose, PanelRightOpen, PanelsTopLeft, PenLine, Pin, Plug,
   Puzzle, RotateCw, Route, Rows3, Ruler, Scaling, ScrollText, Search, Server, Settings, ShieldCheck,
   SlidersHorizontal, Sparkles, SquareArrowOutUpRight, SquareKanban, SquarePen, Table2,
-  TableProperties, Tag, TextCursorInput, TimerOff, Users, Zap,
+  TableProperties, Tag, Terminal as TerminalIcon, TextCursorInput, TimerOff, Users, Zap,
 } from 'lucide-react'
 import { appConfig, NAV_GROUPS, type NavChild, type NavIcon, type PermissionCode } from '@/app.config'
 import { AppMenu } from '@/components/ui/menu'
@@ -46,6 +46,7 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   about: Info,
   audit: ScrollText,
   settings: Settings,
+  terminal: TerminalIcon,
   demo: FlaskConical,
   badge: Tag,
   sparkles: Sparkles,

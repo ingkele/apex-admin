@@ -68,6 +68,7 @@ import { Route as AuthSystemDictsRouteImport } from './routes/_auth/system/dicts
 import { Route as AuthSystemMenusRouteImport } from './routes/_auth/system/menus'
 import { Route as AuthSystemRolesRouteImport } from './routes/_auth/system/roles'
 import { Route as AuthSystemSettingsRouteImport } from './routes/_auth/system/settings'
+import { Route as AuthSystemTerminalRouteImport } from './routes/_auth/system/terminal'
 import { Route as AuthSystemUsersRouteImport } from './routes/_auth/system/users'
 import { Route as AuthTasksIndexRouteImport } from './routes/_auth/tasks/index'
 import { Route as AuthTasksIdRouteImport } from './routes/_auth/tasks/$id'
@@ -414,6 +415,11 @@ const AuthSystemSettingsRoute = AuthSystemSettingsRouteImport.update({
   path: '/system/settings',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthSystemTerminalRoute = AuthSystemTerminalRouteImport.update({
+  id: '/system/terminal',
+  path: '/system/terminal',
+  getParentRoute: () => AuthRoute,
+} as any)
 const AuthSystemUsersRoute = AuthSystemUsersRouteImport.update({
   id: '/system/users',
   path: '/system/users',
@@ -748,6 +754,7 @@ export interface FileRoutesByFullPath {
   '/system/menus': typeof AuthSystemMenusRoute
   '/system/roles': typeof AuthSystemRolesRoute
   '/system/settings': typeof AuthSystemSettingsRoute
+  '/system/terminal': typeof AuthSystemTerminalRoute
   '/system/users': typeof AuthSystemUsersRoute
   '/tasks/$id': typeof AuthTasksIdRoute
   '/demo/': typeof AuthDemoIndexRoute
@@ -859,6 +866,7 @@ export interface FileRoutesByTo {
   '/system/menus': typeof AuthSystemMenusRoute
   '/system/roles': typeof AuthSystemRolesRoute
   '/system/settings': typeof AuthSystemSettingsRoute
+  '/system/terminal': typeof AuthSystemTerminalRoute
   '/system/users': typeof AuthSystemUsersRoute
   '/tasks/$id': typeof AuthTasksIdRoute
   '/demo': typeof AuthDemoIndexRoute
@@ -972,6 +980,7 @@ export interface FileRoutesById {
   '/_auth/system/menus': typeof AuthSystemMenusRoute
   '/_auth/system/roles': typeof AuthSystemRolesRoute
   '/_auth/system/settings': typeof AuthSystemSettingsRoute
+  '/_auth/system/terminal': typeof AuthSystemTerminalRoute
   '/_auth/system/users': typeof AuthSystemUsersRoute
   '/_auth/tasks/$id': typeof AuthTasksIdRoute
   '/_auth/demo/': typeof AuthDemoIndexRoute
@@ -1085,6 +1094,7 @@ export interface FileRouteTypes {
     | '/system/menus'
     | '/system/roles'
     | '/system/settings'
+    | '/system/terminal'
     | '/system/users'
     | '/tasks/$id'
     | '/demo/'
@@ -1196,6 +1206,7 @@ export interface FileRouteTypes {
     | '/system/menus'
     | '/system/roles'
     | '/system/settings'
+    | '/system/terminal'
     | '/system/users'
     | '/tasks/$id'
     | '/demo'
@@ -1308,6 +1319,7 @@ export interface FileRouteTypes {
     | '/_auth/system/menus'
     | '/_auth/system/roles'
     | '/_auth/system/settings'
+    | '/_auth/system/terminal'
     | '/_auth/system/users'
     | '/_auth/tasks/$id'
     | '/_auth/demo/'
@@ -1786,6 +1798,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthSystemSettingsRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/system/terminal': {
+      id: '/_auth/system/terminal'
+      path: '/system/terminal'
+      fullPath: '/system/terminal'
+      preLoaderRoute: typeof AuthSystemTerminalRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_auth/system/users': {
       id: '/_auth/system/users'
       path: '/system/users'
@@ -2212,6 +2231,7 @@ interface AuthRouteChildren {
   AuthSystemMenusRoute: typeof AuthSystemMenusRoute
   AuthSystemRolesRoute: typeof AuthSystemRolesRoute
   AuthSystemSettingsRoute: typeof AuthSystemSettingsRoute
+  AuthSystemTerminalRoute: typeof AuthSystemTerminalRoute
   AuthSystemUsersRoute: typeof AuthSystemUsersRoute
   AuthTasksIdRoute: typeof AuthTasksIdRoute
   AuthDemoIndexRoute: typeof AuthDemoIndexRoute
@@ -2320,6 +2340,7 @@ const AuthRouteChildren: AuthRouteChildren = {
   AuthSystemMenusRoute: AuthSystemMenusRoute,
   AuthSystemRolesRoute: AuthSystemRolesRoute,
   AuthSystemSettingsRoute: AuthSystemSettingsRoute,
+  AuthSystemTerminalRoute: AuthSystemTerminalRoute,
   AuthSystemUsersRoute: AuthSystemUsersRoute,
   AuthTasksIdRoute: AuthTasksIdRoute,
   AuthDemoIndexRoute: AuthDemoIndexRoute,

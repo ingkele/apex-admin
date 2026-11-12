@@ -46,7 +46,7 @@ export interface NavGroup {
 /** 图标名映射到 lucide-react 导出（集中一处，避免散落魔法字符串） */
 export type NavIcon =
   | 'dashboard' | 'analytics' | 'tasks' | 'services' | 'models' | 'keys'
-  | 'users' | 'roles' | 'menu' | 'dept' | 'dict' | 'audit' | 'settings'
+  | 'users' | 'roles' | 'menu' | 'dept' | 'dict' | 'audit' | 'settings' | 'terminal'
   | 'components' | 'examples' | 'errors' | 'about'
   | 'component' | 'input' | 'feedback' | 'navigation' | 'table' | 'list' | 'form' | 'flow' | 'state'
   | 'demo' | 'badge' | 'sparkles' | 'external' | 'nested' | 'embed'
@@ -257,6 +257,11 @@ export const NAV_GROUPS: NavGroup[] = [
           { label: '审计日志', to: '/system/audit', permission: 'audit:view' },
           { label: '系统参数', to: '/system/settings', permission: 'setting:manage' },
         ],
+      },
+      {
+        label: '运维工具',
+        icon: 'terminal',
+        children: [{ label: '终端', to: '/system/terminal' }],
       },
     ],
   },
